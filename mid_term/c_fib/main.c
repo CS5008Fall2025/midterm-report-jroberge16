@@ -10,27 +10,35 @@
 #include "utils.h"
 
 
+void test_one(int algorithum, int fib_num, int print){
 
-void test_itterative_solution(){
-    printf("hello world");
 
+    double time_taken = time_it(algorithum, fib_num, print);
+    
+    printf("%s:%.6f seconds\n", algs_names[algorithum], time_taken);
+    
 }
 
+void test_all(){
 
+}
 
 
 int main(int argc, char *argv[]){
     int algorithum = 0;
     int print = 0;
+    int fib_num = -1;
 
     // processing the command line arguments
-    proccess_args(argc, argv, &algorithum, &print);
+    proccess_args(argc, argv, &algorithum, &print, &fib_num);
     
     if(print){
             printf("\n Results from benchmarking %s", algs_names[algorithum]);
     }
 
-    test_itterative_solution();
+    if(algorithum<4){
+        test_one(algorithum, fib_num, print);
+    }
     
     return 0;
 }

@@ -11,7 +11,7 @@
 
 const char algs_names[4][25] = {"Itterative", "Recursive", "Dynamic Programming", "All"};
 
-long int (*fibs[])(int, int) = {
+unsigned long long int (*fibs[])(int, int) = {
     itterativeFib,
     recursiveFib, 
     dynamicFib
@@ -83,7 +83,7 @@ double time_it( int alg_type, int fib_num, int p){
     // Get the time before we start
     clock_gettime(CLOCK_MONOTONIC, &begin);
     
-    // fibs[alg_type](fib_num-1, p);
+    fibs[alg_type](fib_num-1, p);
 
     // Get the time after we are done
     clock_gettime(CLOCK_MONOTONIC, &end);

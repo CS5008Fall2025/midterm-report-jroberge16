@@ -15,7 +15,7 @@ void test_one(int algorithum, int fib_num, int print){
 
     double time_taken = time_it(algorithum, fib_num, print);
     
-    printf("%s:%.6f seconds\n", algs_names[algorithum], time_taken);
+    printf("%s:%.10f seconds\n", algs_names[algorithum], time_taken);
     
 }
 
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
     proccess_args(argc, argv, &algorithum, &print, &fib_num);
     
     if(print){
-            printf("\n Results from benchmarking %s", algs_names[algorithum]);
+            printf("\nResults from benchmarking %s\n", algs_names[algorithum]);
     }
 
     if(algorithum<4){

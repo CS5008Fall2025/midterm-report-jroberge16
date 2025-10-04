@@ -11,7 +11,7 @@
 
 const char algs_names[4][25] = {"Itterative", "Recursive", "Dynamic Programming", "All"};
 
-unsigned long long int (*fibs[])(int, int) = {
+uint64_t (*fibs[])(int, int) = {
     itterativeFib,
     recursiveFib, 
     dynamicFib

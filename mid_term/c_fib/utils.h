@@ -19,7 +19,7 @@ uint64_t (*fibs[])(int, int) = {
 
 // Static functions
 void helper(void){
-    printf("\n🚀🚀🚀🚀🚀 Welcome to Josh's Fibonacci Benchmarker 🚀🚀🚀🚀🚀\n\n");
+    printf("\n🚀🚀🚀🚀🚀 Welcome to Josh's Fibonacci Benchmarker for C 🚀🚀🚀🚀🚀\n\n");
     printf("Description:\n\tThis program is used to benchmark the performance differences between different implementations of Fibonacci code\n\n");
     printf("Command Line Arguments\n");
     printf("\t-f int: What Fibonacci number to calculate to\n");
@@ -78,6 +78,11 @@ void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib
 
 
 void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_taken ){
+
+    if ((alg_type>2)| (alg_type<0)| (fib_num < 0)){
+        exit(1);
+    }
+
     // Setup timers
     struct timespec begin, end;
     // Get the time before we start
@@ -90,6 +95,54 @@ void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_t
 
     *time_taken  = (end.tv_nsec - begin.tv_nsec) / 1000000000.0 +
            (end.tv_sec - begin.tv_sec);
+}
+
+
+int test_one(int algorithum, int fib_num, int print){
+    uint64_t result;
+    double time_taken;
+
+    if ((algorithum>2)| (algorithum<0)| (fib_num< 0)){
+        return 1;
+    }
+    if(print){
+        printf("\n============== 🧮 CALCULATIONS 🧮 ==============\n");
+    }
+    time_it(algorithum, fib_num, print, &result, &time_taken);
+
+    if(print){
+        printf("\n============== 🏁 Results 🏁 ==============\n");
+        printf("Algorithum:\t%s\n", algs_names[algorithum]);
+        printf("Total Time:\t%.10f\n", time_taken);
+        printf("Result for F_%d:\t%ld\n\n", fib_num, result);
+    }
+    return 0;
+}
+
+int test_all(int fib_num, int print){
+    double time_taken[] = {0,0,0};
+    uint64_t results[] = {0,0,0};
+    if (fib_num< 0){
+        return 1;
+    }
+    for(int i=0; i<3; i++){
+        // Due to time we will skip large values of n for recursive
+        if((i==1) & (fib_num > 48)){
+            results[i] = 0;
+            time_taken[i] = -1;
+        }else{
+            time_it(i, fib_num, 0, &results[i], &time_taken[i]);
+        }
+    }
+
+    if(print){
+        printf("\n============== 🏁 Benchmarking All Results 🏁 ==============\n");
+        printf("|Fib Number\t|%s\t|%s\t|%s\t|\n", algs_names[0], algs_names[1], algs_names[2]);
+        printf("|f_%d\t\t|%.10f\t|%.10f\t|%.10f\t\t|\n", fib_num, time_taken[0], time_taken[1], time_taken[2]);
+    }else{
+        printf("|f_%d|%.10f|%.10f|%.10f|\n", fib_num, time_taken[0], time_taken[1], time_taken[2]);
+    }
+    return 0;
 }
 
 

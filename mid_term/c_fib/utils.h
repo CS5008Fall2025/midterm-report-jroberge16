@@ -77,18 +77,18 @@ void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib
 }
 
 
-double time_it( int alg_type, int fib_num, int p){
+void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_taken ){
     // Setup timers
     struct timespec begin, end;
     // Get the time before we start
     clock_gettime(CLOCK_MONOTONIC, &begin);
     
-    fibs[alg_type](fib_num-1, p);
+    *result  = fibs[alg_type](fib_num, p);
 
     // Get the time after we are done
     clock_gettime(CLOCK_MONOTONIC, &end);
 
-    return (end.tv_nsec - begin.tv_nsec) / 1000000000.0 +
+    *time_taken  = (end.tv_nsec - begin.tv_nsec) / 1000000000.0 +
            (end.tv_sec - begin.tv_sec);
 }
 

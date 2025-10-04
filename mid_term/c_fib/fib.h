@@ -19,7 +19,7 @@ uint64_t itterativeFib(int fib_num, int print){
    uint64_t second_term = 1;
    uint64_t fib_calculation;
 
-    for (int i =1; i-1 <= fib_num; i++){
+    for (int i =1; i <= fib_num; i++){
         fib_calculation = second_term + first_term ;
         if(print){
             printf("f_%d:\t%ld + %ld = %ld\n", i, first_term,  second_term, fib_calculation);
@@ -59,9 +59,8 @@ uint64_t _dynamic_fib(int num, int p,uint64_t *memo){
     }
     
     memo[num] = _dynamic_fib(num-1, p, memo) + _dynamic_fib(num-2, p, memo);
-    // Only printing one that are caculated
     if(p){
-        printf("f_%d:\t%ld\n",num,  memo[num]);
+        printf("f_%d:\t\t%ld\n",num,  memo[num]);
     }
     return memo[num];
 

@@ -17,8 +17,11 @@ uint64_t (*fibs[])(int, int) = {
     dynamicFib
 };
 
-// Static functions
-void helper(void){
+
+/**
+ * This displays the helpd menue
+ */
+static void helper(void){
     printf("\n🚀🚀🚀🚀🚀 Welcome to Josh's Fibonacci Benchmarker for C 🚀🚀🚀🚀🚀\n\n");
     printf("Description:\n\tThis program is used to benchmark the performance differences between different implementations of Fibonacci code\n\n");
     printf("Command Line Arguments\n");
@@ -33,7 +36,14 @@ void helper(void){
     printf("\n\n");
 }
 
-
+/* 
+* this function is used to procee the comment line arguments
+* @param argc: Argument count from command line
+* @param argv: Argument vector from command line
+* @param algorithum: Algorithum number eg => 0: iterative, 1: recursive, 2: dynamic
+* @param print: prints debug code
+* @param fib_number: The Fibonacci number to calculate
+*/
 void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib_number){
     int opt;
     while ((opt = getopt(argc, argv, "f:hpa:")) != -1){
@@ -76,7 +86,14 @@ void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib
     }
 }
 
-
+/*
+* This function is used for timming the our algorithums
+* @param alg_type: Algorthum number eg => 0: iterative, 1: recursive, 2: dynamic
+* @param fib_num: The Fibonacci number to calculate
+* @param print: prints debug code
+* @param result: Final results of the fibonacci calculation
+* @param time_taken: Total time elsaspaed during the calculation
+*/
 void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_taken ){
 
     if ((alg_type>2)| (alg_type<0)| (fib_num < 0)){
@@ -97,7 +114,13 @@ void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_t
            (end.tv_sec - begin.tv_sec);
 }
 
-
+/**
+ * This is used to test one algorithum at a time
+ * @param algorithum: Algorithum number eg => 0: iterative, 1: recursive, 2: dynamic
+ * @param fib_num: The Fibonacci number to calculate
+ * @param print: prints debug code
+ * @return: 0 => success, 1 => failure
+ */
 int test_one(int algorithum, int fib_num, int print){
     uint64_t result;
     double time_taken;
@@ -118,7 +141,12 @@ int test_one(int algorithum, int fib_num, int print){
     }
     return 0;
 }
-
+/*
+* This tests all the algorithums at once. Do to time complexity we skip over extreme cases
+* @param fib_num: The Fibonacci number to calculate
+* @param print: prints debug code
+* @return: 0 => success, 1 => failure
+*/
 int test_all(int fib_num, int print){
     double time_taken[] = {0,0,0};
     uint64_t results[] = {0,0,0};
@@ -144,6 +172,5 @@ int test_all(int fib_num, int print){
     }
     return 0;
 }
-
 
 #endif 

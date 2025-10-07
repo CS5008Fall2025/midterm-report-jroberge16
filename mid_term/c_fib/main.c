@@ -9,7 +9,19 @@
 #include "fib.h"
 #include "utils.h"
 
-
+/**
+ * Main function for the Fibonacci benchmarker
+ * Description: This program is used to benchmark the performance differences between different implementations of Fibonacci code
+ * Command Line Arguments:
+ * -f: The Fibonacci number to calculate
+ * -a: The algorithm to use (0: iterative, 1: recursive, 2: dynamic, 3: all)
+ * -p: prints infromation about each step (used for debugging)
+ * -h: Help
+ * 
+ * @param argc: Argument count from command line
+ * @param argv: Argument vector from command line
+ * @return: 0 on success, 1 on failure
+ */
 int main(int argc, char *argv[]){
     int algorithum = 0;
     int print = 0;

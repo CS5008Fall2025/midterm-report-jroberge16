@@ -113,19 +113,72 @@ void test_time_it(void){
 
 void test_proccess_args(){
 
+    printf("\t🧪 Processing Arguments:\n");
+
     int algorithum = 1;
     int print = 0;
     int fib_num = 5;
     char *argv[] = {"program_name", "-a", "1", "-f", "5"};
-    int argc = 4;
+    int argc = 5;
+
     proccess_args(argc, argv, &algorithum, &print, &fib_num);
-    if(algorithum == 4 && print == 5 && fib_num == 5){
+    if(algorithum == 0 && print == 0 && fib_num == 5){
         print_results(1, 1,"proccess_args normal");
     }else{
         print_results(1, 0,"proccess_args normal");
     }
-
+    // I manually tested some of the exit on error function
+    // Can put that in code sinze it ends the program by design.
 }
+
+void test_recursiveFib(void){
+    printf("\t🧪 Testing recursiveFib:\n");
+    int result_1 = recursiveFib(5, 0);
+    int result_2 = recursiveFib(0, 0);
+    int result_3 = recursiveFib(1, 0);
+    int result_4 = recursiveFib(10, 0);
+    int result_5 = recursiveFib(-1, 0);
+
+    print_results(result_1, 5,"recursiveFib f_5");
+    print_results(result_2, 0,"recursiveFib f_0");
+    print_results(result_3, 1,"recursiveFib f_1");
+    print_results(result_4, 55,"recursiveFib f_10");
+    print_results(result_5, -999,"recursiveFib f_-1"); //
+    // I manually tested print... It works as expected
+}
+
+void test_itterativeFib(void){
+    printf("\t🧪 Testing itterativeFib:\n");
+    int result_1 = itterativeFib(5, 0);
+    int result_2 = itterativeFib(0, 0);
+    int result_3 = itterativeFib(1, 0);
+    int result_4 = itterativeFib(10, 0);
+    int result_5 = itterativeFib(-1, 0);
+
+    print_results(result_1, 5,"itterativeFib f_5");
+    print_results(result_2, 0,"itterativeFib f_0");
+    print_results(result_3, 1,"itterativeFib f_1");
+    print_results(result_4, 55,"itterativeFib f_10");
+    print_results(result_5, -999,"itterativeFib f_-1"); //
+    // I manually tested print... It works as expected
+}
+
+void test_dynamicFib(void){
+    printf("\t🧪 Testing dynamicFib:\n");
+    int result_1 = dynamicFib(5, 0);
+    int result_2 = dynamicFib(0, 0);
+    int result_3 = dynamicFib(1, 0);
+    int result_4 = dynamicFib(10, 0);
+    int result_5 = dynamicFib(-1, 0);
+
+    print_results(result_1, 5,"dynamicFib f_5");
+    print_results(result_2, 0,"dynamicFib f_0");
+    print_results(result_3, 1,"dynamicFib f_1");
+    print_results(result_4, 55,"dynamicFib f_10");
+    print_results(result_5, -999,"dynamicFib f_-1"); //
+    // I manually tested print... It works as expected
+}
+
 
 
 void test_utils(void){ 
@@ -133,6 +186,9 @@ void test_utils(void){
     test_test_all();
     test_time_it();
     test_proccess_args();
+    test_recursiveFib();
+    test_itterativeFib();
+    test_dynamicFib();
 
 }
 

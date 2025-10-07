@@ -4,15 +4,37 @@ import time
 
 
 class FibonaciAlgorihhum(ABC):
+    """
+    Abstract Base Class for fibionoci sequence
+
+    Atributes:
+        * print_debug: makes the print statments verbose
+    """
     def __init__(self, print_debug: bool = False):
+        """
+        Atributes:
+            * print_debug: makes the print statments verbose
+        """
         self.print_debug = print_debug
 
     def time_it(self, n):
+        """
+        Method for timming the fibionoci calculation
+        args:
+            n= fibionoci number
+        returns: tuple of fibionoci number and time taken to calculate
+        """
         start_time = time.time()
         result = self.calculate(n)
         return result, time.time() - start_time
     
     def _check_base_case(self, num):
+        """
+        Private Method for checking the base case conditions for fibionoci sequence
+        args:
+            num= fibionoci number
+        returns: fibionoci number or -999 for error
+        """
         match num:
             case 1:
                 if self.print_debug:
@@ -29,14 +51,37 @@ class FibonaciAlgorihhum(ABC):
             
     @abstractmethod
     def calculate(self, n: int) -> int:
+        """
+        private method for caculating fibionoci sequence
+        args:
+            n= fibionoci number
+        """
         pass
 
 
 class ItterativeFib(FibonaciAlgorihhum):
+    """
+    This is the itterative implementation of
+    fibionoci sequence
+
+    Atributes:
+        * print_debug: makes the print statments verbose
+    """
+
     def __int__(self, print_debug: bool = False):
+        """
+        Atributes:
+            * print_debug: makes the print statments verbose
+        """
+
         self.__supper().__init__(print_debug)
     
     def calculate(self, n):
+        """
+        method for for caculating fibionoci sequence
+        args:
+            n= fibionoci number
+        """
         if n < 1:
             return self._check_base_case(n)
         first_term: int = 0
@@ -52,10 +97,26 @@ class ItterativeFib(FibonaciAlgorihhum):
 
 
 class RecursiveFib(FibonaciAlgorihhum):
+    """
+    This is the recursive implementation of
+    fibionoci sequence
+
+    Atributes:
+        * print_debug: makes the print statments verbose
+    """
     def __int__(self, print_debug: bool = False):
+        """
+        Atributes:
+            * print_debug: makes the print statments verbose
+        """
         self.__supper().__init__(print_debug)
     
     def calculate(self, n):
+        """
+        method for  for caculating fibionoci sequence
+        args:
+            n= fibionoci number
+        """
         if n <= 1:
             return self._check_base_case(n)
         
@@ -67,10 +128,27 @@ class RecursiveFib(FibonaciAlgorihhum):
         return result
 
 class DynamicFib(FibonaciAlgorihhum):
+    """
+    This is the memoization implementation of
+    fibionoci sequence
+
+    Atributes:
+        * print_debug: makes the print statments verbose
+    """
+
     def __int__(self, print_debug: bool = False):
+        """
+        Atributes:
+            * print_debug: makes the print statments verbose
+        """
         self.__supper().__init__(print_debug)
 
     def _calculate(self, n:int) -> int:
+        """
+        private method for caculating fibionoci sequence
+        args:
+            n= fibionoci number
+        """
         if(n<=1):
             return self._check_base_case(n)
         
@@ -87,6 +165,11 @@ class DynamicFib(FibonaciAlgorihhum):
         
 
     def calculate(self, n:int) -> int:
+        """
+        method for caculating fibionoci sequence
+        args:
+            n= fibionoci number
+        """
         if(n<=1):
             return self._check_base_case(n)
         self.memo: List[int] = [0] * (n+1)

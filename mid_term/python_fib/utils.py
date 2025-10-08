@@ -1,7 +1,15 @@
+from typing import List, Dict, Any, Tuple
 import argparse
 
+from fib import RecursiveFib, ItterativeFib, DynamicFib, FibonaciAlgorihhum
+
+
+algs = [("Itterative", ItterativeFib), ( "Recrusive",RecursiveFib), ("Dynamic", DynamicFib)]
 
 def print_help():
+    """
+    This function prints the help menue
+    """
     print("\n🚀🚀🚀🚀🚀 Welcome to Josh's Fibonacci Benchmarker for Python 🚀🚀🚀🚀🚀\n")
     print("Description:")
     print("\tThis program is used to benchmark the performance differences between different implementations of Fibonacci code\n")
@@ -16,9 +24,10 @@ def print_help():
     print("\t\t4: All solutions")
     print("\n")
 
-
-
 def process_args():
+    """
+    This code is for processing the command line arguments
+    """
     
     parser = argparse.ArgumentParser(description="Argument Parser of Pytthon Fib")
 
@@ -51,10 +60,77 @@ def process_args():
         print_help()
         exit(0)
     args.a -= 1
-    
+
     return args
 
 
-def time_it():
-    pass
+
+
+def test_one(alg:int, fib_num:int, p:bool) -> int:
+    """
+    This function test one of the algorithums for fibonaci sequence
+    args:
+        alg: int = algorithum number (0: iterative, 1: recursive, 2: dynamic)
+        fib_num: int = fibonaci number to calculate to
+        p: bool = print debug statements
+    returns:
+        dict = {"Elasped_Time": float, "Result": int}
+    """
+    if alg<0 or alg>2 or fib_num < 0:
+        raise ValueError("Error with Alg or fibnum")
+    
+    alg_name:str = algs[alg][0]
+    alg_func:FibonaciAlgorihhum = algs[alg][1]
+    alg_func:FibonaciAlgorihhum = algs[alg][1](print_debug = p)
+    
+    if print:
+        print(f"============== 🧮 CALCULATIONS for {alg_name} Fibonaci Sequence 🧮 ==============")
+    
+    result = alg_func.time_it(fib_num)
+    if print:
+        print("\n============== 🏁 Results 🏁 ==============\n");
+        print(f"Algorithum:\t{alg_name}");
+        print(f"Total Time:\t{result[1]}");
+        print(f"Result for F_{fib_num}:\t{result[0]}");
+
+    return {"Elasped_Time": result[1], "Result": result[0]}
+
+def test_all(fib_num:int, p: bool):
+    """
+    This function Test all the algorithums for fibonaci sequence
+    args:
+        fib_num: int = fibonaci number to calculate to
+        p: bool = print debug statements
+    returns:
+        str = csv row
+    """
+    time_taken: List[int] = [0,0,0]
+    results: List[int] = [0,0,0]
+
+    if fib_num < 0:
+        raise ValueError("Fib Number must be greater then 0")
+    
+    for i in range(3):
+        if i ==1 and fib_num > 48:
+            results[i] = 0
+            time_taken[i] = -1
+        else:
+            fib_cls = algs[i][1](print_debug = 0)
+            results[i], time_taken[i] = fib_cls.time_it(fib_num)
+
+    if p:
+        print("\n============== 🏁 Benchmarking All Results 🏁 ==============")
+        print(f"|Fib Number\t|{algs[0][0]}\t|{algs[1][0]}\t|{algs[2][0]}\t|")
+        print(f"|f_{fib_num}\t\t|{time_taken[0]:.10f}\t|{time_taken[1]:.10f}\t|{time_taken[2]:.10f}\t|")
+    
+
+    return f"f_{fib_num},{time_taken[0]:.10f},{time_taken[1]:.10f},{time_taken[2]:.10f}"
+
+    
+
+
+if __name__ == "__main__":
+        test_all(5, True)
+
+
 

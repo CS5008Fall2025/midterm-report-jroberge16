@@ -1,7 +1,7 @@
 from typing import List, Dict, Any, Tuple
 import argparse
 
-from mid_term.python_fib.fib import RecursiveFib, ItterativeFib, DynamicFib, FibonaciAlgorihhum
+from mid_term.python_fib.fib import RecursiveFib, ItterativeFib, DynamicFib
 
 
 algs = [("Itterative", ItterativeFib), ( "Recrusive",RecursiveFib), ("Dynamic", DynamicFib)]
@@ -111,9 +111,10 @@ def test_all(fib_num:int, p: bool):
         raise ValueError("Fib Number must be greater then 0")
     
     for i in range(3):
+        ## Skipping for recursive to save time
         if i ==1 and fib_num > 48:
-            results[i] = 0
-            time_taken[i] = -1
+            results[i] = -999
+            time_taken[i] = -999
         else:
             fib_cls = algs[i][1](print_debug = 0)
             results[i], time_taken[i] = fib_cls.time_it(fib_num)

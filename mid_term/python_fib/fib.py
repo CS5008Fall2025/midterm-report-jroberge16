@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 import time
 
 
-class FibonaciAlgorihhum(ABC):
+class FibonacciAlgorithm(ABC):
     """
     Abstract Base Class for fibionoci sequence
 
@@ -59,7 +59,7 @@ class FibonaciAlgorihhum(ABC):
         pass
 
 
-class ItterativeFib(FibonaciAlgorihhum):
+class ItterativeFib(FibonacciAlgorithm):
     """
     This is the itterative implementation of
     fibionoci sequence
@@ -68,13 +68,13 @@ class ItterativeFib(FibonaciAlgorihhum):
         * print_debug: makes the print statments verbose
     """
 
-    def __int__(self, print_debug: bool = False):
+    def __init__(self, print_debug: bool = False):
         """
         Atributes:
             * print_debug: makes the print statments verbose
         """
 
-        self.__supper().__init__(print_debug)
+        super().__init__(print_debug)
     
     def calculate(self, n):
         """
@@ -96,7 +96,7 @@ class ItterativeFib(FibonaciAlgorihhum):
         return calculation
 
 
-class RecursiveFib(FibonaciAlgorihhum):
+class RecursiveFib(FibonacciAlgorithm):
     """
     This is the recursive implementation of
     fibionoci sequence
@@ -109,7 +109,7 @@ class RecursiveFib(FibonaciAlgorihhum):
         Atributes:
             * print_debug: makes the print statments verbose
         """
-        self.__supper().__init__(print_debug)
+        super().__init__(print_debug)
     
     def calculate(self, n):
         """
@@ -127,7 +127,7 @@ class RecursiveFib(FibonaciAlgorihhum):
         
         return result
 
-class DynamicFib(FibonaciAlgorihhum):
+class DynamicFib(FibonacciAlgorithm):
     """
     This is the memoization implementation of
     fibionoci sequence
@@ -141,7 +141,7 @@ class DynamicFib(FibonaciAlgorihhum):
         Atributes:
             * print_debug: makes the print statments verbose
         """
-        self.__supper().__init__(print_debug)
+        super().__init__(print_debug)
 
     def _calculate(self, n:int) -> int:
         """

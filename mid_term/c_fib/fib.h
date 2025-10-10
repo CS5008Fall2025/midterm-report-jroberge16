@@ -2,6 +2,8 @@
 #ifndef FIB_H 
 #define FIB_H  
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 
 /*
@@ -27,9 +29,8 @@ uint64_t static inline _check_base_case(int num, int p){
         if(p){
             printf("Error:\t-999\n");
         }
-        return -999;
+        return UINT64_MAX;
     }
-    return num;
 }
 
 
@@ -40,16 +41,16 @@ uint64_t static inline _check_base_case(int num, int p){
 * @return: The fibonacci number or -999 if an error occurs
 */
 uint64_t itterativeFib(int fib_num, int print){
-    if(fib_num < 1){
+    if(fib_num <= 1){
         return _check_base_case(fib_num, print);
     }
 
-   uint64_t first_term = 0;
-   uint64_t second_term = 1;
-   uint64_t fib_calculation;
+   uint64_t first_term = 1;
+   uint64_t second_term = 0;
+   uint64_t fib_calculation = 0;
 
-    for (int i =1; i <= fib_num; i++){
-        fib_calculation = second_term + first_term ;
+    for (int i =2; i <= fib_num; i++){
+        fib_calculation = first_term + second_term  ;
         if(print){
             printf("f_%d:\t%ld + %ld = %ld\n", i, first_term,  second_term, fib_calculation);
         }
@@ -102,7 +103,7 @@ uint64_t _dynamic_fib(int num, int p,uint64_t *memo){
  }
 
 /*
-* This is the dynaimc programming solution for the fibonacci sequence
+* This is the dynamic programming solution for the fibonacci sequence
 * @param fib_num: The Fibonacci number to calculate
 * @param print: prints debug code
 * @return: The fibonacci number or -999 if an error occurs
@@ -115,9 +116,13 @@ uint64_t dynamicFib(int num, int p){
     }
     // allocates memory to 000
     uint64_t  *memo = calloc(num + 1, sizeof( uint64_t));
-    _dynamic_fib(num, p, memo );
-    
-    return memo[num];
+    if(!memo){
+        printf("Error -> unable to allocate memory\n");
+        return UINT64_MAX;
+    }
+    uint64_t result = _dynamic_fib(num, p, memo );
+    free(memo);
+    return result;
 }
 
 

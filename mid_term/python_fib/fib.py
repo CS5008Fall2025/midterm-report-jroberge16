@@ -47,7 +47,7 @@ class FibonacciAlgorithm(ABC):
             case _:
                 if self.print_debug:
                     print("Error")
-                return -999
+                return None
             
     @abstractmethod
     def calculate(self, n: int) -> int:
@@ -82,13 +82,13 @@ class ItterativeFib(FibonacciAlgorithm):
         args:
             n= fibionoci number
         """
-        if n < 1:
+        if n <= 1:
             return self._check_base_case(n)
-        first_term: int = 0
-        second_term: int = 1
+        first_term: int = 1
+        second_term: int = 0
 
-        for i in range(1,n+1):
-            calculation: int = second_term + first_term
+        for i in range(2,n+1):
+            calculation: int = first_term + second_term
             if self.print_debug:
                 print(f"f_{i}:\t{first_term} + {second_term} = {calculation}")
             second_term = first_term
@@ -104,7 +104,7 @@ class RecursiveFib(FibonacciAlgorithm):
     Atributes:
         * print_debug: makes the print statments verbose
     """
-    def __int__(self, print_debug: bool = False):
+    def __init__(self, print_debug: bool = False):
         """
         Atributes:
             * print_debug: makes the print statments verbose
@@ -136,7 +136,7 @@ class DynamicFib(FibonacciAlgorithm):
         * print_debug: makes the print statments verbose
     """
 
-    def __int__(self, print_debug: bool = False):
+    def __init__(self, print_debug: bool = False):
         """
         Atributes:
             * print_debug: makes the print statments verbose

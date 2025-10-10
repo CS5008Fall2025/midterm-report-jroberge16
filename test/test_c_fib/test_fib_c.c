@@ -143,23 +143,23 @@ void test_recursiveFib(void){
     print_results(result_2, 0,"recursiveFib f_0");
     print_results(result_3, 1,"recursiveFib f_1");
     print_results(result_4, 55,"recursiveFib f_10");
-    print_results(result_5, -999,"recursiveFib f_-1"); //
+    print_results(result_5, -1,"recursiveFib f_-1"); // We return UNIT_MAX_64 which casts to -1
     // I manually tested print... It works as expected
 }
 
 void test_itterativeFib(void){
     printf("\t🧪 Testing itterativeFib:\n");
-    int result_1 = itterativeFib(5, 0);
-    int result_2 = itterativeFib(0, 0);
-    int result_3 = itterativeFib(1, 0);
-    int result_4 = itterativeFib(10, 0);
-    int result_5 = itterativeFib(-1, 0);
+    int result_1 = iterativeFib(5, 0);
+    int result_2 = iterativeFib(0, 0);
+    int result_3 = iterativeFib(1, 0);
+    int result_4 = iterativeFib(10, 0);
+    int result_5 = iterativeFib(-1, 0);
 
     print_results(result_1, 5,"itterativeFib f_5");
     print_results(result_2, 0,"itterativeFib f_0");
     print_results(result_3, 1,"itterativeFib f_1");
     print_results(result_4, 55,"itterativeFib f_10");
-    print_results(result_5, -999,"itterativeFib f_-1"); //
+    print_results(result_5, -1,"itterativeFib f_-1"); // We return UNIT_MAX_64 which casts to -1
     // I manually tested print... It works as expected
 }
 
@@ -175,7 +175,7 @@ void test_dynamicFib(void){
     print_results(result_2, 0,"dynamicFib f_0");
     print_results(result_3, 1,"dynamicFib f_1");
     print_results(result_4, 55,"dynamicFib f_10");
-    print_results(result_5, -999,"dynamicFib f_-1"); //
+    print_results(result_5, -1,"dynamicFib f_-1"); // We return UNIT_MAX_64 which casts to -1
     // I manually tested print... It works as expected
 }
 

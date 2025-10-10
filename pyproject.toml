@@ -4,9 +4,11 @@ version = "0.1.0"
 description = "This is Joshua Roberge's Python mid-term"
 authors = ["jroberge16 <jwr1015@outlook.com>"]
 readme = "README.md"
+packages = [{include = "mid_term"}, {include = "test"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
+pytest = "^8.4.2"
 
 
 [build-system]

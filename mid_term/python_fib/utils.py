@@ -1,7 +1,7 @@
 from typing import List, Dict, Any, Tuple
 import argparse
 
-from fib import RecursiveFib, ItterativeFib, DynamicFib, FibonaciAlgorihhum
+from mid_term.python_fib.fib import RecursiveFib, ItterativeFib, DynamicFib, FibonaciAlgorihhum
 
 
 algs = [("Itterative", ItterativeFib), ( "Recrusive",RecursiveFib), ("Dynamic", DynamicFib)]

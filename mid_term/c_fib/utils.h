@@ -168,7 +168,7 @@ int test_all(int fib_num, int print){
         printf("|Fib Number\t|%s\t|%s\t|%s\t|\n", algs_names[0], algs_names[1], algs_names[2]);
         printf("|f_%d\t\t|%.10f\t|%.10f\t|%.10f\t\t|\n", fib_num, time_taken[0], time_taken[1], time_taken[2]);
     }else{
-        printf("|f_%d|%.10f|%.10f|%.10f|\n", fib_num, time_taken[0], time_taken[1], time_taken[2]);
+        printf("f_%d,%.10f,%.10f,%.10f\n", fib_num, time_taken[0], time_taken[1], time_taken[2]);
     }
     return 0;
 }

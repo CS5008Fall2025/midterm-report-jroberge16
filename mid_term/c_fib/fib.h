@@ -40,7 +40,7 @@ uint64_t static inline _check_base_case(int num, int p){
 * @param print: prints debug code
 * @return: The fibonacci number or -999 if an error occurs
 */
-uint64_t itterativeFib(int fib_num, int print){
+uint64_t iterativeFib(int fib_num, int print){
     if(fib_num <= 1){
         return _check_base_case(fib_num, print);
     }

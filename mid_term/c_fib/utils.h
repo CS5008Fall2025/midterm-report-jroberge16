@@ -5,21 +5,21 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 #include "fib.h"
-#include "utils.h"
 
-const char algs_names[4][25] = {"Itterative", "Recursive", "Dynamic Programming", "All"};
+static const char algs_names[4][25] = {"Iterative", "Recursive", "Dynamic Programming", "All"};
 
-uint64_t (*fibs[])(int, int) = {
-    itterativeFib,
+static uint64_t (*fibs[])(int, int) = {
+    iterativeFib,
     recursiveFib, 
     dynamicFib
 };
 
 
 /**
- * This displays the helpd menue
+ * This displays the help menue
  */
 static void helper(void){
     printf("\n🚀🚀🚀🚀🚀 Welcome to Josh's Fibonacci Benchmarker for C 🚀🚀🚀🚀🚀\n\n");
@@ -27,7 +27,7 @@ static void helper(void){
     printf("Command Line Arguments\n");
     printf("\t-f int: What Fibonacci number to calculate to\n");
     printf("\t-h: Help\n");
-    printf("\t-p: prints infromation about each step (used for debugging)\n");
+    printf("\t-p: prints information about each step (used for debugging)\n");
     printf("\t -a `1-4`: denotes the algorithum followed algorithum selection:\n");
     printf("\t\t 1: itterative Fibonacci solution\n");
     printf("\t\t 2: recursive Fibonacci solution\n");
@@ -75,11 +75,13 @@ void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib
                 }
                 *fib_number = atoi(optarg);
                 break;
+            default:
+                break;
         }
     
     }
     if(*fib_number < 0){
-        printf("ERROR: You Msut enter a `-f int` option \n");
+        printf("ERROR: You Must enter a `-f int` option \n");
         helper();
         exit(1);;
 
@@ -96,7 +98,7 @@ void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib
 */
 void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_taken ){
 
-    if ((alg_type>2)| (alg_type<0)| (fib_num < 0)){
+    if ((alg_type>2) || (alg_type<0) || (fib_num < 0)){
         exit(1);
     }
 
@@ -155,7 +157,7 @@ int test_all(int fib_num, int print){
     }
     for(int i=0; i<3; i++){
         // Due to time we will skip large values of n for recursive
-        if((i==1) & (fib_num > 48)){
+        if((i==1) && (fib_num > 48)){
             results[i] = 0;
             time_taken[i] = -1;
         }else{

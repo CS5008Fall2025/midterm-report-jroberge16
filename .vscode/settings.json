@@ -4,7 +4,8 @@
         "stdbool.h": "c",
         "unistd.h": "c",
         "compare": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "fib.h": "c"
     },
     "python.testing.pytestArgs": [
         "test"

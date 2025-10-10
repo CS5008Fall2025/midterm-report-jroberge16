@@ -1,12 +1,12 @@
 from typing import List, Dict, Any, Tuple
 import argparse
 
-from mid_term.python_fib.fib import RecursiveFib, ItterativeFib, DynamicFib
+from mid_term.python_fib.fib import RecursiveFib, ItterativeFib, DynamicFib, FibonacciAlgorithm
 
 
-algs = [("Itterative", ItterativeFib), ( "Recrusive",RecursiveFib), ("Dynamic", DynamicFib)]
+algs: List[Tuple[str, FibonacciAlgorithm]] = [("Itterative", ItterativeFib), ( "Recrusive",RecursiveFib), ("Dynamic", DynamicFib)]
 
-def print_help():
+def print_help() -> None:
     """
     This function prints the help menue
     """
@@ -24,7 +24,7 @@ def print_help():
     print("\t\t4: All solutions")
     print("\n")
 
-def process_args():
+def process_args() -> argparse.Namespace:
     """
     This code is for processing the command line arguments
     """
@@ -66,7 +66,7 @@ def process_args():
 
 
 
-def test_one(alg:int, fib_num:int, p:bool) -> int:
+def test_one(alg:int, fib_num:int, p:bool) -> Dict[str, Any]:
     """
     This function test one of the algorithums for fibonaci sequence
     args:
@@ -80,8 +80,8 @@ def test_one(alg:int, fib_num:int, p:bool) -> int:
         raise ValueError("Error with Alg or fibnum")
     
     alg_name:str = algs[alg][0]
-    alg_func:FibonaciAlgorihhum = algs[alg][1]
-    alg_func:FibonaciAlgorihhum = algs[alg][1](print_debug = p)
+    alg_func:FibonacciAlgorithm = algs[alg][1]
+    alg_func:FibonacciAlgorithm = algs[alg][1](print_debug = p)
     
     if print:
         print(f"============== 🧮 CALCULATIONS for {alg_name} Fibonaci Sequence 🧮 ==============")
@@ -95,7 +95,7 @@ def test_one(alg:int, fib_num:int, p:bool) -> int:
 
     return {"Elasped_Time": result[1], "Result": result[0]}
 
-def test_all(fib_num:int, p: bool):
+def test_all(fib_num:int, p: bool) -> str:
     """
     This function Test all the algorithums for fibonaci sequence
     args:

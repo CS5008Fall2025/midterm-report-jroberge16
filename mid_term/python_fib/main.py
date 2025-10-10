@@ -12,11 +12,11 @@ def main():
     """
     args = process_args()
     if args.a >= 3:
-        result = test_all(args.f, args.p)
+        result: int = test_all(args.f, args.p)
         print(result)
         return result
     else:
-        result = test_one(args.a, args.f, args.p)
+        result: int = test_one(args.a, args.f, args.p)
         print(result)
         return result
 

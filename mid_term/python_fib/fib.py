@@ -17,7 +17,7 @@ class FibonacciAlgorithm(ABC):
         """
         self.print_debug = print_debug
 
-    def time_it(self, n):
+    def time_it(self, n) -> tuple[int, float]:
         """
         Method for timming the fibionoci calculation
         args:
@@ -28,7 +28,7 @@ class FibonacciAlgorithm(ABC):
         result = self.calculate(n)
         return result, time.time() - start_time
     
-    def _check_base_case(self, num):
+    def _check_base_case(self, num) -> int:
         """
         Private Method for checking the base case conditions for fibionoci sequence
         args:
@@ -111,7 +111,7 @@ class RecursiveFib(FibonacciAlgorithm):
         """
         super().__init__(print_debug)
     
-    def calculate(self, n):
+    def calculate(self, n) -> int:
         """
         method for  for caculating fibionoci sequence
         args:

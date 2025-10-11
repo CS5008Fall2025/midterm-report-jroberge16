@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>instructions_README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="midterm-part-1-analysis-of-fibonacci-series">Midterm Part 1: Analysis of Fibonacci Series</h1>
+<p>For this part of the midterm, you will generate a report looking at the time analysis
+of various fibonacci series algorithms. While you will be submitting
+all code you write, your grade will be based off the report written in markdown.</p>
+<h2 id="language-selection-and-algorithms-needed">Language Selection and Algorithms  Needed</h2>
+<p>👉🏽 <strong>Task</strong> : Implement the algorithms in two different languages.</p>
+<p>For this report, you will need to pick one language in addition to C. You may
+pick a language from the following options:</p>
+<ul>
+<li>Python</li>
+<li>Java</li>
+<li>C#</li>
+<li>Kotlin</li>
+<li>Rust</li>
+</ul>
+<p>While most of you know Python, you are encouraged to explore other languages, but the choice is yours.  In BOTH <em>C</em> and
+your second language, you will need to implement the following algorithms.</p>
+<ul>
+<li>
+<p>Find the Nth value of the Fibonacci Series...</p>
+<ul>
+<li>Iteratively</li>
+<li>Recursively</li>
+<li>Using Dynamic Programming</li>
+</ul>
+</li>
+<li>
+<p>Be able to print out from 1..N of the Fibonacci Series</p>
+<ul>
+<li>Print out the series</li>
+<li>Print out speed and operations for each</li>
+</ul>
+</li>
+</ul>
+<p>Go back to your <a href="https://github.com/CS5008-Khoury/Labs/tree/main/dynamic-programming-pascal">Dynamic Programming Lab</a> for a similar setup or look at the <a href="sample_midterm/README.md">sample midterm</a>.  The code has the options to print algorithms individually with output to check to make sure it is working correctly, or to time the algorithms printing them in a comma separated format.</p>
+<p>For your second language, you will want to use techniques that are more common for that language, and are free to
+use their full library support.</p>
+<p>The primary goal of this assignment in addition to demonstrating your understanding of Big O and dynamic programming,
+is for you to explore the differences between languages, and ways to make your code more efficient.</p>
+<p>You do not have to follow the examples provided! They are just starting points, but how you write your code and generate the data you need for the report is up to you. Our final goal is to grade your report, so make sure to include all the information we need to grade it.</p>
+<h2 id="report">Report</h2>
+<p>👉🏽 <strong>Task</strong> : Write your final report in your <a href="../README.md">README.md</a>. Make sure to use proper &quot;formatting&quot;.</p>
+<p>An outline for the report is provided already in your <a href="../README.md">README.md</a>. While you are free to modify / adapt
+the outline to your writing style, you will need to make sure each topic is addressed.</p>
+<p>Topics need to include:</p>
+<ul>
+<li>Overview - Describe the algorithm, and common approaches to solving it. Address all three (iterative, recursive,
+and dynamic programming). <strong>Include the BIG O analysis, along with the Pseudo Code for the three algorithms</strong>. Saying,  &quot;I read about it&quot;, doesn't work. Instead, you need to look at the T(n), recurrence tree, or other techniques to figure out Big O. Make it clear on how you came to the Big O for each algorithm.</li>
+<li>Empirical Data &amp; Discussion - Does the empirical data (running the code and getting timings) match with your analysis?
+What are other factors affecting the run time? This is a good place to include charts/images.</li>
+<li>Language Analysis - make sure to include why you picked the second language. What were some of the features you wanted
+to test to help with your understanding of that language?
+<ul>
+<li>Language 1: C - talk about implementing the code in C. What were concerns or issues you had? What did you have
+to focus on the most to make it work</li>
+<li>Language 2: (YOUR CHOICE) - talk about implementing the code in the second language. Which features helped you?
+What were some concerns you ran into that you had to account for? Did you end up using specific libraries?</li>
+</ul>
+</li>
+<li>Comparison and Discussion Between Experiences - Make sure to compare and contrast your experiences with languages
+and use this opportunity to better detail any differences that came up in your empirical results. This is also
+a great location to talk about things you tried/attempted, but opted not to be part of your full report.</li>
+<li>Conclusions / Reflection - Mainly a reflection / lessons learned, but ties up your final report with the key takeaway
+experiences.</li>
+</ul>
+<blockquote>
+<p>[!NOTE]</p>
+<ol>
+<li>We ask that you use the ACM Format for references as you have used in your previous assignments.</li>
+<li>For the pseudo code, we aren't going to hold you to a set format, though we encourage you to follow on close the ones provided in class examples.</li>
+</ol>
+</blockquote>
+<h2 id="%F0%9F%93%9D-grading-rubric">📝 Grading Rubric</h2>
+<p>For this assignment, you will <em>submit</em> to canvas by providing a link to your github classroom repository (there is no gradescope submission).</p>
+<p>This is a <strong>SUMMATIVE</strong> assignment, and as such, will follow a traditional grading pattern meaning
+grades will not be calculated until after the late date.</p>
+<p>As per usual, you will have a due date and an available by/late date. We don't charge a penalty for being late, but the  hard cutoff is a hard cutoff, no exceptions. Why, because you should be submitting by the due date, and use the extra window in case there are issues. Waiting until the available by date does not warrant any additional time.</p>
+<p>The grading will be manually graded following the rubric in canvas. The rubric is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Missing (0pts)</th>
+<th>Learning (1pts)</th>
+<th>Approaching (2pts)</th>
+<th>Meets (3pts)</th>
+<th>Exceeds (4pts)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Code Quality</strong></td>
+<td>No code</td>
+<td>Code exists but is not documented or tested.</td>
+<td>Code exists, is documented or tested by including test files for all the code.</td>
+<td>Code is both documented and test files included.</td>
+<td>Code is written correctly, based on the language norms including memory management and small concise functions. Tests included to show validity.</td>
+</tr>
+<tr>
+<td><strong>Writing / Grammar</strong></td>
+<td>No report</td>
+<td>Difficult to read. Report uses basic grammar, may have misspelling and obvious grammar mistakes.</td>
+<td>Difficult to read due to poor sentence structures and wording choices.</td>
+<td>Report uses grammar at a college level.</td>
+<td>Report is easy to read, follows proper formatting guidelines, matches correct audience.</td>
+</tr>
+<tr>
+<td><strong>Visuals</strong> (chart, graph, math notation, etc)</td>
+<td>No visuals</td>
+<td>Student includes visuals, but they are distracting and not informative.</td>
+<td>Has a visual but no reference to visual in the paper, and out of place.</td>
+<td>Visuals are informative, and help clarify the report.</td>
+<td>Visuals are informative, and described properly in the paper writing, adding to the overall report.</td>
+</tr>
+<tr>
+<td><strong>BigO</strong></td>
+<td>No mention</td>
+<td>Provides minimal complexity discussion. Provides Pseudo code for each of the three function types.</td>
+<td>Provides BigO run-time for only part of the functions.</td>
+<td>Provides Big O for the required functions/algorithms, including both space and time complexity.</td>
+<td>Provides Big O, including space &amp; time, also compares and contrasts in discussion using Big O as a means to compare performance.</td>
+</tr>
+<tr>
+<td><strong>Empirical Analysis</strong></td>
+<td>No mention</td>
+<td>Provides minimal discussion.</td>
+<td>Uses visuals to compare and contrast.</td>
+<td>Details differences between algorithms based on run times.</td>
+<td>Details differences apparent based on analysis, and provides concerns and potential limitations of the analysis.</td>
+</tr>
+<tr>
+<td><strong>Language Analysis</strong></td>
+<td>No mention</td>
+<td>Provides code snippets, and details a single language's implementation.</td>
+<td>Provides code snippets for  both languages.</td>
+<td>Compares and contrasts two languages, giving advantages and disadvantages.</td>
+<td>Able to identify limitations for both that may affect analysis. Adjusts analysis based on limitations.</td>
+</tr>
+</tbody>
+</table>
+<p>24 points total</p>
+<h2 id="%F0%9F%93%9A-resources">📚 Resources</h2>
+<ul>
+<li><a href="sample_midterm">Sample Report</a> - A sample midterm for comparison/examples.</li>
+<li><a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables">Github Markdown Tables</a></li>
+<li><a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions">Markdown Latex Math</a></li>
+<li><a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">Latex Math</a></li>
+<li><a href="https://www.tablesgenerator.com/markdown_tables">Tables Generator</a> - helps build markdown tables</li>
+<li><a href="https://tableconvert.com/csv-to-markdown">CSV to Markdown</a> - another option to generate markdown tables</li>
+<li><a href="https://www.grammarly.com/blog/how-to-write-a-report/">Grammarly How to write a report</a> - no need to follow their specific format, but decent guidelines.</li>
+<li><a href="https://www.indeed.com/career-advice/career-development/how-to-write-a-report">Indeed Write A Report</a> - same, no need for specific format, but decent guidelines</li>
+</ul>
+<!--- Link References -->
+
+</body>
+</html>

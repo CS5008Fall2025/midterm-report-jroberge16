@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example_README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="midterm-p1-report-on-analysis-of-pascals-triangle">Midterm p1: Report on Analysis of Pascal's Triangle</h1>
+<ul>
+<li><strong>Author</strong>: Random Student</li>
+<li><strong>Semester</strong> Spring 2023</li>
+<li><strong>Languages Used</strong>: c, python</li>
+</ul>
+<blockquote>
+<p>This is a sample of what to write. It is not necessarily &quot;A&quot; quality work, or perfect. It was quickly written to help
+address common questions on what each category is needing. As a reminder, while this uses Pascal's Triangle, your
+report will be using the Fibonacci Series.</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>This report focuses on the speed differences between implementations of <a href="https://en.wikipedia.org/wiki/Pascal%27s_triangle">Pascal's Triangle</a><sup>[1]</sup>. It is worth mentioning, that while it is known as Pascal's Triangle in the western world, it goes by multiple names as discovered by multiple cultures throughout the world. Some names include: Khayyam (مثلث خیام) and Yang Hui (杨辉三角; 楊輝三角) Triangle.</p>
+<p>Pascal's triangle represents the binomial coefficients as a triangle staring with 1 and progressing. It can be presented mathematically
+as:</p>
+<p>$$\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$$</p>
+<p>A typical triangle, to N = 10 would look like the following:</p>
+<pre class="hljs"><code><div>1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+1 5 10 10 5 1
+1 6 15 20 15 6 1
+1 7 21 35 35 21 7 1
+1 8 28 56 70 56 28 8 1
+1 9 36 84 126 126 84 36 9 1
+</div></code></pre>
+<p>There are multiple ways to implement Pascal's Triangle with code, each discussed in more detail below. However,
+for the implementations I used in this report the following chart represents the Big O value.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Version</th>
+<th style="text-align:left">Big O</th>
+<th style="text-align:left">Space Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Iterative</td>
+<td style="text-align:left">$O(n^2)$</td>
+<td style="text-align:left">$O(n^2)$</td>
+</tr>
+<tr>
+<td style="text-align:left">Recursive</td>
+<td style="text-align:left">$O(2^n)$</td>
+<td style="text-align:left">$O(n)$ or $O(1)$</td>
+</tr>
+<tr>
+<td style="text-align:left">Dynamic Programming</td>
+<td style="text-align:left">$O(n^2)$</td>
+<td style="text-align:left">$O(n^2)$</td>
+</tr>
+</tbody>
+</table>
+<p>The iterative version has two nested for loops, developing the $O(n^2)$, while also needing to store the previous
+line, causing the room increase. There is a version that using constant room of a single variable, but it fails
+on larger notations.  The recursive version is in pseudocode:</p>
+<pre class="hljs"><code><div>for i..n
+    RV(n, i)
+
+RV(n,i)
+   if i == 1 or i == n: return 1
+   return  RV(n - 1, i) + RV(n - 1, i - 1)
+</div></code></pre>
+<p>Each row of the triangle contains one more element than the previous row. To generate the nth row, the algorithm must
+calculate n elements, each of which is the sum of two elements in the previous row.
+This means that the algorithm must make $2^{(n-1)}$ recursive calls to generate the entire nth row.
+However, the only space it has to keep is the final row  itself (or if printing, no space is used),
+making the space used either $O(n)$ or $O(1)$.</p>
+<p>The dynamic programming version stores the value of (n,i) for each call, making the second branch constant time,
+bringing the worst case back to $n*n = O(n^2)$ time, but at the cost of $O(n^2)$ room.</p>
+<p>For this analysis, I selected Python for my second language. The reason for this selection, other than it is a well known
+language, is that it has builtin functions to assist with dynamic programming knowing as <code>lru_cache</code> and <code>cache</code> in
+the builtin functools library. This allowed to experiment with the builtin tools, while also writing
+in a language designed for quick development and experimentation.</p>
+<h2 id="empirical-data--discussion">Empirical Data &amp; Discussion</h2>
+<p>For all empirical results, I maxed out the time interval to 60 seconds. This allowed for execution of code
+in a timely manner, while still being able to run multiple iterations (<a href="test_runner.py">test script</a>).</p>
+<p>Below we highlight both the speed and operations for all algorithms.</p>
+<h3 id="operations-comparison">Operations Comparison</h3>
+<p>The number of operations for each algorithm was calculated by adding a counter to the functions. While the counter could vary a bit based on where we added it, they were added in effectively the same spot for both C and Python versions of the algorithm. It is worth noting, that in the python dynamic programming version, the counter was take into account by the recursive algo, and due to the cache, it produced the same results as where we added the counter in the C version, showing the counter placement was correct.</p>
+<p>The first 28 rows of the triangle show in the chart below. Anything after 28 cased the recursive version to time out, so only showing the first 28 rows. For full operations count, see <a href="ops_pascal_run_c.csv">ops_pascal_run_c.csv</a> and <a href="ops_pascal_run_python.csv">ops_pascal_run_python.csv</a>.</p>
+<h4 id="operations-count">Operations Count</h4>
+<table>
+<thead>
+<tr>
+<th><strong>N</strong></th>
+<th style="text-align:right"><strong>Iterative</strong></th>
+<th style="text-align:right"><strong>Dynamic Programming</strong></th>
+<th style="text-align:right"><strong>Recursive</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">11</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">26</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:right">21</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">57</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:right">28</td>
+<td style="text-align:right">21</td>
+<td style="text-align:right">120</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">28</td>
+<td style="text-align:right">247</td>
+</tr>
+<tr>
+<td>9</td>
+<td style="text-align:right">45</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">502</td>
+</tr>
+<tr>
+<td>10</td>
+<td style="text-align:right">55</td>
+<td style="text-align:right">45</td>
+<td style="text-align:right">1013</td>
+</tr>
+<tr>
+<td>11</td>
+<td style="text-align:right">66</td>
+<td style="text-align:right">55</td>
+<td style="text-align:right">2036</td>
+</tr>
+<tr>
+<td>12</td>
+<td style="text-align:right">78</td>
+<td style="text-align:right">66</td>
+<td style="text-align:right">4083</td>
+</tr>
+<tr>
+<td>13</td>
+<td style="text-align:right">91</td>
+<td style="text-align:right">78</td>
+<td style="text-align:right">8178</td>
+</tr>
+<tr>
+<td>14</td>
+<td style="text-align:right">105</td>
+<td style="text-align:right">91</td>
+<td style="text-align:right">16,369</td>
+</tr>
+<tr>
+<td>15</td>
+<td style="text-align:right">120</td>
+<td style="text-align:right">105</td>
+<td style="text-align:right">32,752</td>
+</tr>
+<tr>
+<td>16</td>
+<td style="text-align:right">136</td>
+<td style="text-align:right">120</td>
+<td style="text-align:right">65,519</td>
+</tr>
+<tr>
+<td>17</td>
+<td style="text-align:right">153</td>
+<td style="text-align:right">136</td>
+<td style="text-align:right">131,054</td>
+</tr>
+<tr>
+<td>18</td>
+<td style="text-align:right">171</td>
+<td style="text-align:right">153</td>
+<td style="text-align:right">262,125</td>
+</tr>
+<tr>
+<td>19</td>
+<td style="text-align:right">190</td>
+<td style="text-align:right">171</td>
+<td style="text-align:right">524,268</td>
+</tr>
+<tr>
+<td>20</td>
+<td style="text-align:right">210</td>
+<td style="text-align:right">190</td>
+<td style="text-align:right">1,048,555</td>
+</tr>
+<tr>
+<td>21</td>
+<td style="text-align:right">231</td>
+<td style="text-align:right">210</td>
+<td style="text-align:right">2,097,130</td>
+</tr>
+<tr>
+<td>22</td>
+<td style="text-align:right">253</td>
+<td style="text-align:right">231</td>
+<td style="text-align:right">4,194,281</td>
+</tr>
+<tr>
+<td>23</td>
+<td style="text-align:right">276</td>
+<td style="text-align:right">253</td>
+<td style="text-align:right">8,388,584</td>
+</tr>
+<tr>
+<td>24</td>
+<td style="text-align:right">300</td>
+<td style="text-align:right">276</td>
+<td style="text-align:right">16,777,191</td>
+</tr>
+<tr>
+<td>25</td>
+<td style="text-align:right">325</td>
+<td style="text-align:right">300</td>
+<td style="text-align:right">33,554,406</td>
+</tr>
+<tr>
+<td>26</td>
+<td style="text-align:right">351</td>
+<td style="text-align:right">325</td>
+<td style="text-align:right">67,108,837</td>
+</tr>
+<tr>
+<td>27</td>
+<td style="text-align:right">378</td>
+<td style="text-align:right">351</td>
+<td style="text-align:right">134,217,700</td>
+</tr>
+<tr>
+<td>28</td>
+<td style="text-align:right">406</td>
+<td style="text-align:right">378</td>
+<td style="text-align:right">268,435,427</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recursive-versions">Recursive Versions</h3>
+<p><img src="file:///mnt/c/Users/jwr10/OneDrive/Desktop/5008/homeWorks/midterm/instructions/sample_midterm/recursive_run_time.png" alt="Recursive Runtime"><br>
+With both version, it is easy to see the exponential growth of the recursive version. The C version timed out at N=33, while the python version topped out at N=28. The chart uses a double axis, the python axis is on right hand side showing at N=28 the speed was roughly 54 sections. The C version with N=33 was roughly 40 seconds (causing 34 to go above 60 seconds).</p>
+<h3 id="iterative-and-dynamic-programming-versions">Iterative and Dynamic Programming Versions</h3>
+<p>Due to the increased speed with the iterative and dynamic programming versions, we were able to look at much
+larger N values to see a more gradual curve.</p>
+<p><img src="file:///mnt/c/Users/jwr10/OneDrive/Desktop/5008/homeWorks/midterm/instructions/sample_midterm/iter_dp_runtime.png" alt="Iterative and Dynamic Programming Runtime"></p>
+<p>The chart uses a double axis, the python axis is on right hand side. Both the dynamic programming version align nearly exactly in their speed times, minus the overall speed difference between the languages. The iterative has a bit more variation between the languages, but still follows a similar curve. The curve for both the iterative and dynamic programming versions is $O(n^2)$, as expected.</p>
+<p>It is possible the differences in speed could be to the function call overhead, and neither version went through heavy optimization.</p>
+<h3 id="speed-comparison-between-languages">Speed Comparison Between Languages</h3>
+<p>In all cases, the C version was faster than the python version. However, the average difference when running the algorithm was minimal, but the difference at larger numbers of N was more noticeable.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Version</th>
+<th style="text-align:left">Average Speed Difference</th>
+<th style="text-align:left">Max Speed Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Iterative</td>
+<td style="text-align:left">1.603057459</td>
+<td style="text-align:left">8.032182</td>
+</tr>
+<tr>
+<td style="text-align:left">Dynamic Programming</td>
+<td style="text-align:left">3.39702299</td>
+<td style="text-align:left">14.377136</td>
+</tr>
+<tr>
+<td style="text-align:left">Recursive</td>
+<td style="text-align:left">3.942182071</td>
+<td style="text-align:left">54.427153</td>
+</tr>
+</tbody>
+</table>
+<p>Overall, the algorithms follow the expected Big $O$ analysis of $O(n^2)$ for both the iterative and dynamic programming versions. The recursive version is $O(2^n)$, but the space used is $O(n)$ or $O(1)$ depending on the version. In all cases, the C implementation was faster than the python implementation, though sometimes minimal depending on the value of $N$.</p>
+<h2 id="language-analysis">Language Analysis</h2>
+<p>The code writing can be found in the following files:</p>
+<ul>
+<li><a href="pascalr.c">pascalr.c</a>  -- implementation of functions in c</li>
+<li><a href="pascal.py">pascal.py</a> -- implementation of function in python</li>
+<li><a href="test_runner.py">test_runner.py</a> -- run script to help with tests and keep timings</li>
+</ul>
+<p>For the most part, I started developing code in C, as I already had the examples provided in class. I then
+switched to python and mirrored those examples. However, I found myself exploring different implementations
+more in python, and then updating the C versions after those were explored.</p>
+<h3 id="language-1-c">Language 1: C</h3>
+<p>Originally, for the C version, I was taking inspiration from <a href="https://www.geeksforgeeks.org/c-program-to-print-pascal-triangle/">Geeks for Geeks</a><sup>2</sup>. Their version
+mentioned the use of combinations, or the formula of</p>
+<pre class="hljs"><code><div>C(n, r) = C(n, r-1) * (n – r + 1) / r
+</div></code></pre>
+<p>The problem with this formula is that that while it is quick at $O(n^2)$ and only uses $O(1)$ space, it actually
+started error at n &gt; 60. Looking into it more, it was found the that the multiplication would cause an overflow
+before the division action as shown on <a href="https://en.wikipedia.org/wiki/Binomial_coefficient#In_programming_languages">Wikipedia Binomial Coefficient</a><sup>3</sup>.</p>
+<p>This caused me to explore the $O(n^2)$ plus $n^2$ space version that uses an array to implement the code.</p>
+<p>The example used an auxiliary array setup on the stack  This also caused errors at n &gt; 1024 due to
+limited memory constraints on a virtual machine. I ended up modifying the
+code to store memory on the heap, and only as much was needed for each individual row.</p>
+<pre class="hljs"><code><div>ull** triangle = (ull**) <span class="hljs-built_in">malloc</span>((n+<span class="hljs-number">1</span>) * <span class="hljs-keyword">sizeof</span>(ull*));
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)
+{
+   triangle[i] = (ull*) <span class="hljs-built_in">malloc</span>((i+<span class="hljs-number">1</span>) * <span class="hljs-keyword">sizeof</span>(ull));
+<span class="hljs-comment">/* ... and so on */</span>
+</div></code></pre>
+<p>The code for both the recursive and dynamic programming version were trivial and matched the formula exactly.</p>
+<pre class="hljs"><code><div><span class="hljs-function">ull <span class="hljs-title">pascaldp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> i)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (n == i || i == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (table[n][i] &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> table[n][i];
+    }<span class="hljs-keyword">else</span> {
+        table[n][i] = pascaldp(n - <span class="hljs-number">1</span>, i) + pascaldp(n - <span class="hljs-number">1</span>, i - <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">return</span> table[n][i];
+    }
+}
+
+<span class="hljs-function">ull <span class="hljs-title">pascalr</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> i)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (n == i || i == <span class="hljs-number">0</span>)
+    {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-keyword">return</span> pascalr(n - <span class="hljs-number">1</span>, i) + pascalr(n - <span class="hljs-number">1</span>, i - <span class="hljs-number">1</span>);
+    }
+}
+
+</div></code></pre>
+<p>In order to make the code more efficient, I needed to add a recursion helper function that would either only generate the
+Nth row, or that would generate every row up to N.</p>
+<p>Additionally, for the C versions, I used ints for my arguments as they were easier to convert, and had to write my own
+print functions along with help functions for the final program.</p>
+<h3 id="language-2-python">Language 2: Python</h3>
+<p>The python version was written with the recursive version in mind first.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pascal_r</span><span class="hljs-params">(n: int, i: int)</span> -&gt; int:</span>
+    <span class="hljs-keyword">if</span> n == i <span class="hljs-keyword">or</span> i == <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> pascal_r(n - <span class="hljs-number">1</span>, i) + pascal_r(n - <span class="hljs-number">1</span>, i - <span class="hljs-number">1</span>)
+</div></code></pre>
+<p>To allow it to use dynamic programming, I only had to add the cache wrapper function</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> lru_cache
+<span class="hljs-meta">@lru_cache(maxsize=None)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pascal_dp</span><span class="hljs-params">(n: int, i: int)</span> -&gt; int:</span>
+    <span class="hljs-keyword">if</span> n == i <span class="hljs-keyword">or</span> i == <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> pascal_dp(n - <span class="hljs-number">1</span>, i) + pascal_dp(n - <span class="hljs-number">1</span>, i - <span class="hljs-number">1</span>)
+</div></code></pre>
+<p>This function caches any result of a &quot;pure function&quot;, which when programming in python is ideal to use. It has
+the cost of a space overhead, but with one addition, code becomes faster.  However,
+when running the code, I ran into the stack size limitation built into python on recursive calls which then had to be increased.</p>
+<h3 id="comparison-and-discussion-between-experiences">Comparison and Discussion Between Experiences</h3>
+<p>C runs  faster than Python, and in every case the iterative runs faster than the dynamic programming even
+if the Big O for them is the same. However, there are further optimizations of the recursive version that I did not
+implement including using the symmetry of the triangle to my advantage. It would have been much
+more complex to make such changes in the iterative version. Additionally, the iterative code was more complex to write,
+and I spent more time writing and debugging it than I did other versions.</p>
+<p>The simplicity of adding caching to python was noticeable, but the speed difference may not
+make the simplicity worth it.</p>
+<p>Briefly explored, but slightly against the spirit of this report was &quot;precaching&quot; the triangle. With both python
+and C, I could quickly write out a file that had N to a high number (20,000). Then using the dynamic programming
+version, I was able to load that file and thus make my access time of $O(1)$ at the cost of a slower start up time
+for the program. This idea came from my initial python runs where I just called the code, and dynamic programming
+version was running much faster due to the cache remaining in memory and not unloading. Also, the way the lru_cache
+works, I explored running N to 50,000 as a separate thread. Since the cache uses a pure function, it would mean
+the started thread would have a chance of generating the needed N row before the program generated it. While not
+effective  for a single script run, this would have had an advantage if the
+program was interactive asking a client for various  runs or if the triangle was being
+used for other computations.</p>
+<h2 id="conclusions--reflection">Conclusions / Reflection</h2>
+<p>In conclusion, the iterative solution was always faster than the other versions, simply because the triangle
+is built on the idea that the previous row needs to be built before it. However, the dynamic programming
+version difference wasn't noticeable, and much easier to code. Furthermore, something the iterative version
+would not allow is precaching the data, whereas the dynamic programming would adapt nicely if the program
+kept caches of previous runs and leaded those runs as needed. There would be a file load overhead, but at the
+advantage of increased speed. At the same time, when the iterative C version as calculating N=50,000 is about 13 seconds,
+it wouldn't make sense to spend much time on alternative solutions - it was already blazing fast
+compared to other solutions.</p>
+<p>I learned a lot about dynamic programming and pascals triangle. Admittedly, I should have explored more of the
+symmetry optimizations, but in effort to get out this assignment in time, I ended up not fully
+exploring those solutions. I believe such exploration would have helped the time
+difference between the iterative and dynamic programming variations.  It was also nice to see how easy it is
+to turn a function in python to a &quot;dynamic programming&quot; focused function. While it shouldn't be used in every
+place, for most pure functions it would make sense to keep the catch active, though at a limited size for
+memory constraints. One area I did not explore was the interoperability between C and python. The builtin utility
+of python made it a pleasant language to use. I could have prototyped the algorithm in python, wrote it in c,
+and then had my python code call the C version directly. This would have created the best of both worlds,
+and an easy fall back if the C version had machine constraint issues.  Something to explore in the future.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>Wikipedia, &quot;Pascal's triangle,&quot; Wikipedia: The Free Encyclopedia,
+October 3, 2022. https://en.wikipedia.org/wiki/Pascal%27s_triangle.
+Accessed on: February 16, 2023.</li>
+<li>GeeksforGeeks, &quot;C Program to Print Pascal Triangle,&quot; GeeksforGeeks, March 10, 2021.
+https://www.geeksforgeeks.org/c-program-to-print-pascal-triangle/. Accessed on: February 16, 2023.</li>
+<li>Wikipedia, &quot;In programming languages,&quot; Binomial coefficient, Wikipedia: The Free Encyclopedia,
+January 15, 2023. https://en.wikipedia.org/wiki/Binomial_coefficient#In_programming_languages.
+Accessed on: February 16, 2023.</li>
+</ol>
+<!-- auto references -->
+
+</body>
+</html>

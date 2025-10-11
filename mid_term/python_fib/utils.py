@@ -4,7 +4,7 @@ import argparse
 from mid_term.python_fib.fib import RecursiveFib, ItterativeFib, DynamicFib, FibonacciAlgorithm
 
 
-algs: List[Tuple[str, FibonacciAlgorithm]] = [("Itterative", ItterativeFib), ( "Recrusive",RecursiveFib), ("Dynamic", DynamicFib)]
+algs: List[Tuple[str, FibonacciAlgorithm]] = [("Iterative", ItterativeFib), ( "Recursive",RecursiveFib), ("Dynamic", DynamicFib)]
 
 def print_help() -> None:
     """
@@ -83,11 +83,11 @@ def test_one(alg:int, fib_num:int, p:bool) -> Dict[str, Any]:
     alg_func:FibonacciAlgorithm = algs[alg][1]
     alg_func:FibonacciAlgorithm = algs[alg][1](print_debug = p)
     
-    if print:
+    if p:
         print(f"============== 🧮 CALCULATIONS for {alg_name} Fibonaci Sequence 🧮 ==============")
     
     result = alg_func.time_it(fib_num)
-    if print:
+    if p:
         print("\n============== 🏁 Results 🏁 ==============\n");
         print(f"Algorithum:\t{alg_name}");
         print(f"Total Time:\t{result[1]}");
@@ -112,9 +112,9 @@ def test_all(fib_num:int, p: bool) -> str:
     
     for i in range(3):
         ## Skipping for recursive to save time
-        if i ==1 and fib_num > 48:
-            results[i] = -999
-            time_taken[i] = -999
+        if i ==1 and fib_num > 40:
+            results[i] = -1
+            time_taken[i] = -1
         else:
             fib_cls = algs[i][1](print_debug = 0)
             results[i], time_taken[i] = fib_cls.time_it(fib_num)

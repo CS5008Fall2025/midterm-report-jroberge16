@@ -1,5 +1,6 @@
-from mid_term.python_fib.utils import process_args, test_one, test_all
-
+from mid_term.python_fib.utils import process_args, test_one, test_all, algs
+import sys
+sys.setrecursionlimit(10000000)
 
 def main():
     """
@@ -17,7 +18,7 @@ def main():
         return result
     else:
         result: int = test_one(args.a, args.f, args.p)
-        print(result)
+        print(f"f_{args.f},{algs[args.a][0]},{result['Elasped_Time']:.10f}")
         return result
 
 if __name__ == "__main__":

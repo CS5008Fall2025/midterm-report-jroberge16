@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-
+#include <inttypes.h>
 /*
 * This function check the base case conditions for the fibonacci sequence
 * @param num: The Fibonacci number to calculate
@@ -54,6 +54,7 @@ uint64_t iterativeFib(int fib_num, int print){
         if(print){
             printf("f_%d:\t%ld + %ld = %ld\n", i, first_term,  second_term, fib_calculation);
         }
+
         second_term = first_term;
         first_term = fib_calculation;
     }

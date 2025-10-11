@@ -9,7 +9,7 @@
 
 #include "fib.h"
 
-static const char algs_names[4][25] = {"Iterative", "Recursive", "Dynamic Programming", "All"};
+static const char algs_names[4][25] = {"Iterative", "Recursive", "Dynamic", "All"};
 
 static uint64_t (*fibs[])(int, int) = {
     iterativeFib,
@@ -127,7 +127,7 @@ int test_one(int algorithum, int fib_num, int print){
     uint64_t result;
     double time_taken;
 
-    if ((algorithum>2)| (algorithum<0)| (fib_num< 0)){
+    if ((algorithum>2) || (algorithum<0) || (fib_num< 0)){
         return 1;
     }
     if(print){
@@ -140,6 +140,8 @@ int test_one(int algorithum, int fib_num, int print){
         printf("Algorithum:\t%s\n", algs_names[algorithum]);
         printf("Total Time:\t%.10f\n", time_taken);
         printf("Result for F_%d:\t%ld\n\n", fib_num, result);
+    }else{
+        printf("f_%d,%s,%.10f", fib_num, algs_names[algorithum], time_taken);
     }
     return 0;
 }

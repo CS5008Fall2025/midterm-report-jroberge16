@@ -19,10 +19,10 @@ The purpose of this report is to gain an understanding of how a programming lang
 ### Iterative:
 
 <p align="center">
-  <img src="images/iterative_fib.PNG" alt="Python vs C" width="800">
+  <img src="images/iterative_fib.png" alt="Python vs C" width="800">
 </p>
 
-The pseud ocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:
+The pseudocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:
 * __Lines 2-8__:  These lines of code are a combination of variable assignments and simple conditionals which equate to constant time complexity. In total, there are four constant operations that are only performed once. We therefore assign this work a constant value of $4$
 * __Lines 9-12__: here we perform a `for` loop that does $n-1$ iterations. During each iteration we perform three operations and thus this work is equal to $3 \cdot n-1$.
 * __Space Complexity__: for this code we find that our space complexity is $O(1)$. There are 3 variables assignments that are reused at every iteration.

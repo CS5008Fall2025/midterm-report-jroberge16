@@ -80,46 +80,48 @@ As previously mentioned there is a trade off between $S(n)$ and $T(n)$ when usin
 
 ## Empirical Analysis:
 
-<p id="fig99" align="center">
+<p id="fig4" align="center">
   <img src="mid_term/analysis/graphs/c_fib_graphs.png" alt="Fibonacci Results" width="80%">
   <br>
-  <strong>Figure 99:</strong> Experimental results for Fibonacci runtime and operation counts.
+  <strong>Figure 4:</strong> Experimental results for Fibonacci runtime and operation counts.
 </p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In this section we will review our experimental results with our different implementations of the Fibonacci sequence. For this experiment we ran a total of 60 trials. Each trial calculated the Fibonacci sequence 1 to 300, across each Language and algorithm type. In each trial we tracked two metrics: operation count and runtime. Operation count tracked the number of calculation performed, while `runtime` tracked the total runtime of each sequence.
+In this section we will review our experimental results with our different implementations of the Fibonacci sequence. For this experiment, we ran a total of 60 trials. Each trial calculated the Fibonacci sequence 1 to 300, across each Language and algorithm type. In each trial we tracked two metrics: operation count and runtime. Operation count tracked the number of calculation performed, while `runtime` tracked the total runtime of each sequence.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The two graphs in [Figure 99](#fig99) show the experimental results and these graphs will be referenced through this section. The first graph, "Fibonacci Runtime", tracks the runtime of each sequence. The solid lines in the graph shows the average runtime, while the lightly colored bands show the total range at each sequence. The second graph "Fibonacci Operation Counts" tracks the total operations for each sequence. Note that we provide no bands since operation counts will remain constant regardless of resources available. This Empirical Analysis will discussion will be organized into two different sections:
+The two graphs in [Figure 4](#fig4) show the experimental, please note these will be reference throughout our entire discussion. The first graph, "Fibonacci Runtime", tracks the runtime of each sequence. The solid lines in the graph shows the average runtime, while the lightly colored bands show the total range of each sequence. The second graph "Fibonacci Operation Counts" tracks the total operations for each sequence. Note that we provide no bands since operation counts will remain constant regardless of resource constraints. This Empirical Analysis discussion will be organized into three different sections:
 
-* __1. Big O Comparison__: this section will compare each algorithum type to the $Big(O)$ analysis in the previous section
-* __2. Algorithms Comparison__: This section will compare how iterative, dynamic and recursive methods performed.
-* __3. Language Comparison__: This section will compare how Python and C performed across our experiment.
+* __1. [Big O Comparison](#Big-O-Comparison)__: this section will compare each algorithm type to its [Big(O) analysis](#Big(O)-Analysis).
+* __2. [Comparing Algorithm](#Comparing-Algorithms)__: This section will compare how iterative, dynamic and recursive methods performed.
+* __3. [Fibonacci Python Vs C](#Fibonacci-Python-Vs-C)__: This section will compare how Python and C comparatively performed across our experiment.
 
 ### Big O Comparison:
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In the `Overview` section we analyzed each algorithum and performed a $Big(O)$ analysis for both space and time complexity. Here we will discuss how our results reflect our empirical data. Analyzing figure 99, we find our Big O analysis lines up with our empirical results, but lets dive a little deeper.
+In the `Overview` section we analyzed each algorithm and performed a $Big(O)$ analysis for both space and time complexity. Here we will discuss how our results reflect our empirical data. Analyzing [Figure 4](#fig4), we find our Big O analysis lines up with our empirical results, but lets dive a little deeper.
 
-* _Recursive_: Looking ar our recursive solution we find a clear indication of exponential growth which matches our previous analysis showing $O(2^n)$. In fact, to complete our experiment, we had to stop calculating the recursive solutions sooner then our dynamic and iterative solutions.
+* _Recursive_: Looking ar our recursive solution we find a clear indication of exponential growth which matches our previous analysis showing $O(2^n)$. In fact, to complete our experiment, we had to stop calculating our recursive solutions much sooner then our dynamic and iterative solutions.
 
-* _Iterative_: Our iterative solution had the best runtime overall. According to our $Big(O)$ analysis, we expect the iterative solution to have a runtime of $O(n)$ which is further validated by figure 99.
+* _Iterative_: Our iterative solution had the best runtime overall. According to our $Big(O)$ analysis, we expect the iterative solution to have a runtime of $O(n)$ which is further validated by [Figure 4](#fig4) .
 
-* _Dynamic_: According to our $Big(O)$ analysis we expect the dynamic solution to have a runtime of $O(n)$. Looking at operation counts in figure 99, we see this is the case. Time complexity is not as smooth as we expected due to the overhead of the dynamic solution, but this will be discussed in the next section. 
+* _Dynamic_: According to our $Big(O)$ analysis, we expect the dynamic solution to have a runtime of $O(n)$. Looking at operation counts in figure 99, we see this is the case. Time complexity is not as smooth as we expected due to the overhead of the dynamic solution, but this will be discussed in the next section. 
 
 ### Comparing Algorithms:
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Looking at the results we find our most performant algorithm was the iterative solution, while our worst performing algorithm was our recursive solution. These results were both validated our big O analysis and our experimental results. Although our Big O analysis and our experimental results agree with each other, our empirical results reveal information that our Big O analysis could not have revealed.
+Looking at the results we find our most performant algorithm was the iterative solution, while our worst performing algorithm was our recursive solution. These results were both validated our  [Big(O) analysis](#Big(O)-Analysis) and our experimental results. Although our Big O Analysis and our experimental results agree with each other, our empirical results reveal information that our Big O analysis could not have revealed.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-When looking at the time complexity graph in Figure 99, we find interesting nuances between the different Fibonacci implementations. One of the first things of note, is that our recursive solution for small values of fibonacci, outperforms our dynamic solution. Our dynamic solution has the overhead of initializing an array of $n$  which our other values do not have to contend with.
+When looking at the time complexity graph in [Figure 4](#fig4), we find interesting nuances between the different Fibonacci implementations. One of the first things of note, is that our recursive solution for small values of fibonacci, outperforms our dynamic solution. Our dynamic solution has the overhead of initializing an array of $n$  which our other implementation do not have to contend with.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Another interesting take is to look at the variability between the different implementations. To measure variability, we used population standard deviation for runtime and with this we found the following results:
+Another interesting take is to look at the variability between the different implementations. To measure variability, we used population standard deviation on runtime and derived the the following results:
+
 $$\sigma_{\text{Recursive}} \,(1.41 \times 10^{-5}) \,>\, \sigma_{\text{Dynamic}} \,(2.54 \times 10^{-6}) \,>\, \sigma_{\text{Iterative}} \,(1.22 \times 10^{-7})$$
-As shown, Recursion is significantly more variability compared to the other algorithms. Intuitively this makes sense since we are performing significantly more operations when compared to the other algorithms. A surprising result was that the Dynamic implementation which had 1976.45% more variability than iterative. I believe this difference is derived from have to manage a large array. 
+
+As shown, Recursion has significantly more variability compared to the other algorithms. Intuitively this makes sense since we are performing significantly more operations when compared to the other algorithms. A surprising result was that the Dynamic implementation had 1976.45% more variability than the iterative solution. we believe this difference is derived from have to manage a large array and there are also just operation for this solution. 
 
 ### Fibonacci Python Vs C 
 

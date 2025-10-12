@@ -69,24 +69,25 @@ As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively t
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Above we show the recurrence tree and pseudocode for the Fibonacci dynamic solution. The pseudocode uses memoization which results in a reduction in the number of calculations performed at the cost space. As shown in the recurrence tree, this trade of between space and time improves the overall efficiency of the algorithm.
+The above diagrams show our recurrence tree, proof and pseudo code for the Dynamic Fibonacci solution. For the Dynamic solution, we use the memoization technique which results in a reduction in the number of calculations performed at the cost of space. As shown in the recurrence tree, this trade off between space and time improves the overall efficiency of the algorithm.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Recurrence tree shows a comparison between our recursive and dynamic solution. The ❌’s in the nodes represent calls we no longer needed to make because their results were stored in our array `memo`. This results in a $T(n) = n + c$, where c represents the additional call it tries to make, but it immediately pops back up do to memoization. Using our $T(n)$ we wrote very simple proof showing that $T(n) = O(n)$ for our dynamic solution.
+the recurrence tree shows a comparison between our Recursive and Dynamic solution. The ❌’s in the nodes represent calls we no longer need to make because their results were previously stored in our array `memo`. This results in a $T(n) = n + c$, where c represents the additional calls it tries to make, but it immediately pops off the stack. Using our $T(n)$ equation, we wrote very simple proof showing that $T(n) = O(n)$.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-As previsouly mentioned there is a trade off between $S(n)$ and $T(n)$ when using memomization. Since we create a an array that is $n$ large and our deepest branch is $n$, we can therefore say that $S(n) = 2(n) + c$. Dropping constant our space complexity is $S(n) = O(n)$. This tradeoff seems minimal since we our reducing our time complexity from $O(2^n)$ to $O(n)$ while maintaining the same growth rate in our space complexity.
+As previously mentioned there is a trade off between $S(n)$ and $T(n)$ when using memoization. Since we create a an array that is $n$ large and our deepest branch is $n$ deep, we can say that $S(n) = 2(n) + c$. Dropping constants our space complexity is $S(n) = O(n)$. This tradeoff seems minimal since we our reducing our time complexity from $O(2^n)$ to $O(n)$ while maintaining the same growth rate in our $S(n)$.
 
 
 ## Empirical Analysis:
 
-<div style="text-align: center;">
+<p align="center">
   <img src="mid_term/analysis/graphs/c_fib_graphs.png" alt="Python vs C" width="80%"/>
-</div>
+</p>
+<sup>__figure 99__</sup>
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In this section we will review our experimental results with the different implementations of the Fibonacci sequence. These experiments consisted of a total of 60 trial. Each trial calculated the Fibonacci sequence 1 to 300, across each Language and algorithm type. In each trial we tracked two metrics: operation count and runtime. Operation counts tracked the number of calculation performed, while `runtime` tracked the total runtime of each sequence.
+In this section we will review our experimental results with our different implementations of the Fibonacci sequence. For this experiment we a total of 60 trials. Each trial calculated the Fibonacci sequence 1 to 300, across each Language and algorithm type. In each trial we tracked two metrics: operation count and runtime. Operation counts tracked the number of calculation performed, while `runtime` tracked the total runtime of each sequence.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;

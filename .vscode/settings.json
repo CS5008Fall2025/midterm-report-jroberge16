@@ -5,7 +5,8 @@
         "unistd.h": "c",
         "compare": "c",
         "type_traits": "c",
-        "fib.h": "c"
+        "fib.h": "c",
+        "cstdint": "c"
     },
     "python.testing.pytestArgs": [
         "test"

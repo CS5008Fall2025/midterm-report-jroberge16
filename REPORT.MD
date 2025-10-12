@@ -242,6 +242,9 @@ graph TD
         F2b1 --> F0x
     end
 ```
+
+
+
 __Dynamic Proof:__
 >Let $T(n)$ be $O(n)$ if and only if $\exists c, \forall n \ge n_0$ such that $T(n)\le c \cdot g(n)$. 
 > 
@@ -262,7 +265,35 @@ Recurrence tree shows a comparison between our recursive and dynamic solution. T
 As previsouly mentioned there is a trade off between $S(n)$ and $T(n)$ when using memomization. Since we create a an array that is $n$ large and our deepest branch is $n$, we can therefore say that $S(n) = 2(n) + c$. Dropping constant our space complexity is $S(n) = O(n)$. This tradeoff seems minimal since we our reducing our time complexity from $O(2^n)$ to $O(n)$ while maintaing the same growth rate in our space complexity.
 
 
-
 ## Empiracel Anlysis:
+
+<div style="text-align: center;">
+  <img src="mid_term/analysis/graphs/c_fib_graphs.png" alt="Python vs C" width="60%"/>
+</div>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+The two graphs above show the experimental results from running the algorithms for each implementation of the Fibonacci Sequence. The first graph tracks the run time of each algorithm while the second graph tracks the number of operations performed. We went with two different measures—operation count and runtime—in order show and remove variability from our results.
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+As expected, our Big O analysis lines up with our empirical results. Our recursive implementation quickly grows to untenable heights while our dynamic and iterative results grow linearly. Additionally, we can see the constant up-front cost of initializing our arrays in the dynamic programming implementation.
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+Another interesting take is to look at the variability between the different implementations. To measure variability, we used population standard deviation for runtime and with this we found the following results:
+$$\sigma_{\text{Recursive}} \,(1.41 \times 10^{-5}) \,>\, \sigma_{\text{Dynamic}} \,(2.54 \times 10^{-6}) \,>\, \sigma_{\text{Iterative}} \,(1.22 \times 10^{-7})$$
+As shown, Recursion is significantly more variability compared to the other algorithms. Intuitively this makes sense since we are performing significantly more operations when compared to the other algorithms. A surprising result was that the Dynamic implementation which had 1976.45% more variability than iterative. I believe this difference is derived from have to manage a large array. 
+
+
+## Language Anlysis:
+<div style="text-align: center;">
+  <img src="mid_term/analysis/graphs/python_vs_c.png" alt="Python vs C" width="60%"/>
+</div>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+This section’s purpose is to analyze how C and Python perform across our Fibonacci algorithms. First, we will discuss each language individually, and then we will have a comparative discussion between the two languages. The graph above will be referenced throughout our discussion, for it shows the runtimes for each language and algorithm.
+
+### C Implmentation
+Out C 
 
 

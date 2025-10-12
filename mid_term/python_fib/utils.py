@@ -89,11 +89,11 @@ def test_one(alg:int, fib_num:int, p:bool) -> Dict[str, Any]:
     result = alg_func.time_it(fib_num)
     if p:
         print("\n============== 🏁 Results 🏁 ==============\n");
-        print(f"Algorithum:\t{alg_name}");
-        print(f"Total Time:\t{result[1]}");
-        print(f"Result for F_{fib_num}:\t{result[0]}");
+        print(f"Algorithum:\t{alg_name}")
+        print(f"Total Time:\t{result[1]}")
+        print(f"Result for F_{fib_num}:\t{result[0]}")
 
-    return {"Elasped_Time": result[1], "Result": result[0]}
+    return {"Elasped_Time": result[1], "Result": result[0],"Operation Count": alg_func.operation_cnt}
 
 def test_all(fib_num:int, p: bool) -> str:
     """

@@ -16,6 +16,7 @@ class FibonacciAlgorithm(ABC):
             * print_debug: makes the print statments verbose
         """
         self.print_debug = print_debug
+        self.operation_cnt = 0
 
     def time_it(self, n) -> tuple[int, float]:
         """
@@ -35,6 +36,7 @@ class FibonacciAlgorithm(ABC):
             num= fibionoci number
         returns: fibionoci number or -999 for error
         """
+        self.operation_cnt += 1
         match num:
             case 1:
                 if self.print_debug:
@@ -83,16 +85,23 @@ class ItterativeFib(FibonacciAlgorithm):
             n= fibionoci number
         """
         if n <= 1:
+            self.operation_cnt += 1
             return self._check_base_case(n)
         first_term: int = 1
         second_term: int = 0
 
+        self.operation_cnt += 3
+
         for i in range(2,n+1):
             calculation: int = first_term + second_term
+            
             if self.print_debug:
                 print(f"f_{i}:\t{first_term} + {second_term} = {calculation}")
             second_term = first_term
             first_term = calculation
+
+            self.operation_cnt += 3
+
         return calculation
 
 
@@ -118,9 +127,12 @@ class RecursiveFib(FibonacciAlgorithm):
             n= fibionoci number
         """
         if n <= 1:
+            self.operation_cnt += 1
             return self._check_base_case(n)
-        
+        self.operation_cnt += 1
+
         result: int = self.calculate(n-1) + self.calculate(n-2)
+        self.operation_cnt += 3
         
         if self.print_debug:
             print(f"f_{n}:\t{result}")
@@ -150,13 +162,17 @@ class DynamicFib(FibonacciAlgorithm):
             n= fibionoci number
         """
         if(n<=1):
+            self.operation_cnt += 1
             return self._check_base_case(n)
         
         if(self.memo[n]!=0):
+            self.operation_cnt += 2
             return self.memo[n]
         
+        self.operation_cnt += 2
         self.memo[n] = self._calculate(n-1) +  self._calculate(n-2)
-        
+        self.operation_cnt += 3
+
         if(self.print_debug):
             print(f"f_{n}:\t{self.memo[n-1]} +"
                   +f" {self.memo[n-2]} = {self.memo[n-1]+self.memo[n-2]}")
@@ -171,8 +187,13 @@ class DynamicFib(FibonacciAlgorithm):
             n= fibionoci number
         """
         if(n<=1):
+            self.operation_cnt += 1
             return self._check_base_case(n)
+        
         self.memo: List[int] = [0] * (n+1)
+        
+        self.operation_cnt += 4
+
         result = self._calculate(n)
         return result
 

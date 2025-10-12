@@ -126,6 +126,7 @@ void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_t
 int test_one(int algorithum, int fib_num, int print){
     uint64_t result;
     double time_taken;
+    OPERATION_COUNTER=0;
 
     if ((algorithum>2) || (algorithum<0) || (fib_num< 0)){
         return 1;
@@ -141,7 +142,7 @@ int test_one(int algorithum, int fib_num, int print){
         printf("Total Time:\t%.10f\n", time_taken);
         printf("Result for F_%d:\t%ld\n\n", fib_num, result);
     }else{
-        printf("f_%d,%s,%.10f", fib_num, algs_names[algorithum], time_taken);
+        printf("f_%d,%s,%.10f,%" PRIu64"\n", fib_num, algs_names[algorithum], time_taken, OPERATION_COUNTER);
     }
     return 0;
 }
@@ -158,6 +159,7 @@ int test_all(int fib_num, int print){
         return 1;
     }
     for(int i=0; i<3; i++){
+        OPERATION_COUNTER = 0;
         // Due to time we will skip large values of n for recursive
         if((i==1) && (fib_num > 48)){
             results[i] = 0;

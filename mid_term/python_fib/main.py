@@ -18,7 +18,7 @@ def main():
         return result
     else:
         result: int = test_one(args.a, args.f, args.p)
-        print(f"f_{args.f},{algs[args.a][0]},{result['Elasped_Time']:.10f}")
+        print(f"f_{args.f},{algs[args.a][0]},{result['Elasped_Time']:.10f}, {result['Operation Count']}")
         return result
 
 if __name__ == "__main__":

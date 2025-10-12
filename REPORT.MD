@@ -29,7 +29,9 @@ The pseudocode above outlines the iterative solution for the Fibonacci sequence.
 
 Combining this information, we find the following equation for the iterative solution:
 <br>
+<p align="center">
 $$T(n)= c \cdot (n-1) + 4$$
+</p>
 <br>
 
 Given this information, we can now formally prove that the iterative solution that $T(n) = O(n)$ which that result is shown above. Overall this is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant and our time complexity is  $O(n)$.
@@ -37,7 +39,7 @@ https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
 
 ### Recursive Solution:
 <p align="center">
-  <img src="images/Recursive.PNG" alt="Python vs C" width="600">
+  <img src="images/Recursive.PNG" alt="Python vs C" width="100%">
 </p>
 
 

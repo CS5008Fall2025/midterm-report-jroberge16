@@ -1,7 +1,7 @@
 from typing import Dict, Any, List
 from abc import ABC, abstractmethod
 import time
-
+import gc
 
 class FibonacciAlgorithm(ABC):
     """
@@ -27,7 +27,9 @@ class FibonacciAlgorithm(ABC):
         """
         start_time = time.time()
         result = self.calculate(n)
-        return result, time.time() - start_time
+        end_time = time.time()
+        gc.collect()
+        return result, end_time - start_time
     
     def _check_base_case(self, num) -> int:
         """

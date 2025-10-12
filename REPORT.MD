@@ -19,7 +19,7 @@ The purpose of this report is to gain an understanding of how a programming lang
 ### Iterative:
 
 <p align="center">
-  <img src="images/iterative_fib.PNG" alt="Python vs C" width="100%">
+  <img src="images/iterative_fib.PNG" alt="Python vs C" width="800">
 </p>
 
 The pseud ocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:

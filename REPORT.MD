@@ -63,86 +63,9 @@ The recurrence tree shows how our recursive calls quickly add to our stack memor
 As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively this runtime makes sense, every recursive call results in two additional recursive calls until our base case is satisfied and this is also shown in our recurrence tree example. The recurrence tree also shows us our space complexity.  As we can see in the recurrence tree our deepest branch is $n$ levels deep. Since only one branch within our tree can only be on the stack at one given time, our total space complexity is $O(n)$.
 
 ### Dynamic Solution
-
-__Pseudocode Fibonacci Dynamic:__
-```text
-FUNCTION calculate_dyanmic_fib(n, memo):
-    IF n <= 1:
-        RETURN n
-    IF memo[n] != 0:
-        RETUNRN memo[n]
-    memo[n] = calculate_dyanmic_fib(n-1, memo) + calculate_dyanmic_fib(n-2, memo)
-    RETURN memo[n]
-
-FUNCTION dynamic_fib(n):
-    memo = [0] * n
-    result = calculate_dyanmic_fib(n, memo):
-    RETURN result
-```
-__Recursion Tree Fibonacci Dynamic:__
-```mermaid
-graph TD
-    classDef level0 fill:#edafb8,stroke:#000000,color:#000000,stroke-width:2px,font-weight:bold;
-    classDef level1 fill:#f7e1d7,stroke:#000000,stroke-width:2px,color:#000000;
-    classDef level2 fill:#dedbd2,stroke:#000000,stroke-width:2px,color:#000000;
-    classDef level3 fill:#b0c4b1,stroke:#000000,stroke-width:2px,color:#000000;
-    classDef level4 fill:#b0c4b1,stroke:#000000,stroke-width:2px,color:#000000;
-    
-    subgraph "Level 1"
-        F5["fib(5)"]:::level0
-    end
-
-    subgraph "Level 2"
-        F4["fib(4)"]:::level1
-        F3["fib(3)"]:::level1
-        F5 --> F4
-        F5 --> F3
-    end
-
-    subgraph "Level 3"
-        F3b["fib(3)"]:::level2
-        F2a["fib(2)"]:::level2
-        F4 --> F3b
-        F4 --> F2a
-        F2b["fib(2)❌"]:::level2
-        F1c["fib(1)❌"]:::level2
-        F3 --> F2b
-        F3 --> F1c
-    end
-
-    subgraph "Level 4"
-        F2b1["fib(2)"]:::level3
-        F1b["fib(1)"]:::level3
-        F3b --> F2b1
-        F3b --> F1b
-
-        F1a["fib(1)❌"]:::level3
-        F0a["fib(0)❌"]:::level3
-        F2a --> F1a
-        F2a --> F0a
-
-        F1b2["fib(1)❌"]:::level3
-        F0b["fib(0)❌"]:::level3
-        F2b --> F1b2
-        F2b --> F0b
-    end
-
-    subgraph "Level 5"
-        F1x["fib(1)"]:::level4
-        F0x["fib(0)"]:::level4
-        F2b1 --> F1x
-        F2b1 --> F0x
-    end
-```
-
-__Dynamic Proof:__
->Let $T(n)$ be $O(n)$ if and only if $\exists c, \forall n \ge n_0$ such that $T(n)\le c \cdot g(n)$. 
-> 
-> Our equation,
-> $$T(n) = n + c$$
->We drop our constansts and choose $c=1$ and $n_0=1$, and prove by defintion that:
-> $$ n \le n $$
-> $$ \therefore T(n) = O(n) $$
+<p align="center">
+  <img src="images/dynamic.png" alt="Python vs C" width="100%">
+</p>
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;

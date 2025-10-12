@@ -81,7 +81,7 @@ As previously mentioned there is a trade off between $S(n)$ and $T(n)$ when usin
 ## Empirical Analysis:
 
 <p id="fig99" align="center">
-  <img src="images/figure99.png" alt="Fibonacci Results" width="80%">
+  <img src="mid_term/analysis/graphs/c_fib_graphs.png" alt="Fibonacci Results" width="80%">
   <br>
   <strong>Figure 99:</strong> Experimental results for Fibonacci runtime and operation counts.
 </p>

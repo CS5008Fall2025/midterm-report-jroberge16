@@ -142,3 +142,60 @@ __Pseudocode Fibonacci Recursive:__
 4.      result = recursive_fib(n - 1) + recursive_fib(n - 2)
 5.      RETURN result
 ```
+
+
+__Recursion Tree Fibonacci Dynamic:__
+```mermaid
+graph TD
+    classDef level0 fill:#edafb8,stroke:#000000,color:#000000,stroke-width:2px,font-weight:bold;
+    classDef level1 fill:#f7e1d7,stroke:#000000,stroke-width:2px,color:#000000;
+    classDef level2 fill:#dedbd2,stroke:#000000,stroke-width:2px,color:#000000;
+    classDef level3 fill:#b0c4b1,stroke:#000000,stroke-width:2px,color:#000000;
+    classDef level4 fill:#b0c4b1,stroke:#000000,stroke-width:2px,color:#000000;
+    
+    subgraph "Level 1"
+        F5["fib(5)"]:::level0
+    end
+
+    subgraph "Level 2"
+        F4["fib(4)"]:::level1
+        F3["fib(3)"]:::level1
+        F5 --> F4
+        F5 --> F3
+    end
+
+    subgraph "Level 3"
+        F3b["fib(3)"]:::level2
+        F2a["fib(2)"]:::level2
+        F4 --> F3b
+        F4 --> F2a
+        F2b["fib(2)❌"]:::level2
+        F1c["fib(1)❌"]:::level2
+        F3 --> F2b
+        F3 --> F1c
+    end
+
+    subgraph "Level 4"
+        F2b1["fib(2)"]:::level3
+        F1b["fib(1)"]:::level3
+        F3b --> F2b1
+        F3b --> F1b
+
+        F1a["fib(1)❌"]:::level3
+        F0a["fib(0)❌"]:::level3
+        F2a --> F1a
+        F2a --> F0a
+
+        F1b2["fib(1)❌"]:::level3
+        F0b["fib(0)❌"]:::level3
+        F2b --> F1b2
+        F2b --> F0b
+    end
+
+    subgraph "Level 5"
+        F1x["fib(1)"]:::level4
+        F0x["fib(0)"]:::level4
+        F2b1 --> F1x
+        F2b1 --> F0x
+    end
+```

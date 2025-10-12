@@ -19,7 +19,7 @@ The purpose of this report is to gain an understanding of how a programming lang
 ### Iterative:
 
 <p align="center">
-  <img src="images/iterative_fib.png" alt="Python vs C" width="100%">
+  <img src="images/iterative_fib.png" alt="Python vs C" width="80%">
 </p>
 
 The pseudocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:
@@ -34,24 +34,33 @@ $T(n)= c \cdot (n-1) + 4$
 </p>
 <br>
 
-Given this information, we can now formally prove that the iterative solution that $T(n) = O(n)$ which that result is shown above. Overall this is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant and our time complexity is  $O(n)$.
+Given this information, we can now formally show that the iterative solution is $T(n) = O(n)$ the result of which are shown above. Overall this algorithm is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant and our time complexity is  $O(n)$.
+
 https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
 
 ### Recursive Solution:
 <p align="center">
-  <img src="images/recur.png" alt="Python vs C" width="100%">
+  <img src="images/recur.png" alt="Python vs C" width="80%">
 </p>
 
+__Pseudocode Code Recursive:__
+
+```text
+1.  FUNCTION recursive_fib(n):
+2.      IF n <= 1:
+3.          RETURN n
+4.      result = recursive_fib(n - 1) + recursive_fib(n - 2)
+5.      RETURN result
+```
 
 &nbsp;&nbsp;&nbsp;&nbsp; 
-Above we outline the pseudocode and recurrence tree for the recursive solution for the Fibonacci sequence. As we can see from the pseudocode code, the recursive solution is simple to implement. In line 2 and 3, we check for our base cases and line 4 we perform our recursive call. Although, the recursive solution at the surface may seem simple, exploring our recurrence tree reveals a different reality.
+As we can see from the pseudocode code above, the recursive solution is  a simple algorithm implement. In line 2 and 3, we check for our base cases and line 4 we perform our recursive call. Although, the recursive solution at the surface is simple, a deeper dive into the recurrence tree, as shown above, reveals redundant and exponential growth.
 
 &nbsp;&nbsp;&nbsp;&nbsp; 
-The recurrence tree shows how our stack calls break down with the fibnoci recursive solution. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ (cite), but are going explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$. With tshis information lets go on the show that $T(n)$ is $O(2^n)$. 
-
+The recurrence tree shows how our recursive calls quickly add to our stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ ([cite](https://evoniuk.github.io/posts/fibonacci.html)), but we are going explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication fo the fibonacci formula. Given this information, we use show how $T(n)$ is $O(2^n)$ in the proof above.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-As we can see from the proof above our runtime for this solution is $O(2^n)$. Ituitivley this makes sense since our recursive calls allways grow by a factor two whihc is outlined in the recurence tree. The recurrence tree also shows us our space complexity. The As we can see in the reucrrence tree out deepest branch is $n$ levels deep. Since we only one branch within our tree can only be on the stack at one given time, our total space complexity is $O(n)$.
+As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively this runtime makes sense, every recursive call results in two additional recursive calls until our base case is satisfied and this is also shown in our recurrence tree example. The recurrence tree also shows us our space complexity.  As we can see in the recurrence tree our deepest branch is $n$ levels deep. Since only one branch within our tree can only be on the stack at one given time, our total space complexity is $O(n)$.
 
 ### Dynamic Solution
 
@@ -126,8 +135,6 @@ graph TD
     end
 ```
 
-
-
 __Dynamic Proof:__
 >Let $T(n)$ be $O(n)$ if and only if $\exists c, \forall n \ge n_0$ such that $T(n)\le c \cdot g(n)$. 
 > 
@@ -151,8 +158,7 @@ As previsouly mentioned there is a trade off between $S(n)$ and $T(n)$ when usin
 ## Empirical Analysis:
 
 <div style="text-align: center;">
-  <img src="mid_term/analysis/graphs/c_fib_graphs.png" alt="Python vs C" width="60%"/>
-  <figcaption>Figure 99: Experimental Results </figcaption>
+  <img src="mid_term/analysis/graphs/c_fib_graphs.png" alt="Python vs C" width="80%"/>
 </div>
 
 

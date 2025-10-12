@@ -80,18 +80,18 @@ As previously mentioned there is a trade off between $S(n)$ and $T(n)$ when usin
 
 ## Empirical Analysis:
 
-<p align="center">
-  <img src="mid_term/analysis/graphs/c_fib_graphs.png" alt="Python vs C" width="80%"/>
+<p id="fig99" align="center">
+  <img src="images/figure99.png" alt="Fibonacci Results" width="80%">
+  <br>
+  <strong>Figure 99:</strong> Experimental results for Fibonacci runtime and operation counts.
 </p>
-<sup>__figure 99__</sup>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+In this section we will review our experimental results with our different implementations of the Fibonacci sequence. For this experiment we ran a total of 60 trials. Each trial calculated the Fibonacci sequence 1 to 300, across each Language and algorithm type. In each trial we tracked two metrics: operation count and runtime. Operation count tracked the number of calculation performed, while `runtime` tracked the total runtime of each sequence.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In this section we will review our experimental results with our different implementations of the Fibonacci sequence. For this experiment we a total of 60 trials. Each trial calculated the Fibonacci sequence 1 to 300, across each Language and algorithm type. In each trial we tracked two metrics: operation count and runtime. Operation counts tracked the number of calculation performed, while `runtime` tracked the total runtime of each sequence.
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-The two graphs in figure 99 show the experimental results and these graphs will be referenced through this section. The first graph, "Fibonacci Runtime", tracks the runtime of each sequence. The solid lines in the graph shows the average runtime, while the lightly colored bands show the total range at each sequence. The second graph "Fibonacci Operation Counts" tracks the total operations for each sequence. Note that we provide no bands since operation counts will remain constant regardless of resources available. This Empirical Analysis will discussion will be organized into two different sections:
+The two graphs in [Figure 99](#fig99) show the experimental results and these graphs will be referenced through this section. The first graph, "Fibonacci Runtime", tracks the runtime of each sequence. The solid lines in the graph shows the average runtime, while the lightly colored bands show the total range at each sequence. The second graph "Fibonacci Operation Counts" tracks the total operations for each sequence. Note that we provide no bands since operation counts will remain constant regardless of resources available. This Empirical Analysis will discussion will be organized into two different sections:
 
 * __1. Big O Comparison__: this section will compare each algorithum type to the $Big(O)$ analysis in the previous section
 * __2. Algorithms Comparison__: This section will compare how iterative, dynamic and recursive methods performed.

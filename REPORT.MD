@@ -17,11 +17,12 @@ The purpose of this report is to gain an understanding of how a programming lang
 
 
 ### Iterative:
-
+<center>
 <div style="text-align: center;">
   <img src="images/iterative.PNG" alt="Python vs C" width="80%"/>
   <figcaption>Figure 99: Experimental Results </figcaption>
 </div>
+</center>
 
 The pseudocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:
 * __Lines 2-8__:  These lines of code are a combination of variable assignments and simple conditionals which equate to constant time complexity. In total, there are four constant operations that are only performed once. We therefore assign this work a constant value of $4$

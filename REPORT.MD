@@ -18,9 +18,9 @@ The purpose of this report is to gain an understanding of how a programming lang
 
 ### Iterative:
 
-<div style="text-align: center;">
-  <img src="images/iterative.PNG" alt="Python vs C" width="80%"/>
-</div>
+<p align="center">
+  <img src="images/iterative.PNG" alt="Python vs C" width="600">
+</p>
 
 The pseudocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:
 * __Lines 2-8__:  These lines of code are a combination of variable assignments and simple conditionals which equate to constant time complexity. In total, there are four constant operations that are only performed once. We therefore assign this work a constant value of $4$
@@ -28,119 +28,18 @@ The pseudocode above outlines the iterative solution for the Fibonacci sequence.
 * __Space Complexity__: for this code we find that our space complexity is $O(1)$. There are 3 variables assignments that are reused at every iteration.
 
 Combining this information, we find the following equation for the iterative solution:
+<br>
 $$T(n)= c \cdot (n-1) + 4$$
+<br>
+
 Given this information, we can now formally prove that the iterative solution that $T(n) = O(n)$ which that result is shown above. Overall this is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant and our time complexity is  $O(n)$.
 https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
 
 ### Recursive Solution:
+<p align="center">
+  <img src="images/Recursive.PNG" alt="Python vs C" width="600">
+</p>
 
-
-<div style="display: flex; gap: 20px; align-items: flex-start;">
-<div style="flex: 1; transform: scale(0.); transform-origin: top left;">
-
-__Recurrence Tree for Fibonacci Recursive:__
-
-```mermaid
-graph TD
-    classDef level0 fill:#edafb8,stroke:#000000,color:#000000,stroke-width:2px,font-weight:bold;
-    classDef level1 fill:#f7e1d7,stroke:#000000,stroke-width:2px,color:#000000;
-    classDef level2 fill:#dedbd2,stroke:#000000,stroke-width:2px,color:#000000;
-    classDef level3 fill:#b0c4b1,stroke:#000000,stroke-width:2px,color:#000000;
-    classDef level4 fill:#b0c4b1,stroke:#000000,stroke-width:2px,color:#000000;
-    
-    subgraph "Level 1"
-        F5["fib(5)"]:::level0
-    end
-
-    subgraph "Level 2"
-        F4["fib(4)"]:::level1
-        F3["fib(3)"]:::level1
-        F5 --> F4
-        F5 --> F3
-    end
-
-    subgraph "Level 3"
-        F3b["fib(3)"]:::level2
-        F2a["fib(2)"]:::level2
-        F4 --> F3b
-        F4 --> F2a
-        F2b["fib(2)"]:::level2
-        F1c["fib(1)"]:::level2
-        F3 --> F2b
-        F3 --> F1c
-    end
-
-    subgraph "Level 4"
-        F2b1["fib(2)"]:::level3
-        F1b["fib(1)"]:::level3
-        F3b --> F2b1
-        F3b --> F1b
-
-        F1a["fib(1)"]:::level3
-        F0a["fib(0)"]:::level3
-        F2a --> F1a
-        F2a --> F0a
-
-        F1b2["fib(1)"]:::level3
-        F0b["fib(0)"]:::level3
-        F2b --> F1b2
-        F2b --> F0b
-    end
-
-    subgraph "Level 5"
-        F1x["fib(1)"]:::level4
-        F0x["fib(0)"]:::level4
-        F2b1 --> F1x
-        F2b1 --> F0x
-    end
-```
-</div>
-<div style="flex: 1;">
-
-**Proof: Recursive Fibonacci**
-> We first simplify the recursive formula with the following relationship:
-> $$
-> T(n-1) + T(n-2) + c \lt 2 \cdot T(n-1) + c
-> $$
->
-> Expanding recursively:
-> $$
-> \begin{align}
-> &2 \cdot T(n-1) + c \
-> &2 \cdot (2 \cdot T(n-2) + c) + c \
-> &4 \cdot T(n-2) + 3c \
-> &4 \cdot (2 \cdot T(n-3) + c) + 3c \
-> &\cdots \
-> &2^k \cdot T(n-k) + (2^k - 1) \cdot c
-> \end{align}
-> $$
->
-> Let $k = n$:
-> $$
-> \begin{align}
-> T(n) &= 2^n \cdot T(0) + (2^n - 1) \cdot c \
-> &= 2^n + 2^n c - c \
-> &= 2^n (1 + c) - c
-> \end{align}
-> $$
->
-> Dropping constants:
-> $$
-> \therefore T(n) = O(2^n)
-> $$
->
-> *(Source: [Syed Tousif Ahmed, Medium](https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055))*
-
-__Pseudocode Fibonacci Recursive:__
-```text
-1.  FUNCTION recursive_fib(n):
-2.      IF n <= 1:
-3.          RETURN n
-4.      result = recursive_fib(n - 1) + recursive_fib(n - 2)
-5.      RETURN result
-```
-</div>
-</div>
 
 &nbsp;&nbsp;&nbsp;&nbsp; 
 Above we outline the pseudocode and recurrence tree for the recursive solution for the Fibonacci sequence. As we can see from the pseudocode code, the recursive solution is simple to implement. In line 2 and 3, we check for our base cases and line 4 we perform our recursive call. Although, the recursive solution at the surface may seem simple, exploring our recurrence tree reveals a different reality.

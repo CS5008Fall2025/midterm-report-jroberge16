@@ -6,15 +6,14 @@ Date: 10/10/25
 
 ---
 &nbsp;&nbsp;&nbsp;&nbsp; 
-The purpose of this report is to gain an understanding of how a programming language and time complexity affect the performance of an algorithm. We will use the programming languages Python and C, and with these languages, we will implement three versions of the Fibonacci sequence: iterative, recursive, and memoization. The Fibonacci sequence is a series that takes the previous two numbers in the series and then adds them together. This definition of the Fibonacci sequence can be expressed with the following formula: $f(n) = f(n-1) + f(n-2)$. Given the simplicity of the Fibonacci series, it makes it a perfect base algorithm to perform our analysis. This report will be organized into the following 4 sections: 
+The purpose of this report is to gain an understanding of how a programming language and time complexity affect the performance of an algorithm. Using the programming languages Python and C, we will implement three versions of the Fibonacci sequence: iterative, recursive, and memoization. The Fibonacci sequence is a series that takes the previous two numbers in the series and then adds them together. This definition of the Fibonacci sequence can be expressed with the following formula: $f(n) = f(n-1) + f(n-2)$. Given the simplicity of the Fibonacci series, it makes it a perfect base algorithm to perform our analysis. This report will be organized into the following 4 sections: 
 
 * __Big(O) Analysis__: an analysis of the run time and space complexity of our Fibonacci implementations.
 * __Empirical Analysis__: analyzing the experimental results of our algorithms. 
-* __Language Analysis__: discussing how our results and experiences with our different programming languages
-
+* __Language Analysis__: discussing how our results and experiences with Python and C
 
 ## Big(O) Analysis:
-
+In this section, we will analyze each of our three Fibonacci implementations: iterative, recursive, and dynamic. To analyze each of these algorithms, we will analyze their pseudocode, recursion tree, and perform a big O analysis.
 
 ### Iterative:
 
@@ -40,7 +39,7 @@ $T(n)= c \cdot (n-1) + 4$
 
 
 
-Given this information, we can now formally show that the iterative solution is $T(n) = O(n)$, the result of which is shown above. Overall, this algorithm is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant, and our time complexity is  $O(n)$.
+Given this information, we can now formally show that the iterative solution is $T(n) = O(n)$, the result of which is shown in the proof above. Overall, this algorithm is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant, and our time complexity is  $O(n)$.
 
 https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
 
@@ -48,7 +47,6 @@ https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
 <p align="center">
   <img src="images/recur.png" alt="Python vs C" width="80%">
 </p>
-
 __Pseudocode Code Recursive:__
 
 ```text
@@ -60,13 +58,13 @@ __Pseudocode Code Recursive:__
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp; 
-As we can see from the pseudocode code above, the recursive solution is  a simple algorithm implement. In line 2 and 3, we check for our base cases and line 4 we perform our recursive call. Although, the recursive solution at the surface is simple, a deeper dive into the recurrence tree, as shown above, reveals redundant and exponential growth.
+As shown in the pseudocode above, the recursive solution is a simple  algorithm to implement. In line 2 and 3, we check for our base cases, and then in line 4, we perform our recursive call. Although the recursive solution is simple to implement, a closer look at the recurrence tree reveals redundant and exponential growth.
 
 &nbsp;&nbsp;&nbsp;&nbsp; 
-The recurrence tree shows how our recursive calls quickly add to our stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ ([cite](https://evoniuk.github.io/posts/fibonacci.html)), but we are going explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication fo the fibonacci formula. Given this information, we use show how $T(n)$ is $O(2^n)$ in the proof above.
+The recurrence tree shows how our recursive calls quickly add to the stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ ([cite](https://evoniuk.github.io/posts/fibonacci.html)), but we are going to explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case, then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication of the Fibonacci formula. Given this information, we can prove that $T(n)$ is $O(2^n)$, which is shown above.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively this runtime makes sense, every recursive call results in two additional recursive calls until our base case is satisfied and this is also shown in our recurrence tree example. The recurrence tree also shows us our space complexity.  As we can see in the recurrence tree our deepest branch is $n$ levels deep. Since only one branch within our tree can only be on the stack at one given time, our total space complexity is $O(n)$.
+As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively, this runtime makes sense; every recursive call results in two additional recursive calls until our base case is satisfied. The recurrence tree also shows us our space complexity.  As we can see in the recurrence tree, our deepest branch is $n$ levels deep. Since only one branch within our tree can be on the stack at one given time, our total space complexity is $O(n)$.
 
 ### Dynamic Solution
 <p align="center">
@@ -75,14 +73,13 @@ As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively t
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The above diagrams show our recurrence tree, proof and pseudo code for the Dynamic Fibonacci solution. For the Dynamic solution, we use the memoization technique which results in a reduction in the number of calculations performed at the cost of space. As shown in the recurrence tree, this trade off between space and time improves the overall efficiency of the algorithm.
+The above diagrams show our recurrence tree, proof, and pseudocode for the dynamic Fibonacci solution. The Dynamic solution uses memoization, which results in a reduction in the number of calculations performed at the cost of space. As shown in the recurrence tree, this trade-off between space and time improves the overall efficiency of the algorithm.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-the recurrence tree shows a comparison between our Recursive and Dynamic solution. The ❌’s in the nodes represent calls we no longer need to make because their results were previously stored in our array `memo`. This results in a $T(n) = n + c$, where c represents the additional calls it tries to make, but it immediately pops off the stack. Using our $T(n)$ equation, we wrote very simple proof showing that $T(n) = O(n)$.
+The recurrence tree shows a comparison between our Recursive and dynamic solution. The ❌’s in the nodes represent calls we no longer need to make because their results were previously stored in our array `memo`. This results in a $T(n) = n + c$, where c represents the additional calls it tries to make, but it immediately pops off the stack. Using our $T(n)$ equation, we wrote a very simple proof showing that $T(n) = O(n)$.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-As previously mentioned there is a trade off between $S(n)$ and $T(n)$ when using memoization. Since we create a an array that is $n$ large and our deepest branch is $n$ deep, we can say that $S(n) = 2(n) + c$. Dropping constants our space complexity is $S(n) = O(n)$. This tradeoff seems minimal since we our reducing our time complexity from $O(2^n)$ to $O(n)$ while maintaining the same growth rate in our $S(n)$.
-
+As previously mentioned, there is a trade-off between $S(n)$ and $T(n)$ when using memoization. Since we create an array that is $n$ large and our deepest branch is $n$ deep, we can say that $S(n) = 2(n) + c$. Dropping constants, our space complexity is $S(n) = O(n)$. This tradeoff seems minimal since we are reducing our time complexity from $O(2^n)$ to $O(n)$ while maintaining the same growth rate in our $S(n)$.
 
 ## Empirical Analysis:
 
@@ -93,41 +90,41 @@ As previously mentioned there is a trade off between $S(n)$ and $T(n)$ when usin
 </p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In this section we will review our experimental results with our different implementations of the Fibonacci sequence. For this experiment, we ran a total of 60 trials. Each trial calculated the Fibonacci sequence 1 to 300, across each Language and algorithm type. In each trial we tracked two metrics: operation count and runtime. Operation count tracked the number of calculation performed, while `runtime` tracked the total runtime of each sequence.
+In this section, we will review our experimental results with our different implementations of the Fibonacci sequence. For this experiment, we ran a total of 60 trials. Each trial calculated the Fibonacci sequence 1 to 300, across each Language and algorithm type. In each trial, we tracked two metrics: operation count and runtime. Operation count tracked the number of calculations performed, while `runtime` tracked the total runtime of each sequence.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The two graphs in [Figure 4](#fig4) show the experimental, please note these will be reference throughout our entire discussion. The first graph, "Fibonacci Runtime", tracks the runtime of each sequence. The solid lines in the graph shows the average runtime, while the lightly colored bands show the total range of each sequence. The second graph "Fibonacci Operation Counts" tracks the total operations for each sequence. Note that we provide no bands since operation counts will remain constant regardless of resource constraints. This Empirical Analysis discussion will be organized into three different sections:
+The two graphs in [Figure 4](#fig4) show the experimental results; please note these will be referenced throughout our entire discussion. The first graph, "Fibonacci Runtime", tracks the runtime of each sequence. The solid lines in the graph show the average runtime, while the lightly colored bands show the total range of each sequence. The second graph, "Fibonacci Operation Counts," tracks the total operations for each sequence. Note that we provide no bands since operation counts will remain constant regardless of resource constraints. This Empirical Analysis discussion will be organized into three different sections:
 
 * __1. [Big O Comparison](#Big-O-Comparison)__: this section will compare each algorithm type to its [Big(O) analysis](#Big(O)-Analysis).
-* __2. [Comparing Algorithm](#Comparing-Algorithms)__: This section will compare how iterative, dynamic and recursive methods performed.
-* __3. [Fibonacci Python Vs C](#Fibonacci-Python-Vs-C)__: This section will compare how Python and C comparatively performed across our experiment.
+* __2. [Comparing Algorithm](#Comparing-Algorithms)__: This section will compare how iterative, dynamic, and recursive methods performed.
+* __3. [Fibonacci Python Vs C](#Fibonacci-Python-Vs-C)__: This section will compare how Python and C performed across our experiment.
 
 ### Big O Comparison:
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In the `Overview` section we analyzed each algorithm and performed a $Big(O)$ analysis for both space and time complexity. Here we will discuss how our results reflect our empirical data. Analyzing [Figure 4](#fig4), we find our Big O analysis lines up with our empirical results, but lets dive a little deeper.
+In the `Overview` section, we analyzed each algorithm and performed a $Big(O)$ analysis for both space and time complexity. Here, we will discuss how our results reflect our empirical data. Analyzing [Figure 4](#fig4), we find our Big O analysis is reinforced by our empirical results, but let us dive a little deeper.
 
-* _Recursive_: Looking ar our recursive solution we find a clear indication of exponential growth which matches our previous analysis showing $O(2^n)$. In fact, to complete our experiment, we had to stop calculating our recursive solutions much sooner then our dynamic and iterative solutions.
+* _Recursive_: Looking ar our recursive solution we find a clear indication of exponential growth which matches our previous analysis showing $O(2^n)$. In fact, to complete our experiment, we had to stop calculating our recursive solutions much sooner than our dynamic and iterative solutions.
 
-* _Iterative_: Our iterative solution had the best runtime overall. According to our $Big(O)$ analysis, we expect the iterative solution to have a runtime of $O(n)$ which is further validated by [Figure 4](#fig4) .
+* _Iterative_: Our iterative solution had the best runtime overall. According to our $Big(O)$ analysis, we expect the iterative solution to have a runtime of $O(n)$, which is further validated by [Figure 4](#fig4) .
 
-* _Dynamic_: According to our $Big(O)$ analysis, we expect the dynamic solution to have a runtime of $O(n)$. Looking at operation counts in figure 99, we see this is the case. Time complexity is not as smooth as we expected due to the overhead of the dynamic solution, but this will be discussed in the next section. 
+* _Dynamic_: According to our $Big(O)$ analysis, we expect the dynamic solution to have a runtime of $O(n)$ which is confrimed by operation counts in [Figure 4](#fig4), we see this is the case. Time complexity is not as smooth as we expected due to the overhead of the dynamic solution, but this will be discussed in the next section. 
 
 ### Comparing Algorithms:
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Looking at the results we find our most performant algorithm was the iterative solution, while our worst performing algorithm was our recursive solution. These results were both validated our  [Big(O) analysis](#Big(O)-Analysis) and our experimental results. Although our Big O Analysis and our experimental results agree with each other, our empirical results reveal information that our Big O analysis could not have revealed.
+Looking at the results, we find our most performant algorithm was the iterative solution, while our worst algorithm was the recursive solution. These results were both validated by our [Big(O) analysis](#Big(O)-Analysis) and our experimental results. Although our Big O Analysis and our experimental results agree with each other, our empirical results reveal information that our Big O analysis could not have revealed.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-When looking at the time complexity graph in [Figure 4](#fig4), we find interesting nuances between the different Fibonacci implementations. One of the first things of note, is that our recursive solution for small values of fibonacci, outperforms our dynamic solution. Our dynamic solution has the overhead of initializing an array of $n$  which our other implementation do not have to contend with.
+Observing [Figure 4](#fig4), we find interesting nuances between the different Fibonacci implementations. One thing of note is that our recursive solution for smaller Fibonacci values outperforms our dynamic solution. Our dynamic solution has the overhead of initializing an array of $n$, which our other implementation does not have to contend with.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Another interesting take is to look at the variability between the different implementations. To measure variability, we used population standard deviation on runtime and derived the the following results:
+Another interesting take is to look at the variability between the different implementations. To measure variability, we used the population standard deviation on runtime and derived the following results:
 
 $$\sigma_{\text{Recursive}} \,(1.41 \times 10^{-5}) \,>\, \sigma_{\text{Dynamic}} \,(2.54 \times 10^{-6}) \,>\, \sigma_{\text{Iterative}} \,(1.22 \times 10^{-7})$$
 
-As shown, Recursion has significantly more variability compared to the other algorithms. Intuitively this makes sense since we are performing significantly more operations when compared to the other algorithms. A surprising result was that the Dynamic implementation had 1976.45% more variability than the iterative solution. we believe this difference is derived from have to manage a large array and there are also just operation for this solution. 
+As shown, Recursion has significantly more variability compared to the other algorithms. Intuitively, this makes sense since we are performing significantly more operations when compared to the other algorithms. A surprising result was that the dynamic implementation had 1976.45% more variability than the iterative solution. We believe this difference is derived from having to manage a large array, and there are also just operations for this solution. 
 
 ### Fibonacci Python Vs C
 
@@ -144,59 +141,58 @@ In this section we want to compare the experimental results in how they performe
 ## Language Analysis:
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In this section we will analyzes the nuances between Python and C, and describe our overall experience. The purpose of this discussion to gain a deeper understanding of each language and more importantly define when and where to use each language. There will be three part to this discussion, the first two sections will discuss each implementation separately and then last part will compare the two experiences.
+In this section, we will analyze the nuances between Python and C, and describe our overall experience. The purpose of this discussion is to gain a deeper understanding of each language and, more importantly, define when and where to use each language. There will be three parts to this discussion; the first two sections will discuss each implementation separately, and then the last part will compare the two experiences.
 
 ### C Implementation
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Overall, I found my C implementation easier implement because it is designed for this type of work. There seemed to be far less head scratching with C as compared to python, but this will be discussed later on. To get my C implementation to work I focused on two main areas: memory management and data types.
+Overall, I found my C implementation easier to implement because it is designed for this type of work. There seemed to be far less head-scratching with C as compared to Python, but this will be discussed later on. To get my C implementation to work, I focused on two main areas: memory management and data types.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The true power of C is derived from the fine grain control that users have over its memory model. With this in mind, this analysis paid special attention to how variables are declared and passed to our different Fibonacci algorithms. For the recursive and iterative solutions, we relied on passing by value instead of by reference. This proved convenient since we could rely on values simply popping off the stack. For our dynamic solution, our array was passed by reference and then used across all recursive calls.
+The true power of C is derived from the fine-grained control that users have over its memory model. With this in mind, this analysis paid special attention to how variables are declared and passed to our different Fibonacci algorithms. For the recursive and iterative solutions, we relied on passing by value instead of by reference. This proved convenient since we could rely on values simply popping off the stack. For our dynamic solution, our array was passed by reference and then used across all recursive calls.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Defining what data types to use proved trickier than expected. This analysis used an assortment of different data types including int, long int, long long int and finally uint64_t. Our final implementation used uint64_t, which is a 64-bit, unsigned integer. Lessons learned in this experience are that you need to choose your variable types carefully, and that C will not throw a red flag when you overflow. When I first created this program, I used the variable long int which compiled fine and worked for low values of Fibonacci, but high values turned negative. This of course was caused by the integer overflowing and thus turning negative. 
+Defining what data types to use proved trickier than expected. This analysis used an assortment of different data types, including int, long int, long long int, and finally uint64_t. Our final implementation used uint64_t, which is a 64-bit, unsigned integer. Lessons learned in this experience are that you need to choose your variable types carefully and that C will not throw a red flag when you overflow. When we first created this program, we used the variable long int, which compiled fine and worked for low values of Fibonacci, but high values turned negative. This, of course, was caused by the integer overflowing and thus turning negative. 
 
 https://www.codementor.io/@arpitbhayani/how-python-implements-super-long-integers-12icwon5vk
 
 ### Python
+&nbsp;&nbsp;&nbsp;&nbsp;
+The Python programming language was specifically chosen because it stands in stark contrast to C when it comes to its level of abstraction. Unlike C, Python is a high-level language, so the fine-grained controls we have in C are not present in Python. What I wanted to specifically explore in Python was object-oriented design, garbage collection, and how it handles data types.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The python programming language was specifically chosen because it stands in stark contrast to C when it comes to its level of abstraction. Unlike C, python is a high-level language, so the fine grain controls we have in C are not present python. What I wanted to specifically explore in python was object-oriented design, garbage collection and how it handles data types.
+For my Python Fibonacci implementation. I went with an object-oriented design approach, and this made things significantly easier. While coding, I implemented several unforeseen changes, but implementing these changes was trivial because I used an object-oriented framework. Additionally, it just made the code easier to understand and naturally better organized.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-For my python Fibonacci implementation. I went with an object-oriented design approach, and this made things significantly easier. While coding, I implemented several unforeseen changes, but implementing these changes were trivial because I used an object-oriented framework. Additionally, it just made the code easier to understand and naturally better organized.
+In [Figure 4](#fig4), you will notice an odd jump in runtime for Python’s dynamic programming. This caused a deep dive into the inner workings of Python to figure out what happened. I have not been able to define the exact cause of the jump, but I have a leading theory as to why it is happening. For small integers, Python stores these as immutable objects, while larger integers use arbitrary precision. Arbitrary precision stores large integers in an array of digits in base $2^30$. For example, the integer fib(89) would be stored as $511172301 \cdot 2^30^0 + 583993188 \cdot 2^30^1 + 1 \cdot 2^30^2$$. It is around this point that we switch from a two-digit representation of our integers to a 3 digit representation of our integers, which leads to higher run times.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In figure 99 you will notice an odd jump in runtime for python’s dynamic programming. This caused a deep dive into the inner workings of python to figure out what happened. I have not been able to define the exact cause of the jump, but I have leading theory as to why it is happening. For small integers python stores these as immutable objects, while lager integers use arbitrary precision. Arbitrary precision stores large integers in an array of digits in base $2^30$. For example, the integer fib(89) would be stored as $511172301 \cdot 2^30^0 + 583993188 \cdot 2^30^1 + 1 \cdot 2^30^2$$. It is around this point that we switch from a two-digit representation of our integers to a 3 digit presentation of our integer which leads to higher run times.
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-Garbage collection became an issue with my python code when performing benchmarking. Originally, I would test all algorithms at once starting with recursive, but my python implementation seemed to be taking an unusual amount of time. Additionally, my dynamic and iterative solution didn’t seem to grow linearly (not shown in the graph). This led me to start counting operations, since the number of operations is deterministic and not dependent on available resources. From here, I suspected garbage collection may be the culprit and then started forcing garbage collection after each Fibonacci calculation. In the end we believe garbage collection helped but probably wasn’t my root cause. We believe the root cause had to due with the CPU working harder with larger values of the Fibonacci Sequence. This led us to start calculating each algorithm separately while putting break times between them. This seemed to remove much of the variability that we were initially seeing.
+Garbage collection became an issue with my Python code when performing benchmarking. Originally, I would test all algorithms at once, starting with recursive, but my Python implementation seemed to be taking an unusual amount of time. Additionally, my dynamic and iterative solution didn’t seem to grow linearly (not shown in the graph). This led me to start counting operations, since the number of operations is deterministic and not dependent on available resources. From here, I suspected garbage collection may be the culprit, and then started forcing garbage collection after each Fibonacci calculation. In the end, we believe garbage collection helped, but it probably wasn’t my root cause. We believe the root cause had to due with the CPU working harder with larger values of the Fibonacci Sequence. This led us to start calculating each algorithm separately while putting break times between them. This seemed to remove much of the variability that we were initially seeing.
 
 ### Python Vs C
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-As previously mentioned, the core differences between the programming languages Python and C is the level of abstraction. Python is a high level language and thus removes a lot of the onus on the developer to do things such as define variable types, manage memory, and so much more. But this simplification in coding comes at a cost, and this is clearly shown when you compare our results from Python to C. Our empirical results in C clearly show that C was the more performant language. So in essence, functionally C was the better programming language for the Fibonacci sequence, but one could make the argument for forum over function. 
+As previously mentioned, the core differences between the programming languages Python and C are the level of abstraction. Python is a high-level language and thus removes a lot of the onus on the developer to do things such as define variable types, manage memory, and so much more. But this simplification in coding comes at a cost, and this is clearly shown when you compare our results from Python to C. Our empirical results in C clearly show that C was the more performant language. So in essence, functionally, C was the better programming language for the Fibonacci sequence, but one could make the argument for form over function. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Python provides numerous features and functions that native C does not provide. First and most importantly, Python is a object oriented language and we leveraged this capability in our program which resulted in code that was easier to read, write and maintain. Additionally in Python, we have to worry less about what specific variables types we are using. Simply put, Python is easier language to quickly implement, but quick implementation is not everything. In this analysis we ran into numerous hard to diagnose issues when working with Python. The level of abstraction in Python really did us a disservice when trying implement our Fibonacci solutions. Our first issue was arbitrary precision which Python dynamically uses for large integers. We believe this caused an increase in runtime in larger values of Fibonacci sequences. The second issue we ran into was garbage collection, so we think. Meanwhile, The issues we dealt with in C were relatively minimal, and the issues we did run into were not buried in levels of abstractions.
+Python provides numerous features and functions that native C does not provide. First and most importantly, Python is an object-oriented language, and we leveraged this capability in our program, which resulted in code that was easier to read, write, and maintain. Additionally, in Python, we have to worry less about what specific variable types we are using. Simply put, Python is an easier language to quickly implement, but quick implementation is not everything. In this analysis, we ran into numerous hard-to-diagnose issues when working with Python. The level of abstraction in Python really did us a disservice when trying to implement our Fibonacci solutions. Our first issue was arbitrary precision, which Python dynamically uses for large integers. We believe this caused an increase in runtime for larger values of the Fibonacci sequences. The second issue we ran into was garbage collection, so we think. Meanwhile, the issues we dealt with in C were relatively minimal, and the issues we did run into were not buried in levels of abstraction.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Overall, C was the better programming language for this _specific application_. A programming language is a tool and we must always choose the right tool for the right job. Native C was the better choice over native Python, but what about things that are not native? One of the major benefits of Python is the numerous libraries it provides to its developers. These libraries, especially ones that are data intensive, are usually implemented in another language such as C. This provides developers with the speed benefit of a lower level language with the ease  python. I think in future experiments, we could see how the libraries of `numpy`, `SciPy` in `pytorch` perform in our experiments.
+Overall, C was the better programming language for this _specific application_. A programming language is a tool, and we must always choose the right tool for the right job. Native C was the better choice over native Python, but what about things that are not native? One of the major benefits of Python is the numerous libraries it provides to its developers. These libraries, especially ones that are data-intensive, are usually implemented in another language, such as C. This provides developers with the speed benefit of a lower-level language with the ease of Python. I think in future experiments, we could see how the libraries of `numpy`, `SciPy`, in `pytorch` perform in our experiments.
 
 # Conclusion
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Overall, this exercise was challenging, rewarding and enlightening. We took two different programming languages and implemented three different algorithms for each of them. This hard work paid off, for we are able to see first hand how our Big O Analysis translated to empirical results, and it also demonstrated the pitfalls of using different programming languages. 
+Overall, this exercise was challenging, rewarding, and enlightening. We took two different programming languages and implemented three different algorithms for each of them. This hard work paid off, for we are able to see firsthand how our Big O Analysis translated to empirical results, and it also demonstrated the pitfalls of using different programming languages. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The Big O analysis, in my opinion, was the most challenging. I really wanted to prove the actual run times of each of these algorithms and this took research and a lot of careful thought. It was also rewarding to build the recursion trees because this allowed me to see how items got added to my stack. I also took this opportunity to learn how to write pseudocode which proved to be relatively straightforward.
+The Big O analysis, in my opinion, was the most challenging. I really wanted to prove the actual run times of each of these algorithms, and this took research and a lot of careful thought. It was also rewarding to build the recursion trees because this allowed me to see how items got added to my stack. I also took this opportunity to learn how to write pseudocode, which proved to be relatively straightforward.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In the next section we explored our analysis with self curated empirical data. Setting up our experiments and building out graphs was a fun exercise. The Empirical results highlighted the nuances of the different languages we were using, and clearly showed the fruitfulness of our Big O analysis. Our Big O analysis directly translated to our empirical results.
+In the next section, we explored our analysis with self-curated empirical data. Setting up our experiments and building our graphs was a fun exercise. The Empirical results highlighted the nuances of the different languages we were using and clearly showed the fruitfulness of our Big O analysis. Our Big O analysis directly translated to our empirical results.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The language analysis really forced me to roll up my sleeves and dive deep into the inner workings of Python. Revealing how Python worked under the hood was fascinating. Reading about arbitrary precision and garbage collection, gave me a new found appreciation for the thinking behind building Python. This experience taught me when and where to use certain languages. Python may be easier and quicker to implement, but it's not necessarily the best solution. The C Language showed the best results overall, and had the least amount of issues. The abstraction layers built on top of Python made it really hard to figure out what was going on with in our empirical results.
+The language analysis really forced me to roll up my sleeves and dive deep into the inner workings of Python. Revealing how Python worked under the hood was fascinating. Reading about arbitrary precision and garbage collection gave me a newfound appreciation for the thinking behind building Python. This experience taught me when and where to use certain languages. Python may be easier and quicker to implement, but it's not necessarily the best solution. The C Language showed the best results overall and had the least amount of issues. The abstraction layers built on top of Python made it really hard to figure out what was going on with our empirical results.
 
 
 

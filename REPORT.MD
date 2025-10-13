@@ -6,11 +6,11 @@ Date: 10/10/25
 
 ---
 &nbsp;&nbsp;&nbsp;&nbsp; 
-The purpose of this report is to gain an understanding of how a programming language and time complexity effect performance a an algorithm. We will use the programming languages Python and C and with these languages we will implement three versions of the Fibonacci sequence: iterative recursive and memoization. The Fibonacci sequence is a series which takes the previous two numbers in the series and then adds them together. This definition of the Fibonacci sequence can be expressed with the following formula: $f(n) = f(n-1) + f(n-2)$. Given the simplicity of the Fibonacci serries, it makes it a perfect base algorithm to perform our analysis. This report will be organized into the following 4 sections: 
+The purpose of this report is to gain an understanding of how a programming language and time complexity affect the performance of an algorithm. We will use the programming languages Python and C, and with these languages, we will implement three versions of the Fibonacci sequence: iterative, recursive, and memoization. The Fibonacci sequence is a series that takes the previous two numbers in the series and then adds them together. This definition of the Fibonacci sequence can be expressed with the following formula: $f(n) = f(n-1) + f(n-2)$. Given the simplicity of the Fibonacci series, it makes it a perfect base algorithm to perform our analysis. This report will be organized into the following 4 sections: 
 
 * __Big(O) Analysis__: an analysis of the run time and space complexity of our Fibonacci implementations.
 * __Empirical Analysis__: analyzing the experimental results of our algorithms. 
-* __Language Analysis__: discussing how our results, and experiences with our different programming languages
+* __Language Analysis__: discussing how our results and experiences with our different programming languages
 
 
 ## Big(O) Analysis:
@@ -23,18 +23,24 @@ The purpose of this report is to gain an understanding of how a programming lang
 </p>
 
 The pseudocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:
+
 * __Lines 2-8__:  These lines of code are a combination of variable assignments and simple conditionals which equate to constant time complexity. In total, there are four constant operations that are only performed once. We therefore assign this work a constant value of $4$
-* __Lines 9-12__: here we perform a `for` loop that does $n-1$ iterations. During each iteration we perform three operations and thus this work is equal to $3 \cdot n-1$.
-* __Space Complexity__: for this code we find that our space complexity is $O(1)$. There are 3 variables assignments that are reused at every iteration.
+
+* __Lines 9-12__: here we perform a `for` loop that does $n-1$ iterations. During each iteration, we perform three operations and thus this work is equal to $3 \cdot n-1$.
+
+* __Space Complexity__: for this code we find that our space complexity is $O(1)$. There are 3 variable assignments that are reused at every iteration.
 
 Combining this information, we find the following equation for the iterative solution:
+
 <br>
 <p align="center">
 $T(n)= c \cdot (n-1) + 4$
 </p>
 <br>
 
-Given this information, we can now formally show that the iterative solution is $T(n) = O(n)$ the result of which are shown above. Overall this algorithm is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant and our time complexity is  $O(n)$.
+
+
+Given this information, we can now formally show that the iterative solution is $T(n) = O(n)$, the result of which is shown above. Overall, this algorithm is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant, and our time complexity is  $O(n)$.
 
 https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
 

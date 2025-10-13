@@ -123,10 +123,16 @@ $$\sigma_{\text{Recursive}} \,(1.41 \times 10^{-5}) \,>\, \sigma_{\text{Dynamic}
 
 As shown, Recursion has significantly more variability compared to the other algorithms. Intuitively this makes sense since we are performing significantly more operations when compared to the other algorithms. A surprising result was that the Dynamic implementation had 1976.45% more variability than the iterative solution. we believe this difference is derived from have to manage a large array and there are also just operation for this solution. 
 
-### Fibonacci Python Vs C 
+### Fibonacci Python Vs C
 
 
+<p id="fig5" align="center">
+  <img src="mid_term/analysis/graphs/python_vs_c_boxplot.png" alt="Fibonacci Results" width="80%">
+  <br>
+  <strong>Figure 5:</strong> Experimental results for Fibonacci runtime and operation counts.
+</p>
 
+In this section we want to compare the experimental results in how they performed with our two different languages Python and C. In Figure 5 we have a box and whisker plot which conveniently shows the variability average in range of all our values. This boxing whiskered plot shows a clear relationship between programming language and variability. On average Python had more variability when compared To the C programming language. A notable exception is the recursive solution where Python actually showed less variability than C.
 
 
 ## Language Analysis:
@@ -170,9 +176,50 @@ As previously mentioned, the core differences between the programming languages 
 Python provides numerous features and functions that native C does not provide. First and most importantly, Python is a object oriented language and we leveraged this capability in our program which resulted in code that was easier to read, write and maintain. Additionally in Python, we have to worry less about what specific variables types we are using. Simply put, Python is easier language to quickly implement, but quick implementation is not everything. In this analysis we ran into numerous hard to diagnose issues when working with Python. The level of abstraction in Python really did us a disservice when trying implement our Fibonacci solutions. Our first issue was arbitrary precision which Python dynamically uses for large integers. We believe this caused an increase in runtime in larger values of Fibonacci sequences. The second issue we ran into was garbage collection, so we think. Meanwhile, The issues we dealt with in C were relatively minimal, and the issues we did run into were not buried in levels of abstractions.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Overall, C was the better programming language for this _specific application_. A programming language is a tool and we must always choose the right tool for the right job. Native C was the better choice over native Python, but what about things that are not native? One of the major benefits of Python is the numerous libraries it provides to its developers. These libraries, especially once our data intensive, are usually implemented in another language such as C. This provides developers with the speec benefit of a lower level language with the ease of use of python. I think in future experiments, we could see how the libraries of `numpy`, `SciPy` in `pytorch` perform in our experiments.
+Overall, C was the better programming language for this _specific application_. A programming language is a tool and we must always choose the right tool for the right job. Native C was the better choice over native Python, but what about things that are not native? One of the major benefits of Python is the numerous libraries it provides to its developers. These libraries, especially ones that are data intensive, are usually implemented in another language such as C. This provides developers with the speed benefit of a lower level language with the ease  python. I think in future experiments, we could see how the libraries of `numpy`, `SciPy` in `pytorch` perform in our experiments.
 
 # Conclusion
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+Overall, this exercise was challenging, rewarding and enlightening. We took two different programming languages and implemented three different algorithms for each of them. This hard work paid off, for we are able to see first hand how our Big O Analysis translated to empirical results, and it also demonstrated the pitfalls of using different programming languages. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+The Big O analysis, in my opinion, was the most challenging. I really wanted to prove the actual run times of each of these algorithms and this took research and a lot of careful thought. It was also rewarding to build the recursion trees because this allowed me to see how items got added to my stack. I also took this opportunity to learn how to write pseudocode which proved to be relatively straightforward.
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+In the next section we explored our analysis with self curated empirical data. Setting up our experiments and building out graphs was a fun exercise. The Empirical results highlighted the nuances of the different languages we were using, and clearly showed the fruitfulness of our Big O analysis. Our Big O analysis directly translated to our empirical results.
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+The language analysis really forced me to roll up my sleeves and dive deep into the inner workings of Python. Revealing how Python worked under the hood was fascinating. Reading about arbitrary precision and garbage collection, gave me a new found appreciation for the thinking behind building Python. This experience taught me when and where to use certain languages. Python may be easier and quicker to implement, but it's not necessarily the best solution. The C Language showed the best results overall, and had the least amount of issues. The abstraction layers built on top of Python made it really hard to figure out what was going on with in our empirical results.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

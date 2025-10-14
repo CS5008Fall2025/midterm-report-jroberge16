@@ -1,3 +1,15 @@
+/**
+ * Author: Joshua Roberge
+ * Date: 2025-14-10
+ * Description: This is the main entry and function for the Fibonacci benchmarker
+ * 
+ * References:
+ * [^1]: GeeksforGeeks. (2018, September 10). Getopt() function in C to parse command line arguments. https://www.geeksforgeeks.org/c/getopt-function-in-c-to-parse-command-line-arguments/ 
+ * [^2]: GeeksforGeeks. (2025, May 8). Garbage collection in Python. https://www.geeksforgeeks.org/python/garbage-collection-python/ 
+ * [^3]: Lionell, A. (n.d.). Module 06: Dynamic Programming. Northeastern. https://northeastern.instructure.com/courses/225849/pages/overview-dynamic-programming 
+ */
+
+
 
 #include <stdio.h>  
 #include <stdlib.h>

@@ -36,8 +36,9 @@ static void helper(void){
     printf("\n\n");
 }
 
-/* 
+/**
 * this function is used to process the comment line arguments
+* @references:  [^1]: GeeksforGeeks.
 * @param argc: Argument count from command line
 * @param argv: Argument vector from command line
 * @param algorithm: Algorithm number eg => 0: iterative, 1: recursive, 2: dynamic
@@ -88,8 +89,9 @@ void proccess_args(int argc, char *argv[], int *algorithm, int *print, int *fib_
     }
 }
 
-/*
+/**
 * This function is used for timing the our algorithms
+* @references: [^3]: Lionell, A. (n.d.).
 * @param alg_type: Algorithm number eg => 0: iterative, 1: recursive, 2: dynamic
 * @param fib_num: The Fibonacci number to calculate
 * @param print: prints debug code
@@ -146,8 +148,9 @@ int test_one(int algorithm, int fib_num, int print){
     }
     return 0;
 }
-/*
+/**
 * This tests all the algorithms at once. Do to time complexity we skip over extreme cases
+* @references: [^3]: Lionell, A. (n.d.).
 * @param fib_num: The Fibonacci number to calculate
 * @param print: prints debug code
 * @return: 0 => success, 1 => failure

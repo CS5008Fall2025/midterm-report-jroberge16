@@ -13,7 +13,7 @@ The purpose of this report is to gain an understanding of how a programming lang
 * __Language Analysis__: discussing our results and experiences with Python and C
 
 ## Big(O)-Analysis:
-In this section, we will analyze each of our three Fibonacci implementations: iterative, recursive, and dynamic. To analyze each of these algorithms, we will analyze their pseudocode, recursion tree, and perform a Big-O analysis.
+In this section, we will analyze each of our three Fibonacci implementations: iterative, recursive, and dynamic. To analyze each of these algorithms, we will explore their pseudocode, recursion tree, and perform a Big-O analysis.
 
 ### Iterative:
 
@@ -59,12 +59,11 @@ __Pseudocode Code Recursive:__
 4.      result = recursive_fib(n - 1) + recursive_fib(n - 2)
 5.      RETURN result
 ```
-[^4]
 &nbsp;&nbsp;&nbsp;&nbsp; 
 As shown in the pseudocode above, the recursive solution is a simple  algorithm to implement. In line 2 and 3, we check for our base cases, and then in line 4, we perform our recursive call. Although the recursive solution is simple to implement, a closer look at the recurrence tree reveals redundant and exponential growth.
 
 &nbsp;&nbsp;&nbsp;&nbsp; 
-The recurrence tree shows how our recursive calls quickly add to the stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ [^4], but we are going to explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case, then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication of the Fibonacci formula. Given this information, we can prove that $T(n)$ is $O(2^n)$, which is shown above.
+The recurrence tree shows how our recursive calls quickly add to the stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ [^4], but we are going to explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case, then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication of the Fibonacci formula. Given this information, we can prove that $T(n)$ is $O(2^n)$, which is shown above [^7].
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively, this runtime makes sense; every recursive call results in two additional recursive calls until our base case is satisfied. The recurrence tree also shows us our space complexity.  As we can see in the recurrence tree, our deepest branch is $n$ levels deep. Since only one branch within our tree can be on the stack at one given time, our total space complexity is $O(n)$[^7].
@@ -214,4 +213,3 @@ Codementor. https://www.codementor.io/@arpitbhayani/how-python-implements-super-
 [^6]: Sahu, S. S. (2025, August 7). Inline function in C. GeeksforGeeks. https://www.geeksforgeeks.org/c/inline-function-in-c/ 
 
 [^7]: Syed, R. (2021, February 21). Fibonacci iterative vs. Recursive. Medium. https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055 
-

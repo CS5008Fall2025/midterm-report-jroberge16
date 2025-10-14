@@ -1,14 +1,20 @@
+"""
+Author: Joshua Roberge
+Date: 2025-10-14
+Description: Contains utility the utilities for the python fibonacci program.
+"""
+
 from typing import List, Dict, Any, Tuple
 import argparse
 
-from mid_term.python_fib.fib import RecursiveFib, ItterativeFib, DynamicFib, FibonacciAlgorithm
+from mid_term.python_fib.fib import RecursiveFib, IterativeFib, DynamicFib, FibonacciAlgorithm
 
 
-algs: List[Tuple[str, FibonacciAlgorithm]] = [("Iterative", ItterativeFib), ( "Recursive",RecursiveFib), ("Dynamic", DynamicFib)]
+algs: List[Tuple[str, FibonacciAlgorithm]] = [("Iterative", IterativeFib), ( "Recursive",RecursiveFib), ("Dynamic", DynamicFib)]
 
 def print_help() -> None:
     """
-    This function prints the help menue
+    This function prints the help menu
     """
     print("\n🚀🚀🚀🚀🚀 Welcome to Josh's Fibonacci Benchmarker for Python 🚀🚀🚀🚀🚀\n")
     print("Description:")
@@ -27,19 +33,20 @@ def print_help() -> None:
 def process_args() -> argparse.Namespace:
     """
     This code is for processing the command line arguments
+    References: [^1] GeeksforGeeks. (2018, September 10)
     """
     
-    parser = argparse.ArgumentParser(description="Argument Parser of Pytthon Fib")
+    parser = argparse.ArgumentParser(description="Argument Parser of Python Fib")
 
     parser.add_argument("-a", 
                         default=4,
                         required=True,
                         type=int,
-                        help="algorithum number (0: iterative, 1: recursive, 2: dynamic, 3: all)")
+                        help="algorithm number (0: iterative, 1: recursive, 2: dynamic, 3: all)")
     parser.add_argument("-f", 
                         default=5,
                         required=True,
-                        type=int, help="fibonaci number")
+                        type=int, help="fibonacci number")
     parser.add_argument("-p", 
                         default=False,
                         action="store_true",
@@ -47,14 +54,14 @@ def process_args() -> argparse.Namespace:
     parser.add_argument("-help", 
                         default=False,
                         action="store_true",
-                        help="help menue")
+                        help="help menu")
     args = parser.parse_args()
     
     if args.a < 1:
-        print("❌ algorithum selection must be btween 1-4")
+        print("❌ algorithm selection must be between 1-4")
         exit(0)
     if args.f < 0:
-        print("❌ Fiboinic must be greater then or equal to 0")
+        print("❌ Fibonacci number must be greater than or equal to 0")
         exit(0)
     if args.help:
         print_help()
@@ -66,40 +73,40 @@ def process_args() -> argparse.Namespace:
 
 
 
-def test_one(alg:int, fib_num:int, p:bool) -> Dict[str, Any]:
+def run_one(alg:int, fib_num:int, p:bool) -> Dict[str, Any]:
     """
-    This function test one of the algorithums for fibonaci sequence
+    This function test one of the algorithms for fibonacci sequence
     args:
-        alg: int = algorithum number (0: iterative, 1: recursive, 2: dynamic)
-        fib_num: int = fibonaci number to calculate to
+        alg: int = algorithm number (0: iterative, 1: recursive, 2: dynamic)
+        fib_num: int = fibonacci number to calculate to
         p: bool = print debug statements
     returns:
-        dict = {"Elasped_Time": float, "Result": int}
+        dict = {"Elapsed_Time": float, "Result": int}
     """
     if alg<0 or alg>2 or fib_num < 0:
-        raise ValueError("Error with Alg or fibnum")
+        raise ValueError("Error with Alg or Fib Number")
     
     alg_name:str = algs[alg][0]
     alg_func:FibonacciAlgorithm = algs[alg][1]
     alg_func:FibonacciAlgorithm = algs[alg][1](print_debug = p)
     
     if p:
-        print(f"============== 🧮 CALCULATIONS for {alg_name} Fibonaci Sequence 🧮 ==============")
+        print(f"============== 🧮 CALCULATIONS for {alg_name} Fibonacci Sequence 🧮 ==============")
     
     result = alg_func.time_it(fib_num)
     if p:
         print("\n============== 🏁 Results 🏁 ==============\n");
-        print(f"Algorithum:\t{alg_name}")
+        print(f"Algorithm:\t{alg_name}")
         print(f"Total Time:\t{result[1]}")
         print(f"Result for F_{fib_num}:\t{result[0]}")
 
-    return {"Elasped_Time": result[1], "Result": result[0],"Operation Count": alg_func.operation_cnt}
+    return {"Elapsed_Time": result[1], "Result": result[0],"Operation Count": alg_func.operation_cnt}
 
-def test_all(fib_num:int, p: bool) -> str:
+def run_all(fib_num:int, p: bool) -> str:
     """
-    This function Test all the algorithums for fibonaci sequence
+    This function Test all the algorithms for fibonacci sequence
     args:
-        fib_num: int = fibonaci number to calculate to
+        fib_num: int = fibonacci number to calculate to
         p: bool = print debug statements
     returns:
         str = csv row

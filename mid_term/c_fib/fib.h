@@ -7,12 +7,12 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-
+// Counts total fib calculations per run
 uint64_t OPERATION_COUNTER = 0;
-/*
+
+/**
 * This function check the base case conditions for the fibonacci sequence
 * @param num: The Fibonacci number to calculate
-* resource: https://www.geeksforgeeks.org/c/inline-function-in-c/
 * @param p: prints debug code
 * @return: The fibonacci number or -999 if an error occurs
 */
@@ -40,8 +40,9 @@ uint64_t static inline _check_base_case(int num, int p){
 }
 
 
-/*
+/**
 * This is the interative solution for the fibonacci sequence
+* @references: [^3]: Lionell, A. (n.d.).
 * @param fib_num: The Fibonacci number to calculate
 * @param print: prints debug code
 * @return: The fibonacci number or -999 if an error occurs
@@ -74,7 +75,8 @@ uint64_t iterativeFib(int fib_num, int print){
 
 
 /**
- * This is the reucrisve solution for the fibonacci sequence
+ * This is the recursive solution for the fibonacci sequence
+ * @references: [^3]: Lionell, A. (n.d.).
  * @param fib_num: The Fibonacci number to calculate
  * @param print: prints debug code
  * @return: The fibonacci number or -999 if an error occurs

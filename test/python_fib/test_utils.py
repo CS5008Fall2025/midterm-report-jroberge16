@@ -1,7 +1,7 @@
 import pytest
 import sys
 
-from mid_term.python_fib.utils import process_args, test_one, test_all, print_help
+from mid_term.python_fib.utils import process_args, run_one, run_all, print_help
 
 def test_utils():
     # Testing Process Args
@@ -27,29 +27,28 @@ def test_utils():
 
 
     # test one
-    results = test_one(0, 5, True)
+    results = run_one(0, 5, True)
     assert results["Result"] == 5
 
     with pytest.raises(ValueError):
-        results = test_one(1, -5, False)
+        results = run_one(1, -5, False)
         assert results["Result"] == -999
     
     with pytest.raises(ValueError):
-        results = test_one(8, 5, False)
+        results = run_one(8, 5, False)
         assert results["Result"] == 5
 
     
     # Test all with print
-    results = test_all(5, True)
+    results = run_all(5, True)
     assert results.split(',')[0] == "f_5"
 
     # test all bad
     with pytest.raises(ValueError):
-        results = test_all(-5, False)
+        results = run_all(-5, False)
         assert results == ""
 
 
 
 if __name__ == "__main__":
-    # test_utils()
-    pytest.main()
+    pass

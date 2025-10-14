@@ -1,3 +1,9 @@
+"""
+Author: Joshua Roberge
+Date: 2025-10-14
+Description: Contains the Fibonacci implementations for the python fibonacci program.
+"""
+
 from typing import Dict, Any, List
 from abc import ABC, abstractmethod
 import time
@@ -5,25 +11,25 @@ import gc
 
 class FibonacciAlgorithm(ABC):
     """
-    Abstract Base Class for fibionoci sequence
+    Abstract Base Class for fibonacci sequence
 
-    Atributes:
-        * print_debug: makes the print statments verbose
+    Attributes:
+        * print_debug: makes the print statements verbose
     """
     def __init__(self, print_debug: bool = False):
         """
-        Atributes:
-            * print_debug: makes the print statments verbose
+        Attributes:
+            * print_debug: makes the print statements verbose
         """
         self.print_debug = print_debug
         self.operation_cnt = 0
 
     def time_it(self, n) -> tuple[int, float]:
         """
-        Method for timming the fibionoci calculation
+        Method for timing the fibonacci calculation
         args:
-            n= fibionoci number
-        returns: tuple of fibionoci number and time taken to calculate
+            n= fibonacci number
+        returns: tuple of fibonacci number and time taken to calculate
         """
         start_time = time.time()
         result = self.calculate(n)
@@ -33,10 +39,10 @@ class FibonacciAlgorithm(ABC):
     
     def _check_base_case(self, num) -> int:
         """
-        Private Method for checking the base case conditions for fibionoci sequence
+        Private Method for checking the base case conditions for fibonacci sequence
         args:
-            num= fibionoci number
-        returns: fibionoci number or -999 for error
+            num= fibonacci number
+        returns: fibonacci number or -999 for error
         """
         self.operation_cnt += 1
         match num:
@@ -56,35 +62,35 @@ class FibonacciAlgorithm(ABC):
     @abstractmethod
     def calculate(self, n: int) -> int:
         """
-        private method for caculating fibionoci sequence
+        private method for calculating fibonacci sequence
         args:
-            n= fibionoci number
+            n= fibonacci number
         """
         pass
 
 
-class ItterativeFib(FibonacciAlgorithm):
+class IterativeFib(FibonacciAlgorithm):
     """
-    This is the itterative implementation of
-    fibionoci sequence
+    This is the iterative implementation of
+    fibonacci sequence
 
-    Atributes:
-        * print_debug: makes the print statments verbose
+    Attributes:
+        * print_debug: makes the print statements verbose
     """
 
     def __init__(self, print_debug: bool = False):
         """
-        Atributes:
-            * print_debug: makes the print statments verbose
+        Attributes:
+            * print_debug: makes the print statements verbose
         """
 
         super().__init__(print_debug)
     
     def calculate(self, n):
         """
-        method for for caculating fibionoci sequence
+        method for for calculating fibonacci sequence
         args:
-            n= fibionoci number
+            n= fibonacci number
         """
         if n <= 1:
             self.operation_cnt += 1
@@ -110,23 +116,23 @@ class ItterativeFib(FibonacciAlgorithm):
 class RecursiveFib(FibonacciAlgorithm):
     """
     This is the recursive implementation of
-    fibionoci sequence
+    fibonacci sequence
 
-    Atributes:
-        * print_debug: makes the print statments verbose
+    Attributes:
+        * print_debug: makes the print statements verbose
     """
     def __init__(self, print_debug: bool = False):
         """
         Atributes:
-            * print_debug: makes the print statments verbose
+            * print_debug: makes the print statements verbose
         """
         super().__init__(print_debug)
     
     def calculate(self, n) -> int:
         """
-        method for  for caculating fibionoci sequence
+        method for  for calculating fibonacci sequence
         args:
-            n= fibionoci number
+            n= fibonacci number
         """
         if n <= 1:
             self.operation_cnt += 1
@@ -144,24 +150,24 @@ class RecursiveFib(FibonacciAlgorithm):
 class DynamicFib(FibonacciAlgorithm):
     """
     This is the memoization implementation of
-    fibionoci sequence
+    fibonacci sequence
 
-    Atributes:
-        * print_debug: makes the print statments verbose
+    Attributes:
+        * print_debug: makes the print statements verbose
     """
 
     def __init__(self, print_debug: bool = False):
         """
-        Atributes:
-            * print_debug: makes the print statments verbose
+        Attributes:
+            * print_debug: makes the print statements verbose
         """
         super().__init__(print_debug)
 
     def _calculate(self, n:int) -> int:
         """
-        private method for caculating fibionoci sequence
+        private method for calculating fibonacci sequence
         args:
-            n= fibionoci number
+            n= fibonacci number
         """
         if(n<=1):
             self.operation_cnt += 1
@@ -184,9 +190,9 @@ class DynamicFib(FibonacciAlgorithm):
 
     def calculate(self, n:int) -> int:
         """
-        method for caculating fibionoci sequence
+        method for calculating fibonacci sequence
         args:
-            n= fibionoci number
+            n= fibonacci number
         """
         if(n<=1):
             self.operation_cnt += 1

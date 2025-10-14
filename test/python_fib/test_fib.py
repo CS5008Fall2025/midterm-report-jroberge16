@@ -1,5 +1,5 @@
 import pytest
-from mid_term.python_fib.fib import RecursiveFib, DynamicFib, ItterativeFib
+from mid_term.python_fib.fib import RecursiveFib, DynamicFib, IterativeFib
 
 
 
@@ -31,9 +31,9 @@ def test_dynamic_fib(fib_num, expectation):
     (10, 55),
     (-1, None)
 ])
-def test_itterative_fib(fib_num, expectation):
-    fib = ItterativeFib(print_debug=False)
+def test_iterative_fib(fib_num, expectation):
+    fib = IterativeFib(print_debug=False)
     assert fib.calculate(fib_num) == expectation
 
 if __name__ == "__main__":
-    pytest.main()
+    pass

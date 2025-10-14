@@ -140,6 +140,7 @@ As shown, the recursion solution has significantly more variability compared to 
   <strong>Figure 5:</strong> Experimental results for Fibonacci runtime and operation counts.
 </p>
 
+&nbsp;&nbsp;&nbsp;&nbsp;
 Figure 5 shows a box and whisker plot that compares our three algorithms based on programming language. This graph shows that on average Python generally performed more poorly and offered more variability in its final results. A notable exception to this observation comes from the recursive solution which seems to flip this pattern. This could be because we ran our recursive analysis deeper into the Fibonacci sequence for C than we did with Python.
 
 
@@ -213,34 +214,4 @@ Codementor. https://www.codementor.io/@arpitbhayani/how-python-implements-super-
 [^6]: Sahu, S. S. (2025, August 7). Inline function in C. GeeksforGeeks. https://www.geeksforgeeks.org/c/inline-function-in-c/ 
 
 [^7]: Syed, R. (2021, February 21). Fibonacci iterative vs. Recursive. Medium. https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

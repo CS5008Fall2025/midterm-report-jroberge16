@@ -48,6 +48,7 @@ https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
 ### Recursive Solution:
 <p align="center">
   <img src="images/recur.png" alt="Python vs C" width="80%">
+  <br>
   <strong>Figure 2:</strong> Recusion Analysis.
 </p>
 

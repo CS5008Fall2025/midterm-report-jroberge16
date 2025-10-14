@@ -25,7 +25,7 @@ The pseudocode above outlines the iterative solution for the Fibonacci sequence.
 
 * __Lines 2-8__:  These lines of code are a combination of variable assignments and simple conditionals which equate to constant time complexity. In total, there are four constant operations that are only performed once. We therefore assign this work a constant value of $4$
 
-* __Lines 9-12__: here we perform a `for` loop that does $n-1$ iterations. During each iteration, we perform three operations and thus this work is equal to $3 \cdot n-1$.
+* __Lines 9-12__: here we perform a `for` loop that does $n-1$ iterations. During each iteration, we perform three operations and thus this work is equal to $3 \cdot(n-1)$.
 
 * __Space Complexity__: for this code we find that our space complexity is $O(1)$. There are 3 variable assignments that are reused at every iteration.
 
@@ -79,7 +79,7 @@ The above diagrams show our recurrence tree, proof, and pseudocode for the dynam
 The recurrence tree shows a comparison between our Recursive and dynamic solution. The ❌’s in the nodes represent calls we no longer need to make because their results were previously stored in our array `memo`. This results in a $T(n) = n + c$, where c represents constant work and base case checks. Using our $T(n)$ equation, we wrote a very simple proof showing that $T(n) = O(n)$.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-As previously mentioned, there is a trade-off between $S(n)$ and $T(n)$ when using memoization. Since we create an array that is $n$ large and our deepest branch is $n$ deep, we can say that $S(n) = 2(n) + c$. Dropping constants, our space complexity is $S(n) = O(n)$. This tradeoff seems minimal since we are reducing our time complexity from $O(2^n)$ to $O(n)$ while maintaining the same growth rate in our $S(n)$.
+As previously mentioned, there is a trade-off between $S(n)$ and $T(n)$ when using memoization. Since we create an array that is $n$ large and our deepest branch is $n$ deep, we can say that our space complexity is $S(n) = O(n)$. This tradeoff seems minimal since we are reducing our time complexity from $O(2^n)$ to $O(n)$ while maintaining the same growth rate in our $S(n)$.
 
 ## Empirical Analysis:
 
@@ -172,7 +172,7 @@ Garbage collection became an issue with my Python code when performing benchmark
 ### Python Vs C
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-As previously mentioned, the core differences between the programming languages Python and C are the level of abstraction. Python is a high-level language and thus removes a lot of the onus on the developer to do things such as define variable types, manage memory, and other low level tasks. But this simplification in coding comes at a cost, and this is clearly shown when you compare our results from Python to C. Our empirical results clearly show that C was the more performant language. So in essence, functionally, C was the better programming language for the Fibonacci sequence, but one could argue that Python's ease of use, reability and other benefits outweight the performance gain. 
+As previously mentioned, the core differences between the programming languages Python and C are the level of abstraction. Python is a high-level language and thus removes a lot of the onus on the developer to do things such as define variable types, manage memory, and other low level tasks. But this simplification in coding comes at a cost, and this is clearly shown when you compare our results from Python to C. Our empirical results clearly show that C was the more performant language. So in essence, functionally, C was the better programming language for the Fibonacci sequence, but one could argue that Python's ease of use, readability and other benefits outweigh the performance gain. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 Python provides numerous features and functions that native C does not provide. First and most importantly, Python is an object-oriented language, and we leveraged this capability in our program, which resulted in code that was easier to read, write, and maintain. Additionally, in Python, we have to worry less about what specific variable types we are using. Simply put, Python is an easier language to quickly implement, but quick implementation is not everything. In this analysis, we ran into numerous hard-to-diagnose issues when working with Python. The level of abstraction in Python really did us a disservice when trying to implement our Fibonacci solutions. Our first issue was arbitrary precision, which Python dynamically uses for large integers. We believe this caused an increase in runtime for larger values of the Fibonacci sequences. The second issue we ran into was garbage collection. Meanwhile, the issues we dealt with in C were relatively minimal, and the issues we did run into were not buried in levels of abstraction.
@@ -186,10 +186,10 @@ Overall, C was the better programming language for this _specific application_. 
 Overall, this exercise was challenging, rewarding, and enlightening. I took two different programming languages and implemented three different algorithms for each of them. This hard work paid off, for I was able to see firsthand how the Big-O Analysis translated to empirical results, and it also demonstrated the pitfalls of using different programming languages. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The Big-O Analysis, in my opinion, was the most challenging. We really wanted to prove the actual run times of each of these algorithms, and this took research and a lot of careful thought. It was also rewarding to build the recursion trees because this allowed me to see how items got added to my call stack. We also took this opportunity to learn how to write pseudocode, which proved to be relatively straightforward.
+The Big-O Analysis, in my opinion, was the most challenging. I really wanted to prove the actual run times of each of these algorithms, and this took research and a lot of careful thought. It was also rewarding to build the recursion trees because this allowed me to see how items got added to my call stack. I also took this opportunity to learn how to write pseudocode, which proved to be relatively straightforward.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In the next section, I explored our analysis with self-curated empirical data. Setting up our experiments and building our graphs was a fun exercise. The Empirical results highlighted the nuances of the different languages I was using and clearly showed the fruitfulness of our Big-O Analysis.
+In the Empirical Analysis section, I analyzed. the results with self-curated empirical data. Setting up the experiments and building the graphs was a fun exercise. The Empirical results highlighted the nuances of the different languages I was using and clearly showed the fruitfulness of the Big-O Analysis.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 The language analysis really forced me to roll up my sleeves and dive deep into the inner workings of Python. Revealing how Python worked under the hood was fascinating. Reading about arbitrary precision and garbage collection gave me a newfound appreciation for the thinking behind building Python. This experience taught me when and where to use certain languages. Python may be easier and quicker to implement, but it's not necessarily the best solution. C showed the best results overall and had the least amount of issues. The abstraction layers built on top of Python made it really hard to figure out what was going on with our empirical results.

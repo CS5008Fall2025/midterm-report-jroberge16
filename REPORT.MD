@@ -19,6 +19,7 @@ In this section, we will analyze each of our three Fibonacci implementations: it
 
 <p align="center">
   <img src="images/iterative_fib.png" alt="Python vs C" width="80%">
+  <br>
   <strong>Figure 1:</strong> Itterative Analysis.
 </p>
 
@@ -72,6 +73,7 @@ As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively, 
 ### Dynamic Solution
 <p align="center">
   <img src="images/dynamic.png" alt="Python vs C" width="100%">
+  <br>
   <strong>Figure 3:</strong> Dynamic Analysis.
 </p>
 

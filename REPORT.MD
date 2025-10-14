@@ -19,6 +19,7 @@ In this section, we will analyze each of our three Fibonacci implementations: it
 
 <p align="center">
   <img src="images/iterative_fib.png" alt="Python vs C" width="80%">
+  <strong>Figure 1:</strong> Itterative Analysis.
 </p>
 
 The pseudocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:
@@ -46,7 +47,9 @@ https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
 ### Recursive Solution:
 <p align="center">
   <img src="images/recur.png" alt="Python vs C" width="80%">
+  <strong>Figure 2:</strong> Recusion Analysis.
 </p>
+
 __Pseudocode Code Recursive:__
 
 ```text
@@ -69,6 +72,7 @@ As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively, 
 ### Dynamic Solution
 <p align="center">
   <img src="images/dynamic.png" alt="Python vs C" width="100%">
+  <strong>Figure 3:</strong> Dynamic Analysis.
 </p>
 
 

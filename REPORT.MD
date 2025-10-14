@@ -20,7 +20,7 @@ In this section, we will analyze each of our three Fibonacci implementations: it
 <p align="center">
   <img src="images/iterative_fib.png" alt="Python vs C" width="80%">
   <br>
-  <strong>Figure 1:</strong> Itterative Analysis.
+  <strong>Figure 1:</strong> Iterative Analysis.
 </p>
 
 The pseudocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:

@@ -19,7 +19,7 @@ static uint64_t (*fibs[])(int, int) = {
 
 
 /**
- * This displays the help menue
+ * This displays the help menu
  */
 static void helper(void){
     printf("\n🚀🚀🚀🚀🚀 Welcome to Josh's Fibonacci Benchmarker for C 🚀🚀🚀🚀🚀\n\n");
@@ -28,8 +28,8 @@ static void helper(void){
     printf("\t-f int: What Fibonacci number to calculate to\n");
     printf("\t-h: Help\n");
     printf("\t-p: prints information about each step (used for debugging)\n");
-    printf("\t -a `1-4`: denotes the algorithum followed algorithum selection:\n");
-    printf("\t\t 1: itterative Fibonacci solution\n");
+    printf("\t -a `1-4`: denotes the algorithm followed algorithm selection:\n");
+    printf("\t\t 1: iterative Fibonacci solution\n");
     printf("\t\t 2: recursive Fibonacci solution\n");
     printf("\t\t 3: dynamic programming Fibonacci solution\n");
     printf("\t\t 4: All solutions\n");
@@ -37,14 +37,14 @@ static void helper(void){
 }
 
 /* 
-* this function is used to procee the comment line arguments
+* this function is used to process the comment line arguments
 * @param argc: Argument count from command line
 * @param argv: Argument vector from command line
-* @param algorithum: Algorithum number eg => 0: iterative, 1: recursive, 2: dynamic
+* @param algorithm: Algorithm number eg => 0: iterative, 1: recursive, 2: dynamic
 * @param print: prints debug code
 * @param fib_number: The Fibonacci number to calculate
 */
-void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib_number){
+void proccess_args(int argc, char *argv[], int *algorithm, int *print, int *fib_number){
     int opt;
     while ((opt = getopt(argc, argv, "f:hpa:")) != -1){
         switch(opt){
@@ -57,9 +57,9 @@ void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib
                        helper();
                         exit(1);;
                 }
-                *algorithum = atoi(optarg) - 1;
-                if ((*algorithum > 3) |(*algorithum < 0)){
-                       printf("ERROR: You must select an algorithum option\n");
+                *algorithm = atoi(optarg) - 1;
+                if ((*algorithm > 3) |(*algorithm < 0)){
+                       printf("ERROR: You must select an algorithm option\n");
                        helper();
                         exit(1);;
                 }
@@ -89,12 +89,12 @@ void proccess_args(int argc, char *argv[], int *algorithum, int *print, int *fib
 }
 
 /*
-* This function is used for timming the our algorithums
-* @param alg_type: Algorthum number eg => 0: iterative, 1: recursive, 2: dynamic
+* This function is used for timing the our algorithms
+* @param alg_type: Algorithm number eg => 0: iterative, 1: recursive, 2: dynamic
 * @param fib_num: The Fibonacci number to calculate
 * @param print: prints debug code
 * @param result: Final results of the fibonacci calculation
-* @param time_taken: Total time elsaspaed during the calculation
+* @param time_taken: Total time time for the calculation
 */
 void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_taken ){
 
@@ -117,18 +117,18 @@ void time_it( int alg_type, int fib_num, int p, uint64_t *result, double *time_t
 }
 
 /**
- * This is used to test one algorithum at a time
- * @param algorithum: Algorithum number eg => 0: iterative, 1: recursive, 2: dynamic
+ * This is used to test one algorithm at a time
+ * @param algorithm: Algorithm number eg => 0: iterative, 1: recursive, 2: dynamic
  * @param fib_num: The Fibonacci number to calculate
  * @param print: prints debug code
  * @return: 0 => success, 1 => failure
  */
-int test_one(int algorithum, int fib_num, int print){
+int test_one(int algorithm, int fib_num, int print){
     uint64_t result;
     double time_taken;
     OPERATION_COUNTER=0;
 
-    if ((algorithum>2) || (algorithum<0) || (fib_num< 0)){
+    if ((algorithm>2) || (algorithm<0) || (fib_num< 0)){
         return 1;
     }
     if(print){
@@ -138,16 +138,16 @@ int test_one(int algorithum, int fib_num, int print){
 
     if(print){
         printf("\n============== 🏁 Results 🏁 ==============\n");
-        printf("Algorithum:\t%s\n", algs_names[algorithum]);
+        printf("Algorithm:\t%s\n", algs_names[algorithm]);
         printf("Total Time:\t%.10f\n", time_taken);
         printf("Result for F_%d:\t%ld\n\n", fib_num, result);
     }else{
-        printf("f_%d,%s,%.10f,%" PRIu64"\n", fib_num, algs_names[algorithum], time_taken, OPERATION_COUNTER);
+        printf("f_%d,%s,%.10f,%" PRIu64"\n", fib_num, algs_names[algorithm], time_taken, OPERATION_COUNTER);
     }
     return 0;
 }
 /*
-* This tests all the algorithums at once. Do to time complexity we skip over extreme cases
+* This tests all the algorithms at once. Do to time complexity we skip over extreme cases
 * @param fib_num: The Fibonacci number to calculate
 * @param print: prints debug code
 * @return: 0 => success, 1 => failure

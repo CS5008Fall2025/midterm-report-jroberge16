@@ -15,7 +15,7 @@
  * Command Line Arguments:
  * -f: The Fibonacci number to calculate
  * -a: The algorithm to use (0: iterative, 1: recursive, 2: dynamic, 3: all)
- * -p: prints infromation about each step (used for debugging)
+ * -p: prints information for each step (used for debugging)
  * -h: Help
  * 
  * @param argc: Argument count from command line

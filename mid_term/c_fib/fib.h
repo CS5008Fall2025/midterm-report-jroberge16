@@ -41,7 +41,7 @@ uint64_t static inline _check_base_case(int num, int p){
 
 
 /*
-* This is the intterative solution for the fibonacci sequence
+* This is the interative solution for the fibonacci sequence
 * @param fib_num: The Fibonacci number to calculate
 * @param print: prints debug code
 * @return: The fibonacci number or -999 if an error occurs
@@ -74,7 +74,7 @@ uint64_t iterativeFib(int fib_num, int print){
 
 
 /**
- * This is the Recrisve solution for the fibonacci sequence
+ * This is the reucrisve solution for the fibonacci sequence
  * @param fib_num: The Fibonacci number to calculate
  * @param print: prints debug code
  * @return: The fibonacci number or -999 if an error occurs
@@ -96,7 +96,7 @@ uint64_t recursiveFib(int num, int p){
 }
 
 /*
-* privaste function for dynamicFib
+* private function for dynamicFib
 * @param fib_num: The Fibonacci number to calculate
 * @param print: prints debug code
 * @return: The Fibonacci number or -999 fir errors
@@ -126,11 +126,11 @@ uint64_t _dynamic_fib(int num, int p,uint64_t *memo){
 /*
 * This is the dynamic programming solution for the fibonacci sequence
 * @param fib_num: The Fibonacci number to calculate
-* @param print: prints debug code
+* @param print: prints debug info
 * @return: The fibonacci number or -999 if an error occurs
 */
 uint64_t dynamicFib(int num, int p){
-    // Need to check this befroe hand if we go to -1  to 1
+    // Need to check this before hand if we go to -1  to 1
     // we return memo[1] + memo[0] , but this never gets assigned in the base case
     if (num <= 1) {
         OPERATION_COUNTER += 1;

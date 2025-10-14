@@ -20,7 +20,7 @@ In this section, we will analyze each of our three Fibonacci implementations: it
 <p align="center">
   <img src="images/iterative_fib.png" alt="Python vs C" width="80%">
   <br>
-  <strong>Figure 1:</strong> Iterative Analysis.
+  <strong>Figure 1:</strong> Iterative Analysis [^7].
 </p>
 
 The pseudocode above outlines the iterative solution for the Fibonacci sequence. To find a T(n) for our code, we can analyze each line and count the number of operations:
@@ -41,15 +41,13 @@ $T(n)= c \cdot (n-1) + 4$
 
 
 
-Given this information, we can now formally show that the iterative solution is $T(n) = O(n)$, the result of which is shown in the proof above. Overall, this algorithm is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant, and our time complexity is  $O(n)$.
-
-https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055
+Given this information, we can now formally show that the iterative solution is $T(n) = O(n)$, the result of which is shown in the proof above. Overall, this algorithm is a simple yet very efficient implementation of the Fibonacci sequence. The space complexity is constant, and our time complexity is  $O(n)$[^7].
 
 ### Recursive Solution:
 <p align="center">
   <img src="images/recur.png" alt="Python vs C" width="80%">
   <br>
-  <strong>Figure 2:</strong> Recusion Analysis.
+  <strong>Figure 2:</strong> Recursion Analysis.
 </p>
 
 __Pseudocode Code Recursive:__
@@ -61,21 +59,21 @@ __Pseudocode Code Recursive:__
 4.      result = recursive_fib(n - 1) + recursive_fib(n - 2)
 5.      RETURN result
 ```
-
+[^4]
 &nbsp;&nbsp;&nbsp;&nbsp; 
 As shown in the pseudocode above, the recursive solution is a simple  algorithm to implement. In line 2 and 3, we check for our base cases, and then in line 4, we perform our recursive call. Although the recursive solution is simple to implement, a closer look at the recurrence tree reveals redundant and exponential growth.
 
 &nbsp;&nbsp;&nbsp;&nbsp; 
-The recurrence tree shows how our recursive calls quickly add to the stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ ([cite](https://evoniuk.github.io/posts/fibonacci.html)), but we are going to explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case, then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication of the Fibonacci formula. Given this information, we can prove that $T(n)$ is $O(2^n)$, which is shown above.
+The recurrence tree shows how our recursive calls quickly add to the stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ [^4], but we are going to explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case, then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication of the Fibonacci formula. Given this information, we can prove that $T(n)$ is $O(2^n)$, which is shown above.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively, this runtime makes sense; every recursive call results in two additional recursive calls until our base case is satisfied. The recurrence tree also shows us our space complexity.  As we can see in the recurrence tree, our deepest branch is $n$ levels deep. Since only one branch within our tree can be on the stack at one given time, our total space complexity is $O(n)$.
+As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively, this runtime makes sense; every recursive call results in two additional recursive calls until our base case is satisfied. The recurrence tree also shows us our space complexity.  As we can see in the recurrence tree, our deepest branch is $n$ levels deep. Since only one branch within our tree can be on the stack at one given time, our total space complexity is $O(n)$[^7].
 
 ### Dynamic Solution
 <p align="center">
   <img src="images/dynamic.png" alt="Python vs C" width="100%">
   <br>
-  <strong>Figure 3:</strong> Dynamic Analysis.
+  <strong>Figure 3:</strong> Dynamic Analysis [^4].
 </p>
 
 
@@ -83,7 +81,7 @@ As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively, 
 The above diagrams show our recurrence tree, proof, and pseudocode for the dynamic solution. The dynamic solution uses memoization, which results in a reduction in the number of calculations performed at the cost of space. As shown in the recurrence tree, this trade-off between space and time improves the overall efficiency of the algorithm.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The recurrence tree shows a comparison between our Recursive and dynamic solution. The ❌’s in the nodes represent calls we no longer need to make because their results were previously stored in our array `memo`. This results in a $T(n) = n + c$, where c represents constant work and base case checks. Using our $T(n)$ equation, we wrote a very simple proof showing that $T(n) = O(n)$.
+The recurrence tree shows a comparison between our Recursive and dynamic solution. The ❌’s in the nodes represent calls we no longer need to make because their results were previously stored in our array `memo`. This results in a $T(n) = n + c$, where c represents constant work and base case checks. Using our $T(n)$ equation, we wrote a very simple proof showing that $T(n) = O(n)$ [^4].
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 As previously mentioned, there is a trade-off between $S(n)$ and $T(n)$ when using memoization. Since we create an array that is $n$ large and our deepest branch is $n$ deep, we can say that our space complexity is $S(n) = O(n)$. This tradeoff seems minimal since we are reducing our time complexity from $O(2^n)$ to $O(n)$ while maintaining the same growth rate in our $S(n)$.
@@ -131,7 +129,7 @@ Another interesting take is to look at the variability between the different imp
 
 $$\sigma_{\text{Recursive}} \,(1.41 \times 10^{-5}) \,>\, \sigma_{\text{Dynamic}} \,(2.54 \times 10^{-6}) \,>\, \sigma_{\text{Iterative}} \,(1.22 \times 10^{-7})$$
 
-As shown, the recursion solution has significantly more variability compared to the other algorithms. Intuitively, this makes sense since we are performing more operations when compared to the other algorithms. A surprising result was that the dynamic implementation had nearly 2000% more variability than the iterative solution. We believe this difference is derived from having to manage a large array, and there are also additional operations for this solution. 
+As shown, the recursion solution has significantly more variability compared to the other algorithms. Intuitively, this makes sense since we are performing more operations when compared to the other algorithms. A surprising result was that the dynamic implementation had more than 2000% more variability than the iterative solution. We believe this difference is derived from having to manage a large array, and there are also additional operations for this solution. 
 
 ### Fibonacci Python Vs C
 
@@ -142,7 +140,7 @@ As shown, the recursion solution has significantly more variability compared to 
   <strong>Figure 5:</strong> Experimental results for Fibonacci runtime and operation counts.
 </p>
 
-In this section we want to compare the experimental results in how they performed with our two different languages Python and C. In Figure 5 we have a box and whisker plot which conveniently shows the variability average in range of all our values. This boxing whiskered plot shows a clear relationship between programming language and variability. On average Python had more variability when compared To the C programming language. A notable exception is the recursive solution where Python actually showed less variability than C.
+Figure 5 shows a box and whisker plot that compares our three algorithms based on programming language. This graph shows that on average Python generally performed more poorly and offered more variability in its final results. A notable exception to this observation comes from the recursive solution which seems to flip this pattern. This could be because we ran our recursive analysis deeper into the Fibonacci sequence for C than we did with Python.
 
 
 ## Language Analysis:
@@ -156,12 +154,11 @@ In this section, we will analyze the nuances between Python and C, and describe 
 Overall, we found the C implementation easier to implement because it is designed for this type of work. There seemed to be far less head-scratching with C as compared to Python, but this will be discussed later on. To get the C implementation to work, we focused on two main areas: memory management and data types.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-The true power of C is derived from the fine-grained control that users have over its memory model. With this in mind, we paid special attention to how variables are declared and passed to our different Fibonacci algorithms. For the recursive and iterative solutions, we relied on passing by value instead of by reference. This proved convenient since we could rely on values simply popping off the stack. For our dynamic solution, our array was passed by reference and then used across all recursive calls.
+The true power of C is derived from the fine-grained control that users have over its memory model. With this in mind, we paid special attention to how variables are declared and passed to our different Fibonacci algorithms. For the recursive and iterative solutions, we relied on passing by value instead of by reference. This proved convenient since we could rely on values simply popping off the stack. For our dynamic solution, our array was passed by reference and then used across all recursive calls [^5].
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Defining what data types to use proved trickier than expected. This analysis used an assortment of different data types, including int, long int, long long int, and finally uint64_t. Our final implementation used uint64_t, which is a 64-bit, unsigned integer. This experience taught us that you need to choose your variable types carefully and that C will not throw a red flag when you overflow. When we first created this program, we used the data type long int, which compiled fine and worked for low values of Fibonacci, but high values turned negative due to integer overflow. 
+Defining what data types to use proved trickier than expected. This analysis used an assortment of different data types, including int, long int, long long int, and finally uint64_t. Our final implementation used uint64_t, which is a 64-bit, unsigned integer. This experience taught us that you need to choose your variable types carefully and that C will not throw a red flag when you overflow. When we first created this program, we used the data type long int, which compiled fine and worked for low values of Fibonacci, but high values turned negative due to integer overflow [^5]. 
 
-https://www.codementor.io/@arpitbhayani/how-python-implements-super-long-integers-12icwon5vk
 
 ### Python
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -171,10 +168,10 @@ The Python programming language was specifically chosen because it stands in sta
 For our Python Fibonacci implementation, we went with an object-oriented design approach, and this made things significantly easier. While coding, we implemented several unforeseen changes, but implementing these changes was trivial because we used an object-oriented framework. Additionally, it just made the code easier to understand and naturally better organized.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-In [Figure 4](#fig4), you will notice an odd jump in runtime for Python’s dynamic programming. This led to a deep dive into the inner workings of Python to figure out what happened. We have not been able to define the exact cause of the jump, but we have a leading theory as to why it is happening. For small integers, Python stores these as immutable objects, while larger integers use arbitrary precision. Arbitrary precision stores large integers in an array of digits in base $2^30$. For example, the integer fib(89) would be stored as $511172301 \cdot (2^{30})^0 + 583993188 \cdot (2^{30})^1 + 1 \cdot (2^{30})^2$. It is around this point that we switch from a 2 digit representation of our integers to a 3 digit representation of our integers, which leads to higher run times.
+In [Figure 4](#fig4), you will notice an odd jump in runtime for Python’s dynamic programming. This led to a deep dive into the inner workings of Python to figure out what happened. We have not been able to define the exact cause of the jump, but we have a leading theory as to why it is happening. For small integers, Python stores these as immutable objects, while larger integers use arbitrary precision. Arbitrary precision stores large integers in an array of digits in base $2^30$. For example, the integer fib(89) would be stored as $511172301 \cdot (2^{30})^0 + 583993188 \cdot (2^{30})^1 + 1 \cdot (2^{30})^2$. It is around this point that we switch from a 2 digit representation of our integers to a 3 digit representation of our integers, which leads to higher run times[^1].
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Garbage collection became an issue with my Python code when performing benchmarking. Originally, we would test all algorithms at once, starting with recursive, but my Python implementation seemed to be taking an unusual amount of time. Additionally, my dynamic and iterative solution didn’t seem to grow linearly (not shown in the graph). This led me to start counting operations, since the number of operations is deterministic and not dependent on available resources. From here, we suspected garbage collection may be the culprit, and then started forcing garbage collection after each Fibonacci calculation. In the end, we believe garbage collection helped, but it probably wasn’t my root cause. We believe the root cause had to do with the CPU working harder with larger values of the Fibonacci Sequence. This led us to start calculating each algorithm separately while putting break times between them. This seemed to remove much of the variability that we were initially seeing.
+Garbage collection became an issue with my Python code when performing benchmarking. Originally, we would test all algorithms at once, starting with recursive, but my Python implementation seemed to be taking an unusual amount of time. Additionally, my dynamic and iterative solution didn’t seem to grow linearly (not shown in the graph). This led me to start counting operations, since the number of operations is deterministic and not dependent on available resources. From here, we suspected garbage collection may be the culprit, and then started forcing garbage collection after each Fibonacci calculation. In the end, we believe garbage collection helped, but it probably wasn’t my root cause. We believe the root cause had to do with the CPU working harder with larger values of the Fibonacci Sequence. This led us to start calculating each algorithm separately while putting break times between them. This seemed to remove much of the variability that we were initially seeing [^3].
 
 ### Python Vs C
 
@@ -201,7 +198,21 @@ In the Empirical Analysis section, I analyzed. the results with self-curated emp
 &nbsp;&nbsp;&nbsp;&nbsp;
 The language analysis really forced me to roll up my sleeves and dive deep into the inner workings of Python. Revealing how Python worked under the hood was fascinating. Reading about arbitrary precision and garbage collection gave me a newfound appreciation for the thinking behind building Python. This experience taught me when and where to use certain languages. Python may be easier and quicker to implement, but it's not necessarily the best solution. C showed the best results overall and had the least amount of issues. The abstraction layers built on top of Python made it really hard to figure out what was going on with our empirical results.
 
+## References:
+[^1]: Bhayani, A. (n.d.). How python implements super long integers?. 
+Codementor. https://www.codementor.io/@arpitbhayani/how-python-implements-super-long-integers-12icwon5vk 
 
+[^2]: GeeksforGeeks. (2018, September 10). Getopt() function in C to parse command line arguments. https://www.geeksforgeeks.org/c/getopt-function-in-c-to-parse-command-line-arguments/ 
+
+[^3]: GeeksforGeeks. (2025, May 8). Garbage collection in Python. https://www.geeksforgeeks.org/python/garbage-collection-python/ 
+
+[^4]: Lionell, A. (n.d.). Module 06: Dynamic Programming. Northeastern. https://northeastern.instructure.com/courses/225849/pages/overview-dynamic-programming 
+
+[^5]: Lionelle, A. (n.d.). CS5008-Khoury/Labs. GitHub. https://github.com/CS5008-Khoury/Labs 
+
+[^6]: Sahu, S. S. (2025, August 7). Inline function in C. GeeksforGeeks. https://www.geeksforgeeks.org/c/inline-function-in-c/ 
+
+[^7]: Syed, R. (2021, February 21). Fibonacci iterative vs. Recursive. Medium. https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055 
 
 
 

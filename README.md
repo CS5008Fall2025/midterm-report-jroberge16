@@ -190,12 +190,12 @@ Defining what data types to use proved trickier than expected. This analysis use
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-For this exercise, we also want to handle our command-line arguments with the `getopt()`, which is part of the `unistd.h` standard library. The code above demonstrates how we implemented this library and how it helped with our code. The key to this library comes from this string in the above code: `"f:hpa:"`. The arguments that have a `:` expect  a follow-on argument, while arguments that are not followed by a `:` are flag variables. Let's explain our command-line arguments in a little more detail:
+For this exercise, we also want to handle our command-line arguments with the `getopt()`, which is part of the `unistd.h` standard library. The code above demonstrates how we implemented this library and how it helped with our code. The key to this library comes from this string in the above code: `"f:hpa:"`. The arguments that have a `:` expect  a follow-up argument, while arguments that are not followed by a `:` are flag variables[^2]. Let's explain our command-line arguments in a little more detail:
 
-* a: algorithm number 1-4. This command requires a follow-on argument and is mandatory
-* f: fibonacci number. This requires a follow-up numeric value
-* p: flag variable for print that makes the program verbose
-* h: pulls up the help menu
+* a: Algorithm number 1-4. This command requires a follow-on argument and is mandatory
+* f: Fibonacci number. This requires a follow-up numeric value
+* p: Flag variable for print that makes the program verbose
+* h: Pulls up the help menu
 
 Using this function helped us keep our code clean and made our code less complicated. We actually employed a similar library in our Python implementation, but we believe the C parsing library is a little more straightforward. 
 

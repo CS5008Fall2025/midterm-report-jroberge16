@@ -20,7 +20,7 @@ The purpose of this report is to gain an understanding of how a programming lang
 * __Language Analysis__: discussing our results and experiences with Python and C
 
 ## Big(O)-Analysis:
-In this section, we will analyze each of our three Fibonacci implementations: iterative, recursive, and dynamic. To analyze each of these algorithms, we will analyze their pseudocode, recursion tree, and perform a Big-O analysis.
+In this section, we will analyze each of our three Fibonacci implementations: iterative, recursive, and dynamic. To analyze each of these algorithms, we will explore their pseudocode, recursion tree, and perform a Big-O analysis.
 
 ### Iterative:
 
@@ -66,12 +66,11 @@ __Pseudocode Code Recursive:__
 4.      result = recursive_fib(n - 1) + recursive_fib(n - 2)
 5.      RETURN result
 ```
-[^4]
 &nbsp;&nbsp;&nbsp;&nbsp; 
 As shown in the pseudocode above, the recursive solution is a simple  algorithm to implement. In line 2 and 3, we check for our base cases, and then in line 4, we perform our recursive call. Although the recursive solution is simple to implement, a closer look at the recurrence tree reveals redundant and exponential growth.
 
 &nbsp;&nbsp;&nbsp;&nbsp; 
-The recurrence tree shows how our recursive calls quickly add to the stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ [^4], but we are going to explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case, then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication of the Fibonacci formula. Given this information, we can prove that $T(n)$ is $O(2^n)$, which is shown above.
+The recurrence tree shows how our recursive calls quickly add to the stack memory. A literature review shows that the tight upper bound of the recursive solution is $O(\phi^n)$ [^4], but we are going to explore the more general approach of showing $O(2^n)$. Looking at the pseudocode, we check our base case, then perform two additional recursive calls. This equates to $T(n) = T(n-1) + T(n-2) + 1$, an exact replication of the Fibonacci formula. Given this information, we can prove that $T(n)$ is $O(2^n)$, which is shown above [^7].
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 As shown in the proof,  our runtime for this solution is $O(2^n)$. Intuitively, this runtime makes sense; every recursive call results in two additional recursive calls until our base case is satisfied. The recurrence tree also shows us our space complexity.  As we can see in the recurrence tree, our deepest branch is $n$ levels deep. Since only one branch within our tree can be on the stack at one given time, our total space complexity is $O(n)$[^7].
@@ -158,6 +157,28 @@ In this section, we will analyze the nuances between Python and C, and describe 
 
 ### C Implementation
 
+```c
+
+void proccess_args(int argc, char *argv[], int *algorithm, int *print, int *fib_number){
+    int opt;
+    while ((opt = getopt(argc, argv, "f:hpa:")) != -1){
+        switch(opt){
+            case 'h':
+                helper();
+                exit(1);
+            case 'a':
+                ...
+            case 'p':
+                ...
+            case 'f':
+                ....
+                *fib_number = atoi(optarg);
+                break;
+            default:
+                break;
+        }
+
+```
 &nbsp;&nbsp;&nbsp;&nbsp;
 Overall, we found the C implementation easier to implement because it is designed for this type of work. There seemed to be far less head-scratching with C as compared to Python, but this will be discussed later on. To get the C implementation to work, we focused on two main areas: memory management and data types.
 
@@ -165,15 +186,48 @@ Overall, we found the C implementation easier to implement because it is designe
 The true power of C is derived from the fine-grained control that users have over its memory model. With this in mind, we paid special attention to how variables are declared and passed to our different Fibonacci algorithms. For the recursive and iterative solutions, we relied on passing by value instead of by reference. This proved convenient since we could rely on values simply popping off the stack. For our dynamic solution, our array was passed by reference and then used across all recursive calls [^5].
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Defining what data types to use proved trickier than expected. This analysis used an assortment of different data types, including int, long int, long long int, and finally uint64_t. Our final implementation used uint64_t, which is a 64-bit, unsigned integer. This experience taught us that you need to choose your variable types carefully and that C will not throw a red flag when you overflow. When we first created this program, we used the data type long int, which compiled fine and worked for low values of Fibonacci, but high values turned negative due to integer overflow [^5]. 
+Defining what data types to use proved trickier than expected. This analysis used an assortment of different data types, including int, long int, long long int, and finally uint64_t. Our final implementation used uint64_t, which is a 64-bit, unsigned integer. This experience taught us that you need to choose your variable types carefully and that C will not throw a red flag when you overflow. When we first created this program, we used the data type long int, which compiled fine and worked for low values of Fibonacci, but high values turned negative due to integer overflow [^5].
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+For this exercise, we also want to handle our command-line arguments with the `getopt()`, which is part of the `unistd.h` standard library. The code above demonstrates how we implemented this library and how it helped with our code. The key to this library comes from this string in the above code: `"f:hpa:"`. The arguments that have a `:` expect  a follow-on argument, while arguments that are not followed by a `:` are flag variables. Let's explain our command-line arguments in a little more detail:
+
+* a: algorithm number 1-4. This command requires a follow-on argument and is mandatory
+* f: fibonacci number. This requires a follow-up numeric value
+* p: flag variable for print that makes the program verbose
+* h: pulls up the help menu
+
+Using this function helped us keep our code clean and made our code less complicated. We actually employed a similar library in our Python implementation, but we believe the C parsing library is a little more straightforward. 
 
 
 ### Python
+<p id="fig5" align="center">
+
+```python
+import ABC
+
+class FibonacciAlgorithm(ABC):
+    def __init__(self, print_debug: bool = False):
+        ...
+    def time_it(self, n) -> tuple[int, float]:
+        ...
+    def _check_base_case(self, num) -> int:
+        ...
+    @abstractmethod
+    def calculate(self, n: int) -> int:
+        ...
+
+class IterativeFib(FibonacciAlgorithm):
+    def calculate(self, n):
+        ...
+```
+<p>
+
 &nbsp;&nbsp;&nbsp;&nbsp;
 The Python programming language was specifically chosen because it stands in stark contrast to C when it comes to its level of abstraction. Unlike C, Python is a high-level language, so the fine-grained controls we have in C are not present in Python. What we wanted to specifically explore in Python was object-oriented design, garbage collection, and how it handles data types.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-For our Python Fibonacci implementation, we went with an object-oriented design approach, and this made things significantly easier. While coding, we implemented several unforeseen changes, but implementing these changes was trivial because we used an object-oriented framework. Additionally, it just made the code easier to understand and naturally better organized.
+For our Python Fibonacci implementation, we used an object-oriented design approach, which significantly simplified the coding process . In the pseudocode above, you can see this object-oriented design approach in action. Our `IterativeFib` class contains our logic for our iterative solution, and this class inherits from our parent class `FibonacciAlgorithm`. The class `FibonacciAlgorithm` contains the methods and attributes used across all of our implementations of Fibonacci solutions. Additionally, we also have the abstract method `calculate` which all classes that inherit from `FibonacciAlgorithm` must override. While coding, we implemented several unforeseen changes, but implementing these changes was trivial because we used an object-oriented framework. Most changes we made came from the parent class, and because of this, our changes propagated down. Using an object-oriented design approach just made our code more maintainable, organized, and clean.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 In [Figure 4](#fig4), you will notice an odd jump in runtime for Python’s dynamic programming. This led to a deep dive into the inner workings of Python to figure out what happened. We have not been able to define the exact cause of the jump, but we have a leading theory as to why it is happening. For small integers, Python stores these as immutable objects, while larger integers use arbitrary precision. Arbitrary precision stores large integers in an array of digits in base $2^30$. For example, the integer fib(89) would be stored as $511172301 \cdot (2^{30})^0 + 583993188 \cdot (2^{30})^1 + 1 \cdot (2^{30})^2$. It is around this point that we switch from a 2 digit representation of our integers to a 3 digit representation of our integers, which leads to higher run times[^1].
@@ -221,4 +275,3 @@ Codementor. https://www.codementor.io/@arpitbhayani/how-python-implements-super-
 [^6]: Sahu, S. S. (2025, August 7). Inline function in C. GeeksforGeeks. https://www.geeksforgeeks.org/c/inline-function-in-c/ 
 
 [^7]: Syed, R. (2021, February 21). Fibonacci iterative vs. Recursive. Medium. https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055 
-

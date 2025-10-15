@@ -161,11 +161,36 @@ Defining what data types to use proved trickier than expected. This analysis use
 
 
 ### Python
+<p id="fig5" align="center">
+
+```python
+import ABC
+
+class FibonacciAlgorithm(ABC):
+    def __init__(self, print_debug: bool = False):
+        ...
+    def time_it(self, n) -> tuple[int, float]:
+        ...
+    def _check_base_case(self, num) -> int:
+        ...
+    @abstractmethod
+    def calculate(self, n: int) -> int:
+        ...
+
+class IterativeFib(FibonacciAlgorithm):
+    def calculate(self, n):
+        ...
+```
+<p>
+
 &nbsp;&nbsp;&nbsp;&nbsp;
 The Python programming language was specifically chosen because it stands in stark contrast to C when it comes to its level of abstraction. Unlike C, Python is a high-level language, so the fine-grained controls we have in C are not present in Python. What we wanted to specifically explore in Python was object-oriented design, garbage collection, and how it handles data types.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-For our Python Fibonacci implementation, we went with an object-oriented design approach, and this made things significantly easier. While coding, we implemented several unforeseen changes, but implementing these changes was trivial because we used an object-oriented framework. Additionally, it just made the code easier to understand and naturally better organized.
+For our Python Fibonacci implementation, we went with an object-oriented design approach, and this made things significantly easier. In the pseudocode above, you can see this object oriented design approach in action. Our `IterativeFib` class, containing our logic for our iterative solution, inherits from our parent class `FibonacciAlgorithm`. The class `FibonacciAlgorithm` contains methods and attributes used across all of our implementations of Fibonacci solutions. Additionally, we also have a an abstract class calculate which all other methods must overwrite.
+
+
+While coding, we implemented several unforeseen changes, but implementing these changes was trivial because we used an object-oriented framework. Additionally, it just made the code easier to understand and naturally better organized.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 In [Figure 4](#fig4), you will notice an odd jump in runtime for Python’s dynamic programming. This led to a deep dive into the inner workings of Python to figure out what happened. We have not been able to define the exact cause of the jump, but we have a leading theory as to why it is happening. For small integers, Python stores these as immutable objects, while larger integers use arbitrary precision. Arbitrary precision stores large integers in an array of digits in base $2^30$. For example, the integer fib(89) would be stored as $511172301 \cdot (2^{30})^0 + 583993188 \cdot (2^{30})^1 + 1 \cdot (2^{30})^2$. It is around this point that we switch from a 2 digit representation of our integers to a 3 digit representation of our integers, which leads to higher run times[^1].

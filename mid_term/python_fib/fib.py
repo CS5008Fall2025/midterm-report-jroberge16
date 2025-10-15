@@ -66,7 +66,7 @@ class FibonacciAlgorithm(ABC):
         args:
             n= fibonacci number
         """
-        pass
+        raise NotImplementedError("Must override this method")
 
 
 class IterativeFib(FibonacciAlgorithm):
@@ -78,14 +78,6 @@ class IterativeFib(FibonacciAlgorithm):
         * print_debug: makes the print statements verbose
     """
 
-    def __init__(self, print_debug: bool = False):
-        """
-        Attributes:
-            * print_debug: makes the print statements verbose
-        """
-
-        super().__init__(print_debug)
-    
     def calculate(self, n):
         """
         method for for calculating fibonacci sequence
@@ -121,13 +113,6 @@ class RecursiveFib(FibonacciAlgorithm):
     Attributes:
         * print_debug: makes the print statements verbose
     """
-    def __init__(self, print_debug: bool = False):
-        """
-        Atributes:
-            * print_debug: makes the print statements verbose
-        """
-        super().__init__(print_debug)
-    
     def calculate(self, n) -> int:
         """
         method for  for calculating fibonacci sequence
@@ -155,13 +140,6 @@ class DynamicFib(FibonacciAlgorithm):
     Attributes:
         * print_debug: makes the print statements verbose
     """
-
-    def __init__(self, print_debug: bool = False):
-        """
-        Attributes:
-            * print_debug: makes the print statements verbose
-        """
-        super().__init__(print_debug)
 
     def _calculate(self, n:int) -> int:
         """

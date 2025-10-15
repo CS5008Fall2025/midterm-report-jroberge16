@@ -7,6 +7,7 @@
  * [^1]: GeeksforGeeks. (2018, September 10). Getopt() function in C to parse command line arguments. https://www.geeksforgeeks.org/c/getopt-function-in-c-to-parse-command-line-arguments/ 
  * [^2]: GeeksforGeeks. (2025, May 8). Garbage collection in Python. https://www.geeksforgeeks.org/python/garbage-collection-python/ 
  * [^3]: Lionell, A. (n.d.). Module 06: Dynamic Programming. Northeastern. https://northeastern.instructure.com/courses/225849/pages/overview-dynamic-programming 
+ * [^4]:How to temporarily suppress output from printf?. Stack Overflow. (2017, October 13). https://stackoverflow.com/questions/46728680/how-to-temporarily-suppress-output-from-printf 
  */
 
 

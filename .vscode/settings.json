@@ -6,7 +6,8 @@
         "compare": "c",
         "type_traits": "c",
         "fib.h": "c",
-        "cstdint": "c"
+        "cstdint": "c",
+        "assert.h": "c"
     },
     "python.testing.pytestArgs": [
         "test"

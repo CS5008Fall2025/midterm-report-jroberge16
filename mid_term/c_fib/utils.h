@@ -136,7 +136,7 @@ int test_one(int algorithm, int fib_num, int print){
     if(print){
         printf("\n============== 🧮 CALCULATIONS 🧮 ==============\n");
     }
-    time_it(algorithum, fib_num, print, &result, &time_taken);
+    time_it(algorithm, fib_num, print, &result, &time_taken);
 
     if(print){
         printf("\n============== 🏁 Results 🏁 ==============\n");

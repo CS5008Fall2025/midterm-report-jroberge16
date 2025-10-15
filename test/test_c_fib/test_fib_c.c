@@ -7,14 +7,22 @@
 #include <fcntl.h> // For open, O_WRONLY
 #include <unistd.h> // For dup, dup2, close
 #include <fcntl.h> // For open, O_WRONLY
+#include <setjmp.h>
+#include <assert.h>
+
+
 
 
 
 #include "../../mid_term/c_fib/utils.h"
 #include "../../mid_term/c_fib/fib.h"
 
+
+/**
+* suppresses stdout for a function call
+* @references: [^4] https://stackoverflow.com/questions/46728680/how-to-temporarily-suppress-output-from-printf
+*/
 void suppress_stdout() {
-    //https://stackoverflow.com/questions/46728680/how-to-temporarily-suppress-output-from-printf
     fflush(stdout);
     int nullfd = open("/dev/null", O_WRONLY);
     if (nullfd == -1) {
@@ -25,6 +33,11 @@ void suppress_stdout() {
     close(nullfd); 
 }
 
+/**
+ * Restores stdout after being suppressed
+ * @references: [^4] https://stackoverflow.com/questions/46728680/how-to-temporarily-suppress-output-from-printf
+ * @param original_stdout_fd: The original file descriptor for stdout
+*/
 void restore_stdout(int original_stdout_fd) {
     fflush(stdout);
     dup2(original_stdout_fd, STDOUT_FILENO);
@@ -73,6 +86,7 @@ int test_test_one(void){
 
 
 int test_test_all(void){
+    
     printf("\t🧪 Testing test_one function:\n");
     int saved_stdout = dup(STDOUT_FILENO);
 
@@ -114,21 +128,40 @@ void test_time_it(void){
 void test_proccess_args(){
 
     printf("\t🧪 Processing Arguments:\n");
+    #define exit(code) my_exit(code)
 
-    int algorithum = 1;
+    int algorithm = 1;
     int print = 0;
     int fib_num = 5;
     char *argv[] = {"program_name", "-a", "1", "-f", "5"};
+
     int argc = 5;
 
-    proccess_args(argc, argv, &algorithum, &print, &fib_num);
-    if(algorithum == 0 && print == 0 && fib_num == 5){
+    proccess_args(argc, argv, &algorithm, &print, &fib_num);
+    if(algorithm == 0 && print == 0 && fib_num == 5){
         print_results(1, 1,"proccess_args normal");
     }else{
         print_results(1, 0,"proccess_args normal");
     }
+    
+    algorithm = 1;
+    print = 0;
+    fib_num = 5;
+    argv[0] = "program_name";
+    argv[1] = "-a";
+    argv[2] = "1";
+    argv[3] = "-f";
+    argv[4] = "-5";
+    argc = 5;
+    
+
+    proccess_args(argc, argv, &algorithm, &print, &fib_num);
+    print_results(1, 1,"proccess_args. bad");
+
     // I manually tested some of the exit on error function
-    // Can put that in code sinze it ends the program by design.
+    // Can put that in code since it ends the program by design
+    // and figured learning mocks in C might be out of scope
+    // for this assignment.
 }
 
 void test_recursiveFib(void){
@@ -160,8 +193,7 @@ void test_itterativeFib(void){
     print_results(result_3, 1,"itterativeFib f_1");
     print_results(result_4, 55,"itterativeFib f_10");
     print_results(result_5, -1,"itterativeFib f_-1"); // We return UNIT_MAX_64 which casts to -1
-    // I manually tested print... It works as expected
-}
+    }
 
 void test_dynamicFib(void){
     printf("\t🧪 Testing dynamicFib:\n");
@@ -176,7 +208,6 @@ void test_dynamicFib(void){
     print_results(result_3, 1,"dynamicFib f_1");
     print_results(result_4, 55,"dynamicFib f_10");
     print_results(result_5, -1,"dynamicFib f_-1"); // We return UNIT_MAX_64 which casts to -1
-    // I manually tested print... It works as expected
 }
 
 

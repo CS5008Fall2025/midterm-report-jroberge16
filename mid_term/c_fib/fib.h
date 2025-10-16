@@ -112,9 +112,14 @@ uint64_t _dynamic_fib(int num, int p,uint64_t *memo){
         OPERATION_COUNTER += 2;
         return memo[num];
     }
+    
     OPERATION_COUNTER += 2;
 
     memo[num] = _dynamic_fib(num-1, p, memo) + _dynamic_fib(num-2, p, memo);
+    if(memo == NULL){
+        printf("Error -> unable to allocate memory\n");
+        return UINT64_MAX;
+    }
     OPERATION_COUNTER += 3;
 
     if(p){

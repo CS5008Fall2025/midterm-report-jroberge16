@@ -179,7 +179,7 @@ Overall, we found the C implementation easier to implement because it is designe
 The true power of C is derived from the fine-grained control that users have over its memory model. With this in mind, we paid special attention to how variables are declared and passed to our different Fibonacci algorithms. For the recursive and iterative solutions, we relied on passing by value instead of by reference. This proved convenient since we could rely on values simply popping off the stack. For our dynamic solution, our array was passed by reference and then used across all recursive calls [^5].
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-Defining what data types to use proved trickier than expected. This analysis used an assortment of different data types, including int, long int, long long int, and finally uint64_t. Our final implementation used uint64_t, which is a 64-bit, unsigned integer. This experience taught us that you need to choose your variable types carefully and that C will not throw a red flag when you overflow. When we first created this program, we used the data type long int, which compiled fine and worked for low values of Fibonacci, but high values turned negative due to integer overflow [^5].
+Defining what data types to use proved trickier than expected. This analysis used an assortment of different data types, including int, long int, long long int, and finally uint64_t. Our final implementation used uint64_t, which is a 64-bit, unsigned integer. This experience taught us that you need to choose your variable types carefully and that C will not throw a red flag when you overflow. When we first created this program, we used the data type long int, which compiled fine and worked for low values of Fibonacci, but high values turned negative due to integer overflow [^5][^8].
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -268,4 +268,7 @@ Codementor. https://www.codementor.io/@arpitbhayani/how-python-implements-super-
 [^6]: Sahu, S. S. (2025, August 7). Inline function in C. GeeksforGeeks. https://www.geeksforgeeks.org/c/inline-function-in-c/ 
 
 [^7]: Syed, R. (2021, February 21). Fibonacci iterative vs. Recursive. Medium. https://syedtousifahmed.medium.com/fibonacci-iterative-vs-recursive-5182d7783055 
+
+[^8]: cppreference.com (2021, February 21). Fixed width integer types. cppreference. https://en.cppreference.com/w/c/types/integer.html
+
 

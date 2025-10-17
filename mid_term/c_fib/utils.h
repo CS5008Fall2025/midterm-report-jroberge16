@@ -61,7 +61,7 @@ void proccess_args(int argc, char *argv[], int *algorithm, int *print, int *fib_
                         exit(1);;
                 }
                 *algorithm = atoi(optarg) - 1;
-                if ((*algorithm > 3) |(*algorithm < 0)){
+                if ((*algorithm > 3) || (*algorithm < 0)){
                        printf("ERROR: You must select an algorithm option\n");
                        helper();
                         exit(1);;
@@ -144,7 +144,7 @@ int test_one(int algorithm, int fib_num, int print){
         printf("\n============== 🏁 Results 🏁 ==============\n");
         printf("Algorithm:\t%s\n", algs_names[algorithm]);
         printf("Total Time:\t%.10f\n", time_taken);
-        printf("Result for F_%d:\t%ld\n\n", fib_num, result);
+        printf("Result for F_%d:\t%" PRIu64 "\n\n", fib_num, result);
     }else{
         printf("f_%d,%s,%.10f,%" PRIu64"\n", fib_num, algs_names[algorithm], time_taken, OPERATION_COUNTER);
     }

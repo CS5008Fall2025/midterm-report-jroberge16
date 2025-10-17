@@ -60,7 +60,7 @@ uint64_t iterativeFib(int fib_num, int print){
    for (int i =2; i <= fib_num; i++){
         fib_calculation = first_term + second_term  ;
         if(print){
-            printf("f_%d:\t%ld + %ld = %ld\n", i, first_term,  second_term, fib_calculation);
+            printf("f_%d:\t%" PRIu64 " + %" PRIu64 " = %" PRIu64 "\n", i, first_term,  second_term, fib_calculation);
         }
         
         second_term = first_term;
@@ -91,7 +91,7 @@ uint64_t recursiveFib(int num, int p){
     OPERATION_COUNTER += 3;
 
     if(p){
-        printf("f_%d:\t%ld\n",num,  result);
+        printf("f_%d:\t%" PRIu64 "\n",num,  result);
     }
     return result;
 }
@@ -123,7 +123,7 @@ uint64_t _dynamic_fib(int num, int p,uint64_t *memo){
     OPERATION_COUNTER += 3;
 
     if(p){
-        printf("f_%d:\t\t%ld\n",num,  memo[num]);
+        printf("f_%d:\t\t%" PRIu64 "\n",num,  memo[num]);
     }
 
     return memo[num];

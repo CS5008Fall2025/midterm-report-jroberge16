@@ -36,17 +36,17 @@
  * @return: 0 on success, 1 on failure
  */
 int main(int argc, char *argv[]){
-    int algorithum = 0;
+    int algorithm = 0;
     int print = 0;
     int fib_num = -1;
 
     // processing the command line arguments
-    proccess_args(argc, argv, &algorithum, &print, &fib_num);
+    proccess_args(argc, argv, &algorithm, &print, &fib_num);
     if(print){
-        printf("Calculating F_%d using %s method\n", fib_num, algs_names[algorithum]);
+        printf("Calculating F_%d using %s method\n", fib_num, algs_names[algorithm]);
     }
-    if(algorithum<3){
-        test_one(algorithum, fib_num, print);
+    if(algorithm<3){
+        test_one(algorithm, fib_num, print);
     }else{
         test_all(fib_num, print);
     }

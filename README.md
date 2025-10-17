@@ -3,7 +3,7 @@
 * **Author**: Joshua Roberge
 * **GitHub Repo**: https://github.com/CS5008Fall2025/midterm-report-jroberge16
 * **Semester**: Fall 2025
-* **Languages Used**: c, update
+* **Languages Used**: c
 ---
 &nbsp;&nbsp;&nbsp;&nbsp; 
 The purpose of this report is to gain an understanding of how a programming language and time complexity affect the performance of an algorithm. Using the programming languages Python and C, we will implement three versions of the Fibonacci sequence: iterative, recursive, and memoization. The Fibonacci sequence is a series that takes the previous two numbers in the sequence and then adds them together. This definition of the Fibonacci sequence can be expressed with the following formula: $f(n) = f(n-1) + f(n-2)$. Given the simplicity of the Fibonacci sequence, it is a perfect base algorithm to perform our analysis. This report will be organized into the following 3 sections: 
